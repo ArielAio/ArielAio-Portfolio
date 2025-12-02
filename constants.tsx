@@ -80,14 +80,14 @@ export const EDUCATION: Education[] = [
     id: 1,
     degree: "Bacharelado em Sistemas de Informação",
     institution: "IFSP - Votuporanga",
-    period: "Previsão 2027",
+    period: "2027",
     description: "Ensino superior em andamento, período matutino."
   },
   {
     id: 2,
     degree: "Técnico em Informática",
     institution: "ETEC - Armando José Farinazzo",
-    period: "Conclusão 2023",
+    period: "2023",
     description: "Formação técnica focada em desenvolvimento de sistemas."
   }
 ];
