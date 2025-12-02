@@ -2,64 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-const Logo = () => (
-  <motion.svg
-    width="40"
-    height="40"
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="overflow-visible"
-  >
-    <defs>
-      <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#6366f1" />
-        <stop offset="100%" stopColor="#a855f7" />
-      </linearGradient>
-      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="5" result="coloredBlur" />
-        <feMerge>
-          <feMergeNode in="coloredBlur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-    </defs>
-    
-    {/* Outer Hexagon/Shape Hint - subtle background */}
-    <motion.path
-      d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z"
-      stroke="url(#logoGradient)"
-      strokeWidth="1"
-      strokeOpacity="0.3"
-      fill="transparent"
-      initial={{ pathLength: 0, opacity: 0, rotate: -90 }}
-      animate={{ pathLength: 1, opacity: 1, rotate: 0 }}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-    />
-
-    {/* The 'A' Apex Symbol */}
-    <motion.path
-      d="M50 25 L80 80 H65 L50 50 L35 80 H20 L50 25 Z"
-      fill="url(#logoGradient)"
-      stroke="white"
-      strokeWidth="2"
-      filter="url(#glow)"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
-    />
-    
-    {/* The Digital Crossbar */}
-    <motion.rect
-      x="42" y="65" width="16" height="3" rx="1.5"
-      fill="white"
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: 1 }}
-      transition={{ delay: 1, duration: 0.5 }}
-    />
-  </motion.svg>
-);
-
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -108,22 +50,19 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo Section */}
+        {/* Logo Section - Reverted to Clean Text */}
         <motion.a 
           href="#"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex flex-col cursor-pointer group"
         >
-          <Logo />
-          <div className="flex flex-col">
-            <span className="text-xl font-bold font-mono tracking-tighter text-white group-hover:text-primary transition-colors leading-none">
-              Ariel Aio
-            </span>
-            <span className="text-[10px] tracking-widest text-gray-400 uppercase font-sans">
-              Full Stack
-            </span>
-          </div>
+          <span className="text-2xl font-bold font-mono tracking-tighter text-white group-hover:text-primary transition-colors leading-none">
+            Ariel Aio
+          </span>
+          <span className="text-[10px] tracking-widest text-gray-400 uppercase font-sans group-hover:text-white transition-colors">
+            Full Stack Developer
+          </span>
         </motion.a>
 
         {/* Desktop Menu */}
