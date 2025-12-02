@@ -1,0 +1,44 @@
+import React, { useMemo } from 'react';
+
+export const Particles = ({ quantity = 75 }: { quantity?: number }) => {
+  const particles = useMemo(() => {
+    return new Array(quantity).fill(true).map(() => ({
+      left: Math.floor(Math.random() * 100) + '%',
+      top: Math.floor(Math.random() * 100) + '%',
+      animationDelay: Math.random() * 5 + 's',
+      animationDuration: Math.random() * 10 + 10 + 's', // Slow movement between 10-20s
+      size: Math.random() * 3 + 1 + 'px', // Random size 1-4px
+      opacity: Math.random() * 0.5 + 0.1, // Random base opacity
+    }));
+  }, [quantity]);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {particles.map((style, idx) => (
+        <span
+          key={"particle-" + idx}
+          className="absolute rounded-full bg-white animate-float"
+          style={{
+            left: style.left,
+            top: style.top,
+            width: style.size,
+            height: style.size,
+            opacity: style.opacity,
+            animationDelay: style.animationDelay,
+            animationDuration: style.animationDuration,
+            boxShadow: `0 0 ${parseInt(style.size) * 2}px rgba(255, 255, 255, 0.6)` // Glow effect
+          }}
+        >
+            {/* Inner twinkle animation */}
+            <span 
+                className="block w-full h-full animate-twinkle bg-primary/30 rounded-full"
+                style={{
+                    animationDelay: style.animationDelay,
+                    animationDuration: (parseFloat(style.animationDuration) / 2) + 's' 
+                }}
+            />
+        </span>
+      ))}
+    </div>
+  );
+};
