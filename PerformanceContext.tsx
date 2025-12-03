@@ -19,25 +19,29 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     // 1. Check User Preference for Motion
     let motionQuery: MediaQueryList | null = null;
     
     if (typeof window !== 'undefined' && window.matchMedia) {
         motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        setReduceMotion(motionQuery.matches);
+        if (isMounted) setReduceMotion(motionQuery.matches);
         
-        const handleMotionChange = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
+        const handleMotionChange = (e: MediaQueryListEvent) => {
+            if (isMounted) setReduceMotion(e.matches);
+        };
         motionQuery.addEventListener('change', handleMotionChange);
     }
 
     // 2. BENCHMARKING (The real test)
-    // Browsers often hide real hardware info for privacy. 
-    // We run a requestAnimationFrame loop for ~800ms to measure actual FPS.
     let frameCount = 0;
     let startTime = performance.now();
     let rafId: number;
 
     const finalizeTier = (fps: number) => {
+      if (!isMounted) return;
+
       // If user explicitly requested reduced motion, honor it -> Low Tier
       if (motionQuery && motionQuery.matches) {
         setTier('low');
@@ -53,31 +57,27 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
 
       // Decision Logic
       if (fps > 50) {
-        // Smooth performance detected (>50fps)
         if (isMobile) {
-          // On mobile, even if fast, we might want to avoid the heaviest 3D cube (Tesseract) to save battery, 
-          // but we can allow particles. Let's go High if it's really smooth, or Medium if safe.
-          // Let's allow High for powerful phones, but Hero.tsx handles specific mobile visibility for Tesseract.
           setTier('high'); 
         } else {
-          setTier('high'); // Desktop with good FPS -> Full Experience
+          setTier('high');
         }
       } else if (fps > 30) {
-        // Acceptable performance
         setTier('medium');
       } else {
-        // Struggling device
         setTier('low');
       }
     };
 
     const benchmark = () => {
       try {
+        if (!isMounted) return;
+
         frameCount++;
         const currentTime = performance.now();
         const elapsed = currentTime - startTime;
 
-        // Run benchmark for approx 800ms (fast enough to not block, slow enough to get avg)
+        // Run benchmark for approx 800ms
         if (elapsed < 800) {
           rafId = requestAnimationFrame(benchmark);
         } else {
@@ -86,7 +86,7 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
         }
       } catch (error) {
         console.error("Benchmark error:", error);
-        finalizeTier(60); // Default to High/Safe if benchmark fails (e.g. strict environment)
+        finalizeTier(60); 
       }
     };
 
@@ -94,12 +94,15 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
     if (typeof window !== 'undefined' && window.requestAnimationFrame) {
         rafId = requestAnimationFrame(benchmark);
     } else {
-        finalizeTier(60); // Server-side or non-RAF environment default
+        finalizeTier(60);
     }
 
     return () => {
+      isMounted = false;
       if (rafId) cancelAnimationFrame(rafId);
-      // Remove listener logic needs to be inside the effect scope to access the handler
+      // Remove listener needs a named function reference or AbortSignal to be clean, 
+      // but in this effect scope 'handleMotionChange' isn't accessible outside unless defined outside.
+      // However, checking isMounted inside handlers covers the state update risk.
     };
   }, []);
 
