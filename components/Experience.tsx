@@ -59,9 +59,22 @@ const Experience: React.FC = React.memo(() => {
                     <h4 className="text-xl font-bold text-white mb-1">
                       {exp.role}
                     </h4>
-                    <h5 className="text-gray-400 mb-4 font-medium">
+                    <h5 className="text-gray-400 mb-2 font-medium">
                        {exp.company}
                     </h5>
+                    
+                    {/* Project Link (if exists) */}
+                    {exp.projectLink && (
+                      <a 
+                        href={exp.projectLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs text-green-400 hover:text-green-300 mb-3 transition-colors"
+                      >
+                        <span>🔗 Ver Projeto</span>
+                      </a>
+                    )}
+                    
                     <p className="text-gray-300 text-sm mb-4">
                       {exp.description}
                     </p>

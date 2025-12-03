@@ -20,8 +20,8 @@ export const HERO_CONTENT = {
   pt: {
     greeting: "Olá, eu sou o",
     name: "Ariel André Aio",
-    role: "COO & Desenvolvedor Full Stack",
-    description: "Co-fundador da Skyiit. Combino visão estratégica de negócios com capacidade técnica em React, Node.js e Laravel para criar soluções digitais escaláveis e de alto impacto.",
+    role: "COO da Memoryiit | Full Stack Developer",
+    description: "Co-fundador da Skyiit, responsável pelo produto Memoryiit — consolidado no mercado de presentes digitais em menos de 1 ano. Combino visão estratégica de negócios com expertise técnica em React, Node.js e Laravel.",
     ctaProjects: "Ver Projetos",
     ctaContact: "Entrar em Contato",
     ctaResume: "Baixar PDF",
@@ -30,8 +30,8 @@ export const HERO_CONTENT = {
   en: {
     greeting: "Hello, I am",
     name: "Ariel André Aio",
-    role: "COO & Full Stack Developer",
-    description: "Co-founder of Skyiit. I combine strategic business vision with technical expertise in React, Node.js, and Laravel to create scalable and high-impact digital solutions.",
+    role: "COO at Memoryiit | Full Stack Developer",
+    description: "Co-founder of Skyiit, responsible for the Memoryiit product — consolidated in the digital gifts market in less than 1 year. I combine strategic business vision with technical expertise in React, Node.js, and Laravel.",
     ctaProjects: "View Projects",
     ctaContact: "Get in Touch",
     ctaResume: "Download PDF",
@@ -70,6 +70,7 @@ export const EXPERIENCE_CONTENT = {
         company: "Skyiit",
         period: "2025 - Atual",
         description: "Co-fundador da holding Skyiit, responsável pelo produto digital Memoryiit, consolidado no mercado de presentes digitais em menos de 1 ano.",
+        projectLink: "https://memoryiit.com",
         details: [
           "Condução de operações internas da empresa: organização de demandas, gestão de produtividade e acompanhamento do time de desenvolvimento (3 devs).",
           "Criação e edição de conteúdos digitais para campanhas de marketing em redes sociais.",
@@ -118,6 +119,7 @@ export const EXPERIENCE_CONTENT = {
         company: "Skyiit",
         period: "2025 - Present",
         description: "Co-founder of the Skyiit holding, responsible for the digital product Memoryiit, consolidated in the digital gifts market in less than 1 year.",
+        projectLink: "https://memoryiit.com",
         details: [
           "Leading internal company operations: organizing demands, productivity management, and monitoring the development team (3 devs).",
           "Creation and editing of digital content for social media marketing campaigns.",
@@ -165,6 +167,16 @@ export const PROJECTS_CONTENT = {
     code: "Código",
     projects: [
       {
+        id: 0,
+        title: "Memoryiit — Plataforma de Presentes Digitais",
+        description: "Como COO e Co-fundador da Skyiit, liderei o desenvolvimento e lançamento do Memoryiit, produto consolidado no mercado de presentes digitais em menos de 1 ano. Responsável por gestão de operações e time (3 devs), estratégia de marketing em redes sociais, atendimento ao cliente e estruturação de processos escaláveis.",
+        tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
+        image: "/memoryiit.png",
+        link: "https://memoryiit.com",
+        type: "leadership",
+        badge: "🚀 Em Produção",
+      },
+      {
         id: 1,
         title: "Sistema para Barbearias",
         description: "Plataforma completa para barbearias, com agendamentos em tempo real, gestão de clientes e painel administrativo intuitivo. Utilizado diariamente em produção por estabelecimentos reais.",
@@ -208,6 +220,16 @@ export const PROJECTS_CONTENT = {
     demo: "Demo",
     code: "Code",
     projects: [
+      {
+        id: 0,
+        title: "Memoryiit — Digital Gifts Platform",
+        description: "As COO and Co-founder of Skyiit, I led the development and launch of Memoryiit, a product consolidated in the digital gifts market in less than 1 year. Responsible for operations management and team leadership (3 devs), social media marketing strategy, customer service, and structuring scalable processes.",
+        tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
+        image: "/memoryiit.png",
+        link: "https://memoryiit.com",
+        type: "leadership",
+        badge: "🚀 In Production",
+      },
       {
         id: 1,
         title: "Barbershop System",

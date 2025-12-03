@@ -8,6 +8,8 @@ export interface Project {
   image: string;
   link: string;
   githubRepo?: string;
+  type?: 'technical' | 'leadership'; // NEW: Project type for styling
+  badge?: string; // NEW: Badge text (e.g., "🚀 Em Produção")
 }
 
 export interface Experience {
@@ -17,6 +19,7 @@ export interface Experience {
   period: string;
   description: string;
   details?: string[];
+  projectLink?: string; // NEW: Link to related project (e.g., Memoryiit)
 }
 
 export interface Education {

@@ -63,7 +63,11 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
       viewport={{ once: true, margin: "-50px" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative rounded-2xl bg-dark/50 border border-white/5 perspective-1000 h-[450px] w-full isolate" 
+      className={`group relative rounded-2xl bg-dark/50 perspective-1000 h-[450px] w-full isolate ${
+        project.type === 'leadership' 
+          ? 'border-2 border-green-500/30 hover:border-green-400/60 shadow-green-500/20' 
+          : 'border border-white/5 hover:border-primary/30'
+      }`} 
     >
       <div 
         style={!isLowPower ? { transform: "translateZ(20px)", transformStyle: "preserve-3d" } : {}}
@@ -99,6 +103,13 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
             className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none z-30"
         >
             <div className="pointer-events-auto transform transition-transform duration-300 md:translate-y-8 md:group-hover:translate-y-0">
+                {/* Badge for special projects (e.g., "🚀 Em Produção") */}
+                {project.badge && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-500/20 border border-green-500/50 rounded-full text-green-400 text-xs font-bold mb-3 backdrop-blur-sm shadow-lg">
+                        {project.badge}
+                    </span>
+                )}
+                
                 <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg" style={{ textShadow: "0 4px 10px rgba(0,0,0,0.5)" }}>
                     {project.title}
                 </h3>
