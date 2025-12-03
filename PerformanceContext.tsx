@@ -24,14 +24,18 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
     // 1. Check User Preference for Motion
     let motionQuery: MediaQueryList | null = null;
     
-    if (typeof window !== 'undefined' && window.matchMedia) {
-        motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if (isMounted) setReduceMotion(motionQuery.matches);
-        
-        const handleMotionChange = (e: MediaQueryListEvent) => {
-            if (isMounted) setReduceMotion(e.matches);
-        };
-        motionQuery.addEventListener('change', handleMotionChange);
+    try {
+        if (typeof window !== 'undefined' && window.matchMedia) {
+            motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (isMounted) setReduceMotion(motionQuery.matches);
+            
+            const handleMotionChange = (e: MediaQueryListEvent) => {
+                if (isMounted) setReduceMotion(e.matches);
+            };
+            motionQuery.addEventListener('change', handleMotionChange);
+        }
+    } catch (e) {
+        console.warn("MatchMedia not supported", e);
     }
 
     // 2. BENCHMARKING (The real test)
@@ -42,29 +46,38 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
     const finalizeTier = (fps: number) => {
       if (!isMounted) return;
 
-      // If user explicitly requested reduced motion, honor it -> Low Tier
-      if (motionQuery && motionQuery.matches) {
-        setTier('low');
-        return;
-      }
-
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      // Hardware Heuristics (as secondary check)
-      const cores = navigator.hardwareConcurrency || 4;
-      
-      console.log(`[System Check] Benchmark: ${Math.round(fps)} FPS | Mobile: ${isMobile} | Cores: ${cores}`);
-
-      // Decision Logic
-      if (fps > 50) {
-        if (isMobile) {
-          setTier('high'); 
-        } else {
-          setTier('high');
+      try {
+        // If user explicitly requested reduced motion, honor it -> Low Tier
+        if (motionQuery && motionQuery.matches) {
+            setTier('low');
+            return;
         }
-      } else if (fps > 30) {
-        setTier('medium');
-      } else {
+
+        let isMobile = false;
+        let cores = 4;
+
+        // Defensive navigator access to prevent Script Errors in strict environments
+        try {
+            if (typeof navigator !== 'undefined') {
+                isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                cores = navigator.hardwareConcurrency || 4;
+            }
+        } catch (e) {
+            console.warn("Navigator access blocked", e);
+        }
+        
+        console.log(`[System Check] Benchmark: ${Math.round(fps)} FPS | Mobile: ${isMobile} | Cores: ${cores}`);
+
+        // Decision Logic
+        if (fps > 50) {
+            setTier('high');
+        } else if (fps > 30) {
+            setTier('medium');
+        } else {
+            setTier('low');
+        }
+      } catch (err) {
+        console.warn("Error finalizing tier, defaulting to low", err);
         setTier('low');
       }
     };
@@ -91,18 +104,19 @@ export const PerformanceProvider: React.FC<{ children: ReactNode }> = ({ childre
     };
 
     // Start benchmark
-    if (typeof window !== 'undefined' && window.requestAnimationFrame) {
-        rafId = requestAnimationFrame(benchmark);
-    } else {
+    try {
+        if (typeof window !== 'undefined' && window.requestAnimationFrame) {
+            rafId = requestAnimationFrame(benchmark);
+        } else {
+            finalizeTier(60);
+        }
+    } catch (e) {
         finalizeTier(60);
     }
 
     return () => {
       isMounted = false;
       if (rafId) cancelAnimationFrame(rafId);
-      // Remove listener needs a named function reference or AbortSignal to be clean, 
-      // but in this effect scope 'handleMotionChange' isn't accessible outside unless defined outside.
-      // However, checking isMounted inside handlers covers the state update risk.
     };
   }, []);
 
