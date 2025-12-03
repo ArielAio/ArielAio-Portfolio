@@ -72,7 +72,7 @@ export const EXPERIENCE_CONTENT = {
         description: "Co-fundador da holding Skyiit, responsável pelo produto digital Memoryiit, consolidado no mercado de presentes digitais em menos de 1 ano.",
         projectLink: "https://memoryiit.com",
         details: [
-          "Coordenação de operações internas: organização de demandas, gestão de fluxo de trabalho e acompanhamento do time técnico utilizando metodologias ágeis e Linear.",
+          "Coordenação de operações internas: organização de demandas, gestão de fluxo de trabalho e acompanhamento do time técnico utilizando metodologias ágeis via Linear.",
           "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo qualidade no atendimento e produção consistente de materiais.",
           "Criação e edição de vídeos para campanhas de marketing em redes sociais, resultando em aumento de engajamento e alcance orgânico.",
           "Estruturação de processos de marketing, operações e produto visando crescimento escalável."
@@ -121,7 +121,7 @@ export const EXPERIENCE_CONTENT = {
         description: "Co-founder of the Skyiit holding, responsible for the digital product Memoryiit, consolidated in the digital gifts market in less than 1 year.",
         projectLink: "https://memoryiit.com",
         details: [
-          "Internal operations coordination: organizing demands, workflow management, and monitoring the technical team (3 devs) using Agile methodologies (Scrum/Kanban) and Linear.",
+          "Internal operations coordination: organizing demands, workflow management, and monitoring the technical team using Agile methodologies with Linear.",
           "Leadership of customer support and content editing teams, ensuring quality service and consistent material production.",
           "Creation and editing of videos for social media marketing campaigns, resulting in increased engagement and organic reach.",
           "Structuring marketing, operations, and product processes aiming for scalable growth."
@@ -166,7 +166,7 @@ export const FEATURED_PROJECT = {
     subtitle: "COO & Co-Fundador | Skyiit",
     description: "Como COO e Co-fundador da Skyiit, coordenei o lançamento e operação do Memoryiit, produto consolidado no mercado de presentes digitais em menos de 1 ano.",
     responsibilities: [
-      "Gestão de fluxo de trabalho e organização do time técnico (3 devs) com metodologias ágeis (Scrum/Kanban)",
+      "Gestão de fluxo de trabalho e organização do time técnico com metodologias ágeis",
       "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo atendimento de qualidade e produção consistente",
       "Criação e edição de vídeos para campanhas de marketing em redes sociais, aumentando engajamento e alcance orgânico",
       "Estruturação de processos operacionais e acompanhamento de entregas via Linear"
@@ -183,7 +183,7 @@ export const FEATURED_PROJECT = {
     subtitle: "COO & Co-Founder | Skyiit",
     description: "As COO and Co-founder of Skyiit, I coordinated the launch and operations of Memoryiit, a product consolidated in the digital gifts market in less than 1 year.",
     responsibilities: [
-      "Workflow management and technical team coordination (3 devs) using Agile methodologies (Scrum/Kanban)",
+      "Workflow management and technical team coordination using Agile methodologies",
       "Leadership of customer support and content editing teams, ensuring quality service and consistent production",
       "Creation and editing of videos for social media marketing campaigns, increasing engagement and organic reach",
       "Operational process structuring and delivery tracking via Linear"
