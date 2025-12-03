@@ -93,9 +93,9 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
             </div>
         )}
 
-        {/* Content Container */}
+        {/* Content Container - z-30 to stay above glare effect */}
         <div 
-            className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none transform-style-3d z-20"
+            className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none transform-style-3d z-30"
             style={!isLowPower ? { transform: "translateZ(60px)" } : {}} 
         >
             <div className="pointer-events-auto transform transition-transform duration-300 md:translate-y-8 md:group-hover:translate-y-0">
@@ -117,7 +117,7 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
                     {project.description}
                 </p>
                 
-                <div className="flex gap-4 pb-2">
+                <div className="flex gap-4 pb-2 relative z-10">
                     <motion.a 
                         href={project.link} 
                         target="_blank" 
@@ -129,7 +129,7 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
                         }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                        className="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-bold shadow-lg transition-colors"
+                        className="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-bold shadow-lg transition-colors cursor-pointer"
                     >
                         <ExternalLink size={16} /> {textDemo}
                     </motion.a>
@@ -146,7 +146,7 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
                             }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                            className="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-white/10 text-white rounded-lg text-sm font-bold backdrop-blur-md border border-white/10 shadow-lg transition-colors"
+                            className="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-white/10 text-white rounded-lg text-sm font-bold backdrop-blur-md border border-white/10 shadow-lg transition-colors cursor-pointer"
                         >
                             <Github size={16} /> {textCode}
                         </motion.a>
@@ -155,9 +155,10 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
             </div>
         </div>
 
+        {/* Glare effect - z-20 to stay below content */}
         {!isLowPower && (
             <motion.div 
-                className="absolute inset-0 w-[200%] h-[200%] bg-gradient-to-br from-white/10 via-transparent to-transparent z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 w-[200%] h-[200%] bg-gradient-to-br from-white/10 via-transparent to-transparent z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ 
                     x: glareXTransform, 
                     y: glareYTransform,
