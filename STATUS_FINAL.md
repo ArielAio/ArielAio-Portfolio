@@ -52,12 +52,48 @@
 - ✅ Console limpo e legível
 - ✅ Documentação criada em `CONSOLE_WARNINGS_FIX.md`
 
+### 9. Loading Screen Renovada ✓
+- ✅ Removida animação exagerada de cubo 3D neural
+- ✅ Implementado terminal simulado estilo VS Code
+- ✅ Comandos: `npm run dev`, `vite --port 3001`
+- ✅ Linhas aparecem sequencialmente
+- ✅ Cursor piscando realista (530ms interval)
+- ✅ Progress bar clean (0→100% em 2.5s)
+- ✅ Contextualizado para desenvolvedor
+- ✅ Documentação criada em `LOADING_SCREEN_REVAMP.md`
+
+### 10. Botões de Projeto Corrigidos ✓
+- ✅ Z-index ajustado (content: z-30, glare: z-20)
+- ✅ Rotação 3D reduzida em 60% (±10° → ±4°)
+- ✅ TranslateZ reduzido (50px → 20px)
+- ✅ Overflow-hidden removido para não cortar botões no hover
+- ✅ Botão "Demo" não é mais cortado (scale 1.05 funciona)
+- ✅ Botões 100% clicáveis
+- ✅ Documentação criada em `BUTTONS_FIX.md`
+
+### 11. **🎨 Transição de Idioma Animada ✓**
+- ✅ Componente `LanguageTransition.tsx` criado
+- ✅ Circular reveal animation (scale 0 → 50 → 0)
+- ✅ Globe icon rotativo com pulse ring
+- ✅ 8 particle effects radiais
+- ✅ Gradient purple-blue consistente
+- ✅ Duração otimizada: 1.6s total
+  - 600ms expand
+  - 400ms hold (language change)
+  - 600ms contract (reveal)
+- ✅ GPU-accelerated (transform/opacity)
+- ✅ Z-index 9999 (acima de tudo)
+- ✅ Integrado no `App.tsx`
+- ✅ Context atualizado (`isTransitioning`, `startTransition`)
+- ✅ Zero erros TypeScript/Console
+- ✅ Documentação criada em `LANGUAGE_TRANSITION.md`
+
 ---
 
 ## 🟡 TAREFAS PENDENTES
 
 ### 1. Adicionar Currículo PDF ⚠️
-**Status:** Arquivo não encontrado no sistema
+**Status:** Arquivo encontrado mas aguardando teste final
 
 **Ação necessária:**
 ```bash
@@ -94,10 +130,17 @@ cp /caminho/para/seu/curriculo.pdf public/Curriculo_Ariel_Aio.pdf
 ```
 ✅ index.html (favicon)
 ✅ PerformanceContext.tsx (sistema completo)
+✅ LanguageContext.tsx (isTransitioning + startTransition)
 ✅ components/Hero.tsx (enable3D, enableAnimations)
-✅ App.tsx (enableParticles, enable3D, cursor animations fixed)
-✅ components/Projects.tsx (hooks corrigidos)
+✅ App.tsx (enableParticles, enable3D, cursor animations fixed, LanguageTransition integrated)
+✅ components/Projects.tsx (hooks corrigidos, z-index, 3D reduzido, overflow fixed)
 ✅ components/Skills.tsx (hooks corrigidos)
+✅ components/LoadingScreen.tsx (terminal simulado)
+```
+
+### Novos componentes criados:
+```
+✅ components/LanguageTransition.tsx (circular reveal animation)
 ```
 
 ### Arquivos sem modificações necessárias:

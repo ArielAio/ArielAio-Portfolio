@@ -6,7 +6,8 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
-import LoadingScreen from './components/LoadingScreen'; // New Import
+import LoadingScreen from './components/LoadingScreen';
+import LanguageTransition from './components/LanguageTransition'; // NEW: Circular reveal transition
 import { Particles } from './components/Particles';
 import { motion, useScroll, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import { LanguageProvider } from './LanguageContext';
@@ -165,6 +166,9 @@ const AppContent: React.FC = () => {
       <AnimatePresence>
         {isLoading && <LoadingScreen onComplete={completeLoading} />}
       </AnimatePresence>
+
+      {/* LANGUAGE TRANSITION OVERLAY */}
+      <LanguageTransition />
 
       {/* GLOBAL BACKGROUND LAYER */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
