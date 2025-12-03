@@ -240,7 +240,7 @@ export const PROJECTS_CONTENT = {
         title: "CodeWise — E-Learning Platform",
         description: "Online course platform developed in Next.js, focusing on usability, intuitive learning flow, and optimized experience for students and creators.",
         tags: ["Next.js", "LMS", "Online Education"],
-        image: "/codewise.png",
+        image: "/CodeWise.png",
         link: "http://codewise-liart.vercel.app/",
         githubRepo: "https://github.com/ArielAio?tab=repositories",
       },
