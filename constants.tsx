@@ -13,39 +13,51 @@ export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "Sistema para Barbearias",
-    description: "Plataforma completa para gestão de agendamentos e clientes. Escalável e adaptável para negócios de beleza, utilizado diariamente em produção.",
-    tags: ["Next.js", "Firebase", "Vercel", "React"],
-    image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800",
+    description:
+      "Plataforma completa para barbearias, com agendamentos em tempo real, gestão de clientes e painel administrativo intuitivo. Utilizado diariamente em produção por estabelecimentos reais.",
+    tags: ["Next.js", "Firebase", "SaaS", "Agendamentos"],
+    image:
+      "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800",
     link: "https://barber-agenda.vercel.app",
     githubRepo: "https://github.com/ArielAio?tab=repositories",
   },
+
   {
     id: 2,
-    title: "Strike System",
-    description: "Sistema de organização e gestão para academias. Controle de acesso, treinos e administração de alunos com interface intuitiva.",
-    tags: ["React", "Node.js", "System", "Management"],
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800",
+    title: "Strike System — Gestão para Academias",
+    description:
+      "Sistema completo para academias, incluindo controle de acesso, gestão de alunos, treinos, planos e dashboard administrativo. Desenvolvido com foco em escalabilidade e alta performance.",
+    tags: ["Next.js", "Gestão de Academia", "Dashboard Administrativo", "SaaS"],
+    image:
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800",
     link: "https://strike-system.vercel.app/signIn",
     githubRepo: "https://github.com/ArielAio?tab=repositories",
   },
+
   {
     id: 3,
-    title: "Chat Bot AI (Sabiá 3)",
-    description: "Chatbot inteligente com integração da API Sabiá 3. Focado em processamento de linguagem natural para interações fluidas.",
-    tags: ["AI", "Sabiá 3 API", "Chatbot", "Integration"],
-    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
+    title: "Assistente de IA",
+    description:
+      "Chatbot inteligente integrado à API Sabiá 3, com processamento de linguagem natural, respostas contextuais e fluxo otimizado para interações rápidas e naturais.",
+    tags: ["IA", "Chatbot", "NLP", "API Sabiá 3", "Integração de API"],
+    image:
+      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
     link: "https://chat-bot-gules-chi.vercel.app",
     githubRepo: "https://github.com/ArielAio?tab=repositories",
   },
+
   {
     id: 4,
-    title: "CodeWise LMS",
-    description: "Sistema de cursos online desenvolvido com foco na experiência do aluno e usabilidade. Plataforma robusta para ensino à distância.",
-    tags: ["React", "Education", "LMS", "Frontend"],
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=800",
+    title: "CodeWise — Plataforma EAD",
+    description:
+      "Plataforma de cursos online desenvolvida em Next.js, com foco em usabilidade, fluxo intuitivo de aprendizado e experiência otimizada para estudantes e criadores.",
+    tags: ["Next.js", "LMS", "Educação Online"],
+    image:
+      "/codewise.jpeg",
     link: "http://codewise-liart.vercel.app/",
     githubRepo: "https://github.com/ArielAio?tab=repositories",
   },
+
 ];
 
 export const EXPERIENCE: Experience[] = [
@@ -94,51 +106,51 @@ export const EDUCATION: Education[] = [
 ];
 
 export const SKILLS: Skill[] = [
-  { 
-    name: "React / Next.js", 
-    time: "+2 anos", 
+  {
+    name: "React / Next.js",
+    time: "+2 anos",
     category: 'frontend',
     description: "Desenvolvimento de SPAs complexas, Dashboards administrativos e otimização de renderização (SSR/CSR)."
   },
-  { 
-    name: "JavaScript / TypeScript", 
-    time: "+3 anos", 
+  {
+    name: "JavaScript / TypeScript",
+    time: "+3 anos",
     category: 'frontend',
     description: "Tipagem estática para código escalável, manipulação avançada de DOM e lógica assíncrona."
   },
-  { 
-    name: "Node.js", 
-    time: "+2 anos", 
+  {
+    name: "Node.js",
+    time: "+2 anos",
     category: 'backend',
     description: "Criação de APIs RESTful, microsserviços e integração com sistemas de pagamento e autenticação."
   },
-  { 
-    name: "Laravel / PHP", 
-    time: "+2 anos", 
+  {
+    name: "Laravel / PHP",
+    time: "+2 anos",
     category: 'backend',
     description: "Manutenção de sistemas legados, arquitetura MVC robusta e desenvolvimento de aplicações institucionais."
   },
-  { 
-    name: "PostgreSQL / MySQL", 
-    time: "+2 anos", 
+  {
+    name: "PostgreSQL / MySQL",
+    time: "+2 anos",
     category: 'backend',
     description: "Modelagem de bancos relacionais, otimização de queries complexas e garantia de integridade de dados."
   },
-  { 
-    name: "Firebase", 
-    time: "+1 ano", 
+  {
+    name: "Firebase",
+    time: "+1 ano",
     category: 'backend',
     description: "Implementação de bancos NoSQL em tempo real, autenticação social e hosting de aplicações."
   },
-  { 
-    name: "Git / GitHub", 
-    time: "+3 anos", 
+  {
+    name: "Git / GitHub",
+    time: "+3 anos",
     category: 'tools',
     description: "Controle de versão em equipe, code review, CI/CD básico e gestão de fluxo de trabalho (Git Flow)."
   },
-  { 
-    name: "Metodologias Ágeis", 
-    time: "+2 anos", 
+  {
+    name: "Metodologias Ágeis",
+    time: "+2 anos",
     category: 'tools',
     description: "Organização de sprints, dailies e gestão de backlog utilizando ferramentas como Trello/Jira."
   },

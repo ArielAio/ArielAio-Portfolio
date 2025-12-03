@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -45,17 +46,17 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 perspective-1000 ${
         scrolled ? 'bg-dark/80 backdrop-blur-md border-b border-white/10 py-4 shadow-lg' : 'bg-transparent py-6'
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-6 flex justify-between items-center transform-style-3d">
         {/* Logo Section - Reverted to Clean Text */}
         <motion.a 
           href="#"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex flex-col cursor-pointer group"
+          whileHover={{ scale: 1.05, z: 20 }}
+          whileTap={{ scale: 0.95, z: -10 }}
+          className="flex flex-col cursor-pointer group transform-style-3d"
         >
           <span className="text-2xl font-bold font-mono tracking-tighter text-white group-hover:text-primary transition-colors leading-none">
             Ariel Aio
@@ -72,9 +73,14 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              whileHover={{ scale: 1.1, color: '#ffffff' }}
-              whileTap={{ scale: 0.95 }}
-              className="text-gray-300 text-sm font-medium tracking-wide relative group py-2"
+              whileHover={{ 
+                  scale: 1.1, 
+                  color: '#ffffff',
+                  y: -2,
+                  z: 10
+              }}
+              whileTap={{ scale: 0.95, z: -5 }}
+              className="text-gray-300 text-sm font-medium tracking-wide relative group py-2 transform-style-3d transition-colors"
             >
               {link.name}
               <motion.span 

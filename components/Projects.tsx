@@ -69,7 +69,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             alt={project.title}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110 will-change-transform"
+            className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110 md:will-change-transform"
           />
         </div>
 

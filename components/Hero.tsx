@@ -1,37 +1,62 @@
-
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
 import { HERO_CONTENT } from '../constants';
 
-const MagneticButton = ({ children, onClick, href, className }: any) => {
+const MagneticButton = ({ children, onClick, href, className, variant = "outline" }: any) => {
   const ref = useRef<HTMLAnchorElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  const handleMouse = (e: React.MouseEvent) => {
+  // Stiffer spring for a more premium, responsive feel
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.1 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
+    
+    // Magnetic pull
+    x.set(middleX * 0.25);
+    y.set(middleY * 0.25);
   };
 
-  const reset = () => setPosition({ x: 0, y: 0 });
-  const { x, y } = position;
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <motion.a
       ref={ref}
       href={href}
       onClick={onClick}
-      animate={{ x, y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      className={className}
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className={`${className} relative overflow-hidden group perspective-1000 transform-style-3d`}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
+      
+      {/* Light Sweep Gradient Effect - Runs on Hover */}
+      <motion.div 
+         initial={{ x: "-100%", opacity: 0 }}
+         whileHover={{ x: "150%", opacity: 1 }}
+         transition={{ duration: 0.8, ease: "easeInOut" }}
+         className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 pointer-events-none"
+      />
+      
+      {/* 3D Reflection/Sheen - Static */}
+      <motion.div 
+         className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+         style={{ transform: "translateZ(-1px)" }}
+      />
     </motion.a>
   );
 };
@@ -53,10 +78,10 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 perspective-1000">
       
-      {/* 3D Hyper-Tesseract (Double Cube) Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-30 pointer-events-none cube-container scale-75 md:scale-100">
+      {/* 3D Hyper-Tesseract (Double Cube) Background - Hidden on mobile for performance */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-30 pointer-events-none cube-container scale-100">
         <div className="cube-outer">
             <div className="face-outer face-outer-front"></div>
             <div className="face-outer face-outer-back"></div>
@@ -85,8 +110,8 @@ const Hero: React.FC = () => {
           className="gpu-accelerated"
         >
           <motion.span 
-            whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.3)" }}
-            className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm cursor-default"
+            whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.3)", z: 20 }}
+            className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm cursor-default transform-style-3d transition-colors"
           >
             {HERO_CONTENT.greeting}
           </motion.span>
@@ -123,19 +148,17 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-col items-center gap-8 gpu-accelerated"
+          className="flex flex-col items-center gap-8 gpu-accelerated transform-style-3d"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
-            {/* Shimmer Button */}
-            <motion.a
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full transform-style-3d">
+            {/* 3D Magnetic Shimmer Button */}
+            <MagneticButton
               href="#projects"
-              onClick={(e) => handleScroll(e, 'projects')}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleScroll(e, 'projects')}
               className="inline-flex h-12 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#6366f1,55%,#000103)] bg-[length:200%_100%] px-8 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer shadow-lg w-full sm:w-auto"
             >
               Ver Projetos
-            </motion.a>
+            </MagneticButton>
 
             {/* Magnetic Button */}
             <MagneticButton
@@ -147,13 +170,13 @@ const Hero: React.FC = () => {
             </MagneticButton>
           </div>
 
-          {/* New Resume Button */}
+          {/* New Resume Button with 3D Lift */}
           <motion.a
             href="/Curriculo_Ariel_Aio.pdf" 
             download="Curriculo_Ariel_Aio.pdf"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all group backdrop-blur-sm cursor-pointer"
+            whileHover={{ scale: 1.05, y: -5, z: 20 }}
+            whileTap={{ scale: 0.95, z: -10 }}
+            className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all group backdrop-blur-sm cursor-pointer transform-style-3d shadow-lg"
           >
              <div className="p-2 bg-primary/20 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                 <Download size={18} />

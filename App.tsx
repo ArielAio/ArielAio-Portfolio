@@ -50,7 +50,8 @@ const App: React.FC = () => {
         target.tagName === 'A' || 
         target.closest('button') || 
         target.closest('a') ||
-        target.getAttribute('role') === 'button'
+        target.getAttribute('role') === 'button' ||
+        target.classList.contains('cursor-pointer')
       ) {
         setCursorVariant('button');
       } 
@@ -115,29 +116,36 @@ const App: React.FC = () => {
         height: 32,
         width: 32,
         backgroundColor: "transparent",
-        border: "1px solid rgba(255,255,255,0.5)",
+        border: "1px solid rgba(255,255,255,0.3)",
         x: "-50%",
         y: "-50%",
-        mixBlendMode: "difference" as "difference"
+        scale: 1,
+        opacity: 1,
+        mixBlendMode: "normal" as "normal"
     },
     button: {
-        height: 64,
-        width: 64,
-        backgroundColor: "rgba(255,255,255,0.1)",
-        border: "1px solid rgba(255,255,255,0)",
+        height: 60,
+        width: 60,
+        backgroundColor: "transparent",
+        border: "2px solid #6366f1", // Primary color ring
         x: "-50%",
         y: "-50%",
-        mixBlendMode: "screen" as "screen"
+        scale: 1.1,
+        opacity: 1,
+        mixBlendMode: "normal" as "normal",
+        boxShadow: "0 0 20px rgba(99, 102, 241, 0.4)" // Glow effect
     },
     text: {
         height: 32,
-        width: 2, // I-beam look
-        backgroundColor: "rgba(255,255,255,1)",
+        width: 4, // Thicker I-beam
+        backgroundColor: "#a855f7", // Secondary color
         border: "none",
         x: "-50%",
         y: "-50%",
-        borderRadius: 0,
-        mixBlendMode: "difference" as "difference"
+        scale: 1,
+        opacity: 0.8,
+        borderRadius: 2,
+        mixBlendMode: "normal" as "normal"
     }
   };
 
@@ -157,8 +165,8 @@ const App: React.FC = () => {
         <div className="absolute top-[40%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 rounded-full blur-[100px] animate-blob animation-delay-4000 gpu-accelerated"></div>
         <div className="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[100px] animate-blob animation-delay-2000 gpu-accelerated"></div>
 
-        {/* Particles / Fireflies Effect */}
-        <Particles quantity={50} />
+        {/* Particles / Fireflies Effect - Reduced on mobile */}
+        <Particles quantity={isDesktop ? 50 : 20} />
 
         {/* Global Spotlight (Mouse Tracking Fog) - Optimized */}
         {isDesktop && (
@@ -183,29 +191,31 @@ const App: React.FC = () => {
       {/* Custom Cursor - Optimized with MotionValues and separated physics */}
       {isDesktop && (
         <>
-            {/* Click Shockwaves */}
+            {/* Click Shockwaves (Pulse) */}
             <AnimatePresence>
                 {clickWaves.map(wave => (
                     <motion.div
                         key={wave.id}
-                        initial={{ width: 0, height: 0, opacity: 0.8 }}
-                        animate={{ width: 150, height: 150, opacity: 0 }}
+                        initial={{ width: 0, height: 0, opacity: 0.8, borderWidth: 4 }}
+                        animate={{ width: 250, height: 250, opacity: 0, borderWidth: 0 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         style={{ 
                             left: wave.x, 
                             top: wave.y, 
                             x: "-50%", 
-                            y: "-50%" 
+                            y: "-50%",
+                            borderColor: "#6366f1",
+                            boxShadow: "0 0 20px rgba(99, 102, 241, 0.5)"
                         }}
-                        className="fixed rounded-full border border-primary z-[99] pointer-events-none"
+                        className="fixed rounded-full border-primary z-[99] pointer-events-none"
                     />
                 ))}
             </AnimatePresence>
 
             {/* Main Cursor Ring - Follows with Spring Physics */}
             <motion.div
-                className="fixed top-0 left-0 rounded-full pointer-events-none z-[100]"
+                className="fixed top-0 left-0 rounded-full pointer-events-none z-[100] transition-colors duration-200"
                 variants={cursorVariants}
                 animate={cursorVariant}
                 style={{
@@ -220,10 +230,16 @@ const App: React.FC = () => {
                 }} 
             />
             
-            {/* Inner Dot - Instant Follow (Precision) */}
+            {/* Inner Dot - Instant Follow (Precision) - Turns into crosshair center on button hover */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white pointer-events-none z-[100]"
+                className="fixed top-0 left-0 rounded-full bg-white pointer-events-none z-[100]"
+                animate={{
+                    scale: cursorVariant === 'button' ? 0.5 : 1,
+                    backgroundColor: cursorVariant === 'button' ? '#6366f1' : '#ffffff'
+                }}
                 style={{
+                    width: 8,
+                    height: 8,
                     left: mouseX, // Positioning via Raw MotionValue (Instant)
                     top: mouseY,
                     x: "-50%",    // Centering via Transform
