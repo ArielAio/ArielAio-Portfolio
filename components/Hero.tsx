@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
@@ -138,8 +139,8 @@ const Hero: React.FC = () => {
 
           {/* New Resume Button */}
           <motion.a
-            href="/resume.pdf" // Ensure you have this file in your public folder or replace with a real link
-            download="CV_Ariel_Aio.pdf"
+            href="/Curriculo_Ariel_Aio.pdf" 
+            download="Curriculo_Ariel_Aio.pdf"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all group backdrop-blur-sm cursor-pointer"

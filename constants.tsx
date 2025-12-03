@@ -1,3 +1,4 @@
+
 import { Project, Experience, Skill, SocialLink, Education } from './types';
 import { Github, Linkedin, Mail, Code, Terminal, Database, Smartphone } from 'lucide-react';
 
@@ -52,23 +53,23 @@ export const EXPERIENCE: Experience[] = [
     id: 1,
     role: "COO & Co-Fundador",
     company: "Skyiit",
-    period: "2024 - Atual",
-    description: "Responsável pelo produto digital Memoryiit e gestão de operações.",
+    period: "2025 - Atual",
+    description: "Co-fundador da holding Skyiit, responsável pelo produto digital Memoryiit, consolidado no mercado de presentes digitais em menos de 1 ano.",
     details: [
-      "Gestão de operações, marketing digital e suporte ao cliente.",
-      "Liderança de time de desenvolvimento (3 devs) e organização de demandas.",
-      "Criação e edição de conteúdos digitais para campanhas de marketing.",
-      "Estruturação de processos visando crescimento escalável."
+      "Condução de operações internas da empresa: organização de demandas, gestão de produtividade e acompanhamento do time de desenvolvimento (3 devs).",
+      "Criação e edição de conteúdos digitais para campanhas de marketing em redes sociais.",
+      "Atendimento direto ao cliente e suporte pós-venda, com foco em satisfação e retenção.",
+      "Estruturação de processos de marketing, operações e produto visando crescimento escalável."
     ]
   },
   {
     id: 2,
     role: "Estagiário em Desenvolvimento",
     company: "EnterScience",
-    period: "2023 - 2024",
+    period: "2024 - 2025",
     description: "Atuação direta no desenvolvimento e manutenção de software.",
     details: [
-      "Implementação de novas funcionalidades no site institucional (Laravel/React).",
+      "Implementação de novas funcionalidades no site institucional, utilizando Laravel e React.",
       "Correção de bugs e otimização de código.",
       "Manutenção de banco de dados PostgreSQL."
     ]
