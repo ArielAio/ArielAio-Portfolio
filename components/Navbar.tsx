@@ -1,11 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../LanguageContext';
+import { NAV_LINKS } from '../constants';
 
 const Navbar: React.FC = React.memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +17,7 @@ const Navbar: React.FC = React.memo(() => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Sobre', href: '#about' },
-    { name: 'Experiência', href: '#experience' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Contato', href: '#contact' },
-  ];
+  const navLinks = NAV_LINKS[language];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -67,7 +64,7 @@ const Navbar: React.FC = React.memo(() => {
         </motion.a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <motion.a
               key={link.name}
@@ -91,10 +88,29 @@ const Navbar: React.FC = React.memo(() => {
               />
             </motion.a>
           ))}
+          
+          {/* Language Toggle */}
+          <motion.button
+            onClick={toggleLanguage}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 hover:bg-white/10 hover:border-primary/50 transition-colors"
+          >
+             <Globe size={14} />
+             <span className="font-mono">{language.toUpperCase()}</span>
+          </motion.button>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden">
+        {/* Mobile Toggle & Language */}
+        <div className="md:hidden flex items-center gap-4">
+           <motion.button
+            onClick={toggleLanguage}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center gap-1 px-2 py-1 rounded border border-white/10 bg-white/5 text-xs text-gray-300"
+          >
+             <span className="font-mono">{language.toUpperCase()}</span>
+          </motion.button>
+
           <motion.button 
             onClick={() => setIsOpen(!isOpen)} 
             whileTap={{ scale: 0.9 }}

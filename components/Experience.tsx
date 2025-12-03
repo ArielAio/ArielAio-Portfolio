@@ -1,10 +1,13 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { EXPERIENCE, EDUCATION } from '../constants';
+import { EXPERIENCE_CONTENT } from '../constants';
 import { Briefcase, GraduationCap } from 'lucide-react';
+import { useLanguage } from '../LanguageContext';
 
 const Experience: React.FC = React.memo(() => {
+  const { language } = useLanguage();
+  const content = EXPERIENCE_CONTENT[language];
+
   return (
     <section id="experience" className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
@@ -17,7 +20,7 @@ const Experience: React.FC = React.memo(() => {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Minha Trajetória</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{content.title}</h2>
           <div className="w-20 h-1 bg-secondary mx-auto rounded-full"></div>
         </motion.div>
 
@@ -26,10 +29,10 @@ const Experience: React.FC = React.memo(() => {
           {/* Professional Experience */}
           <div>
             <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-primary">
-              <Briefcase className="w-6 h-6" /> Experiência Profissional
+              <Briefcase className="w-6 h-6" /> {content.professionalTitle}
             </h3>
             <div className="space-y-8 relative border-l-2 border-white/10 ml-3 pl-8 pb-4">
-              {EXPERIENCE.map((exp, index) => (
+              {content.experience.map((exp, index) => (
                 <motion.div
                   key={exp.id}
                   initial={{ opacity: 0, x: -20 }}
@@ -78,10 +81,10 @@ const Experience: React.FC = React.memo(() => {
           {/* Education */}
           <div>
              <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-secondary">
-              <GraduationCap className="w-6 h-6" /> Formação Acadêmica
+              <GraduationCap className="w-6 h-6" /> {content.educationTitle}
             </h3>
              <div className="space-y-8 relative border-l-2 border-white/10 ml-3 pl-8 pb-4">
-              {EDUCATION.map((edu, index) => (
+              {content.education.map((edu, index) => (
                 <motion.div
                   key={edu.id}
                   initial={{ opacity: 0, x: -20 }}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -9,8 +8,10 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import { Particles } from './components/Particles';
 import { motion, useScroll, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
+import { LanguageProvider } from './LanguageContext';
+import { PerformanceProvider, usePerformance } from './PerformanceContext';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -18,13 +19,15 @@ const App: React.FC = () => {
     restDelta: 0.001
   });
 
+  const { tier, isLowPower } = usePerformance();
+
   // PERFORMANCE OPTIMIZATION: 
   // Use MotionValues for high-frequency updates (mouse move).
-  // Initialize off-screen to prevent flash at (0,0)
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // Spring physics for the follower (Outer Ring) - Creates the "lazy" trail effect
+  // Spring physics for the follower (Outer Ring)
+  // Disable spring physics on low power devices to save CPU
   const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
@@ -34,17 +37,21 @@ const App: React.FC = () => {
   const [clickWaves, setClickWaves] = useState<{id: number, x: number, y: number}[]>([]);
 
   useEffect(() => {
+    // Only run complex mouse logic on Desktop AND if not Low Power tier
     const mediaQuery = window.matchMedia('(pointer: fine)');
-    setIsDesktop(mediaQuery.matches);
+    const shouldEnableCursor = mediaQuery.matches && !isLowPower;
+    
+    setIsDesktop(shouldEnableCursor);
 
     const handleMouseMove = (e: MouseEvent) => {
       // Update MotionValues directly
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
 
-      // Context Aware Logic
+      // Context Aware Logic - Skip on low power to reduce DOM checks per frame
+      if (isLowPower) return;
+
       const target = e.target as HTMLElement;
-      // Check if hovering over clickable elements
       if (
         target.tagName === 'BUTTON' || 
         target.tagName === 'A' || 
@@ -55,7 +62,6 @@ const App: React.FC = () => {
       ) {
         setCursorVariant('button');
       } 
-      // Check if hovering over text
       else if (
         target.tagName === 'P' || 
         target.tagName === 'SPAN' || 
@@ -74,23 +80,25 @@ const App: React.FC = () => {
     };
 
     const handleClick = (e: MouseEvent) => {
+        // Disable wave effect on low power
+        if (isLowPower) return; 
+
         const newWave = { id: Date.now(), x: e.clientX, y: e.clientY };
         setClickWaves(prev => [...prev, newWave]);
-        
-        // Remove wave after animation
         setTimeout(() => {
             setClickWaves(prev => prev.filter(w => w.id !== newWave.id));
         }, 800);
     };
 
-    if (mediaQuery.matches) {
+    if (shouldEnableCursor) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mousedown", handleClick);
     }
 
     const handleChange = (e: MediaQueryListEvent) => {
-        setIsDesktop(e.matches);
-        if (e.matches) {
+        const newIsDesktop = e.matches && !isLowPower;
+        setIsDesktop(newIsDesktop);
+        if (newIsDesktop) {
             window.addEventListener("mousemove", handleMouseMove);
             window.addEventListener("mousedown", handleClick);
         } else {
@@ -106,11 +114,8 @@ const App: React.FC = () => {
       window.removeEventListener("mousedown", handleClick);
       mediaQuery.removeEventListener('change', handleChange);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isLowPower]);
 
-  // Framer Motion Variants for Cursor
-  // NOTE: x: "-50%", y: "-50%" is CRITICAL for centering.
-  // We use `left` and `top` styles for positioning, and these transforms for centering.
   const cursorVariants = {
     default: {
         height: 32,
@@ -127,18 +132,18 @@ const App: React.FC = () => {
         height: 60,
         width: 60,
         backgroundColor: "transparent",
-        border: "2px solid #6366f1", // Primary color ring
+        border: "2px solid #6366f1",
         x: "-50%",
         y: "-50%",
         scale: 1.1,
         opacity: 1,
         mixBlendMode: "normal" as "normal",
-        boxShadow: "0 0 20px rgba(99, 102, 241, 0.4)" // Glow effect
+        boxShadow: "0 0 20px rgba(99, 102, 241, 0.4)"
     },
     text: {
         height: 32,
-        width: 4, // Thicker I-beam
-        backgroundColor: "#a855f7", // Secondary color
+        width: 4,
+        backgroundColor: "#a855f7",
         border: "none",
         x: "-50%",
         y: "-50%",
@@ -149,6 +154,9 @@ const App: React.FC = () => {
     }
   };
 
+  // Determine Particle Count based on Tier
+  const particleCount = tier === 'high' ? 60 : (tier === 'medium' ? 30 : 0);
+
   return (
     <div className={`bg-dark min-h-screen text-white selection:bg-primary selection:text-white ${isDesktop ? 'cursor-none' : ''}`}>
       
@@ -157,42 +165,45 @@ const App: React.FC = () => {
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
         
-        {/* Cinematic Noise Overlay - Adds Texture */}
-        <div className="absolute inset-0 bg-noise opacity-[0.03]"></div>
+        {/* Cinematic Noise Overlay - Adds Texture (Disable on Low Power to save paint) */}
+        {!isLowPower && <div className="absolute inset-0 bg-noise opacity-[0.03]"></div>}
         
-        {/* Ambient Moving Orbs (Living Background) - Optimized with GPU transform */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[64px] md:blur-[128px] animate-blob gpu-accelerated"></div>
-        {/* Second blob hidden on mobile to reduce overdraw and improve performance */}
-        <div className="hidden md:block absolute top-[40%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-4000 gpu-accelerated"></div>
-        <div className="hidden md:block absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-2000 gpu-accelerated"></div>
+        {/* Ambient Moving Orbs (Living Background) */}
+        {/* Tier Logic: High = All Blobs + heavy blur. Medium = Main Blob. Low = Static gradient or simplified. */}
+        
+        <div className={`absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full ${isLowPower ? 'blur-[40px]' : 'blur-[64px] md:blur-[128px]'} animate-blob gpu-accelerated`}></div>
+        
+        {tier !== 'low' && (
+            <>
+                <div className="hidden md:block absolute top-[40%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-4000 gpu-accelerated"></div>
+                <div className="hidden md:block absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-2000 gpu-accelerated"></div>
+            </>
+        )}
 
-        {/* Particles / Fireflies Effect - Reduced on mobile */}
-        <Particles quantity={isDesktop ? 50 : 20} />
+        {/* Particles / Fireflies Effect */}
+        {particleCount > 0 && <Particles quantity={particleCount} />}
 
-        {/* Global Spotlight (Mouse Tracking Fog) - Optimized with blend mode for depth */}
-        {isDesktop && (
+        {/* Global Spotlight (Mouse Tracking Fog) - Only on High Tier Desktop */}
+        {isDesktop && tier === 'high' && (
             <motion.div 
                 className="absolute w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none will-change-transform mix-blend-soft-light"
                 style={{
-                    left: cursorX, // Use spring physics for smooth spotlight
+                    left: cursorX,
                     top: cursorY,
-                    x: "-50%", // Center via transform
+                    x: "-50%",
                     y: "-50%"
                 }}
             />
         )}
       </div>
 
-      {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left z-[60]"
         style={{ scaleX }}
       />
 
-      {/* Custom Cursor - Optimized with MotionValues and separated physics */}
       {isDesktop && (
         <>
-            {/* Click Shockwaves (Pulse) */}
             <AnimatePresence>
                 {clickWaves.map(wave => (
                     <motion.div
@@ -214,13 +225,12 @@ const App: React.FC = () => {
                 ))}
             </AnimatePresence>
 
-            {/* Main Cursor Ring - Follows with Spring Physics */}
             <motion.div
                 className="fixed top-0 left-0 rounded-full pointer-events-none z-[100] transition-colors duration-200"
                 variants={cursorVariants}
                 animate={cursorVariant}
                 style={{
-                    left: cursorX, // Positioning via Spring
+                    left: cursorX, 
                     top: cursorY,
                 }}
                 transition={{
@@ -231,7 +241,6 @@ const App: React.FC = () => {
                 }} 
             />
             
-            {/* Inner Dot - Instant Follow (Precision) - Turns into crosshair center on button hover */}
             <motion.div
                 className="fixed top-0 left-0 rounded-full bg-white pointer-events-none z-[100]"
                 animate={{
@@ -241,9 +250,9 @@ const App: React.FC = () => {
                 style={{
                     width: 8,
                     height: 8,
-                    left: mouseX, // Positioning via Raw MotionValue (Instant)
+                    left: mouseX, 
                     top: mouseY,
-                    x: "-50%",    // Centering via Transform
+                    x: "-50%",    
                     y: "-50%"
                 }}
             />
@@ -252,7 +261,6 @@ const App: React.FC = () => {
 
       <Navbar />
       
-      {/* Main Content - z-index ensures it sits above the background */}
       <main className="relative z-10">
         <Hero />
         <About />
@@ -263,6 +271,16 @@ const App: React.FC = () => {
       </main>
 
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <PerformanceProvider>
+        <AppContent />
+      </PerformanceProvider>
+    </LanguageProvider>
   );
 };
 

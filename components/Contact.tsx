@@ -1,10 +1,15 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SOCIALS } from '../constants';
+import { CONTACT_CONTENT, SOCIALS } from '../constants';
 import { Send, CheckCircle, Copy, Check, Mail } from 'lucide-react';
+import { useLanguage } from '../LanguageContext';
+import { usePerformance } from '../PerformanceContext';
 
 const Contact: React.FC = React.memo(() => {
+  const { language } = useLanguage();
+  const { isLowPower } = usePerformance();
+  const content = CONTACT_CONTENT[language];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,13 +51,12 @@ const Contact: React.FC = React.memo(() => {
 
   return (
     <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
-        {/* Decorative background circle - Optimized blur for mobile */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[60px] md:blur-[100px] pointer-events-none opacity-50 animate-pulse"></div>
+        {/* Decorative background circle - Optimized blur based on power tier */}
+      <div className={`absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full pointer-events-none opacity-50 animate-pulse ${isLowPower ? 'blur-[40px]' : 'blur-[60px] md:blur-[100px]'}`}></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="glass-card max-w-4xl mx-auto rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
           
-          {/* Subtle gradient light inside card */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -64,13 +68,12 @@ const Contact: React.FC = React.memo(() => {
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl font-bold mb-6"
               >
-                Vamos trabalhar <span className="text-secondary">juntos?</span>
+                {content.title} <span className="text-secondary">{content.titleHighlight}</span>
               </motion.h2>
               <p className="text-gray-400 mb-8">
-                Tem um projeto em mente ou quer apenas dar um oi? Sinta-se à vontade para me mandar uma mensagem.
+                {content.description}
               </p>
 
-              {/* Copy Email Component */}
               <motion.div 
                 className="flex items-center gap-3 p-4 rounded-xl border transition-colors cursor-pointer mb-8 group relative overflow-hidden"
                 onClick={handleCopyEmail}
@@ -82,8 +85,8 @@ const Contact: React.FC = React.memo(() => {
                     backgroundColor: copied ? "rgba(34, 197, 94, 0.1)" : "rgba(255, 255, 255, 0.05)"
                 }}
               >
-                {/* Shine effect on copy */}
-                {copied && (
+                {/* Shine effect on copy - Disable on low power */}
+                {copied && !isLowPower && (
                     <motion.div 
                         initial={{ x: "-100%", opacity: 0 }}
                         animate={{ x: "200%", opacity: 0.5 }}
@@ -97,7 +100,7 @@ const Contact: React.FC = React.memo(() => {
                 </div>
                 <div className="flex-1 relative z-10">
                     <p className={`text-xs font-mono transition-colors ${copied ? "text-green-400 font-bold" : "text-gray-500"}`}>
-                        {copied ? "Copiado!" : "Email"}
+                        {copied ? content.copied : content.copyEmail}
                     </p>
                     <p className="text-sm md:text-base text-gray-200 font-mono">arielaio@hotmail.com</p>
                 </div>
@@ -146,7 +149,7 @@ const Contact: React.FC = React.memo(() => {
 
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="group">
-                <label className="block text-sm font-medium text-gray-400 mb-1 group-focus-within:text-primary transition-colors">Nome</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1 group-focus-within:text-primary transition-colors">{content.formName}</label>
                 <div className="relative">
                   <input 
                     type="text" 
@@ -155,13 +158,13 @@ const Contact: React.FC = React.memo(() => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full bg-dark/50 border border-white/10 rounded-lg p-3 text-white focus:outline-none transition-all peer relative z-10 focus:bg-dark/80" 
-                    placeholder="Seu nome" 
+                    placeholder={content.formNamePlaceholder} 
                   />
                   <div className="absolute inset-0 rounded-lg border border-transparent peer-focus:border-primary peer-focus:shadow-[0_0_10px_rgba(99,102,241,0.2)] transition-all pointer-events-none"></div>
                 </div>
               </div>
               <div className="group">
-                <label className="block text-sm font-medium text-gray-400 mb-1 group-focus-within:text-primary transition-colors">Email</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1 group-focus-within:text-primary transition-colors">{content.formEmail}</label>
                 <div className="relative">
                   <input 
                     type="email" 
@@ -170,13 +173,13 @@ const Contact: React.FC = React.memo(() => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full bg-dark/50 border border-white/10 rounded-lg p-3 text-white focus:outline-none transition-all peer relative z-10 focus:bg-dark/80" 
-                    placeholder="seu@email.com" 
+                    placeholder={content.formEmailPlaceholder} 
                   />
                    <div className="absolute inset-0 rounded-lg border border-transparent peer-focus:border-primary peer-focus:shadow-[0_0_10px_rgba(99,102,241,0.2)] transition-all pointer-events-none"></div>
                 </div>
               </div>
               <div className="group">
-                <label className="block text-sm font-medium text-gray-400 mb-1 group-focus-within:text-primary transition-colors">Mensagem</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1 group-focus-within:text-primary transition-colors">{content.formMessage}</label>
                 <div className="relative">
                   <textarea 
                     name="message"
@@ -185,7 +188,7 @@ const Contact: React.FC = React.memo(() => {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full bg-dark/50 border border-white/10 rounded-lg p-3 text-white focus:outline-none transition-all peer relative z-10 focus:bg-dark/80" 
-                    placeholder="Fale sobre seu projeto..."
+                    placeholder={content.formMessagePlaceholder}
                   ></textarea>
                    <div className="absolute inset-0 rounded-lg border border-transparent peer-focus:border-primary peer-focus:shadow-[0_0_10px_rgba(99,102,241,0.2)] transition-all pointer-events-none"></div>
                 </div>
@@ -202,18 +205,20 @@ const Contact: React.FC = React.memo(() => {
                     : 'bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 hover:shadow-primary/20'
                 }`}
               >
-                 {/* Shine effect on button */}
-                 <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
+                 {/* Shine effect on button - Conditional */}
+                 {!isLowPower && (
+                    <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
+                 )}
                  
                  <span className="relative z-10 flex items-center gap-2">
                     {status === 'idle' && (
-                    <>Enviar Mensagem <Send size={18} /></>
+                    <>{content.sendButton} <Send size={18} /></>
                     )}
                     {status === 'sending' && (
-                    <>Enviando...</>
+                    <>{content.sending}</>
                     )}
                     {status === 'success' && (
-                    <>Mensagem Enviada! <CheckCircle size={18} /></>
+                    <>{content.sent} <CheckCircle size={18} /></>
                     )}
                  </span>
               </motion.button>
@@ -223,7 +228,7 @@ const Contact: React.FC = React.memo(() => {
         </div>
         
         <div className="text-center mt-12 text-gray-500 text-sm">
-            <p>&copy; {new Date().getFullYear()} Ariel Aio. Todos os direitos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Ariel Aio. {content.footerRights}</p>
         </div>
       </div>
     </section>
