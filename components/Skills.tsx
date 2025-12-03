@@ -24,6 +24,25 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
   const iconX = useSpring(useTransform(xPct, [0, 1], [-6, 6]), springConfig);
   const iconY = useSpring(useTransform(yPct, [0, 1], [-6, 6]), springConfig);
 
+  // Always call these hooks - prevents conditional rendering issues
+  const borderGlow = useMotionTemplate`
+    radial-gradient(
+      600px circle at ${x}px ${y}px,
+      rgba(99, 102, 241, 0.5),
+      transparent 40%
+    )
+  `;
+
+  const innerSpotlight = useMotionTemplate`
+    radial-gradient(
+      400px circle at ${x}px ${y}px,
+      rgba(168, 85, 247, 0.1),
+      transparent 80%
+    )
+  `;
+
+  const lightSweepX = useTransform(xPct, [0, 1], ["-150%", "150%"]);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     // Disable interactions on touch devices OR low power
     if ((typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) || isLowPower) return;
@@ -77,13 +96,7 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
         <motion.div
             className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
-                background: useMotionTemplate`
-                    radial-gradient(
-                    600px circle at ${x}px ${y}px,
-                    rgba(99, 102, 241, 0.5),
-                    transparent 40%
-                    )
-                `
+                background: borderGlow
             }}
         />
       )}
@@ -95,13 +108,7 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
             <motion.div
                 className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 z-0"
                 style={{
-                    background: useMotionTemplate`
-                        radial-gradient(
-                        400px circle at ${x}px ${y}px,
-                        rgba(168, 85, 247, 0.1),
-                        transparent 80%
-                        )
-                    `
+                    background: innerSpotlight
                 }}
             />
         )}
@@ -111,7 +118,7 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
                 className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-30 transition duration-700 rounded-2xl z-0 mix-blend-soft-light"
                 style={{
                     background: "linear-gradient(115deg, transparent, rgba(255,255,255,0.4), transparent)",
-                    x: useTransform(xPct, [0, 1], ["-150%", "150%"]),
+                    x: lightSweepX,
                 }}
             />
         )}

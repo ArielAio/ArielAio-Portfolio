@@ -21,6 +21,10 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
   const glareX = useTransform(x, [0, 1], [0, 100]);
   const glareY = useTransform(y, [0, 1], [0, 100]);
 
+  // Always call these hooks - they're cheap and prevent conditional rendering issues
+  const glareXTransform = useTransform(glareX, val => `-${val}%`);
+  const glareYTransform = useTransform(glareY, val => `-${val}%`);
+
   const handleMouseMove = (e: React.MouseEvent) => {
     // Disable tilt on touch devices OR low power
     if ((typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) || isLowPower) return;
@@ -155,8 +159,8 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
             <motion.div 
                 className="absolute inset-0 w-[200%] h-[200%] bg-gradient-to-br from-white/10 via-transparent to-transparent z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ 
-                    x: useTransform(glareX, val => `-${val}%`), 
-                    y: useTransform(glareY, val => `-${val}%`),
+                    x: glareXTransform, 
+                    y: glareYTransform,
                     mixBlendMode: "overlay"
                 }}
             />
