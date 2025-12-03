@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import LoadingScreen from './components/LoadingScreen'; // New Import
 import { Particles } from './components/Particles';
 import { motion, useScroll, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import { LanguageProvider } from './LanguageContext';
@@ -19,7 +20,7 @@ const AppContent: React.FC = () => {
     restDelta: 0.001
   });
 
-  const { tier, isLowPower } = usePerformance();
+  const { tier, isLowPower, isLoading, completeLoading } = usePerformance();
 
   // PERFORMANCE OPTIMIZATION: 
   // Use MotionValues for high-frequency updates (mouse move).
@@ -160,31 +161,41 @@ const AppContent: React.FC = () => {
   return (
     <div className={`bg-dark min-h-screen text-white selection:bg-primary selection:text-white ${isDesktop ? 'cursor-none' : ''}`}>
       
+      {/* LOADING SCREEN OVERLAY */}
+      <AnimatePresence>
+        {isLoading && <LoadingScreen onComplete={completeLoading} />}
+      </AnimatePresence>
+
       {/* GLOBAL BACKGROUND LAYER */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
         
-        {/* Cinematic Noise Overlay - Adds Texture (Disable on Low Power to save paint) */}
+        {/* Cinematic Noise Overlay - Only on medium/high tier */}
         {!isLowPower && <div className="absolute inset-0 bg-noise opacity-[0.03]"></div>}
         
         {/* Ambient Moving Orbs (Living Background) */}
-        {/* Tier Logic: High = All Blobs + heavy blur. Medium = Main Blob. Low = Static gradient or simplified. */}
-        
-        <div className={`absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full ${isLowPower ? 'blur-[40px]' : 'blur-[64px] md:blur-[128px]'} animate-blob gpu-accelerated`}></div>
-        
-        {tier !== 'low' && (
+        {/* CRITICAL FIX FOR WEAK MACHINES: Do NOT render huge blurred blobs on low tier. Use static gradient instead. */}
+        {isLowPower ? (
+            <div className="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent opacity-50"></div>
+        ) : (
             <>
-                <div className="hidden md:block absolute top-[40%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-4000 gpu-accelerated"></div>
-                <div className="hidden md:block absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-2000 gpu-accelerated"></div>
+                <div className={`absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[64px] md:blur-[128px] animate-blob gpu-accelerated`}></div>
+                
+                {tier !== 'low' && (
+                    <>
+                        <div className="hidden md:block absolute top-[40%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-4000 gpu-accelerated"></div>
+                        <div className="hidden md:block absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[64px] md:blur-[128px] animate-blob animation-delay-2000 gpu-accelerated"></div>
+                    </>
+                )}
             </>
         )}
 
-        {/* Particles / Fireflies Effect */}
-        {particleCount > 0 && <Particles quantity={particleCount} />}
+        {/* Particles - Only render after loading is complete to save initial frames */}
+        {!isLoading && particleCount > 0 && <Particles quantity={particleCount} />}
 
         {/* Global Spotlight (Mouse Tracking Fog) - Only on High Tier Desktop */}
-        {isDesktop && tier === 'high' && (
+        {!isLoading && isDesktop && tier === 'high' && (
             <motion.div 
                 className="absolute w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none will-change-transform mix-blend-soft-light"
                 style={{
@@ -202,7 +213,7 @@ const AppContent: React.FC = () => {
         style={{ scaleX }}
       />
 
-      {isDesktop && (
+      {isDesktop && !isLoading && (
         <>
             <AnimatePresence>
                 {clickWaves.map(wave => (
@@ -259,16 +270,22 @@ const AppContent: React.FC = () => {
         </>
       )}
 
-      <Navbar />
-      
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
+      {/* Main Content - Opacity fade in after loading */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Navbar />
+        <main className="relative z-10">
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Contact />
+        </main>
+      </motion.div>
 
     </div>
   );
