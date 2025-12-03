@@ -5,13 +5,13 @@ export const NAV_LINKS = {
   pt: [
     { name: 'Sobre', href: '#about' },
     { name: 'Experiência', href: '#experience' },
-    { name: 'Projetos', href: '#projects' },
+    { name: 'Projetos', href: '#featured-project' },
     { name: 'Contato', href: '#contact' },
   ],
   en: [
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Projects', href: '#featured-project' },
     { name: 'Contact', href: '#contact' },
   ]
 };
