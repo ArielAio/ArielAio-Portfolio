@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SOCIALS } from '../constants';
 import { Send, CheckCircle, Copy, Check, Mail } from 'lucide-react';
 
-const Contact: React.FC = () => {
+const Contact: React.FC = React.memo(() => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,8 +46,8 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
-        {/* Decorative background circle */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[100px] pointer-events-none opacity-50 animate-pulse"></div>
+        {/* Decorative background circle - Optimized blur for mobile */}
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[60px] md:blur-[100px] pointer-events-none opacity-50 animate-pulse"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="glass-card max-w-4xl mx-auto rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
@@ -228,6 +228,6 @@ const Contact: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Contact;

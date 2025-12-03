@@ -169,7 +169,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   )
 }
 
-const Projects: React.FC = () => {
+const Projects: React.FC = React.memo(() => {
   return (
     <section id="projects" className="py-24 bg-transparent relative z-20">
       <div className="container mx-auto px-6">
@@ -192,6 +192,6 @@ const Projects: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Projects;

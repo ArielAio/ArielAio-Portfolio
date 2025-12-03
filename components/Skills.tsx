@@ -151,7 +151,7 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
   );
 };
 
-const Skills: React.FC = () => {
+const Skills: React.FC = React.memo(() => {
   return (
     <section className="py-24 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6">
@@ -183,6 +183,6 @@ const Skills: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Skills;

@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
 
-const About: React.FC = () => {
+const About: React.FC = React.memo(() => {
   return (
     <section id="about" className="py-24 bg-transparent relative">
       <div className="container mx-auto px-6">
@@ -44,6 +45,6 @@ const About: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default About;

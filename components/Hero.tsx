@@ -82,7 +82,7 @@ const MagneticButton = ({ children, onClick, href, className, variant = "outline
   );
 };
 
-const Hero: React.FC = () => {
+const Hero: React.FC = React.memo(() => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -222,6 +222,6 @@ const Hero: React.FC = () => {
       </motion.div>
     </section>
   );
-};
+});
 
 export default Hero;

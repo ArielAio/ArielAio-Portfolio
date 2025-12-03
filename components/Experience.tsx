@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { EXPERIENCE, EDUCATION } from '../constants';
 import { Briefcase, GraduationCap } from 'lucide-react';
 
-const Experience: React.FC = () => {
+const Experience: React.FC = React.memo(() => {
   return (
     <section id="experience" className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
@@ -123,6 +124,6 @@ const Experience: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Experience;

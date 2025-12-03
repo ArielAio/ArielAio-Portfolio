@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = React.memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -129,6 +129,6 @@ const Navbar: React.FC = () => {
       )}
     </motion.nav>
   );
-};
+});
 
 export default Navbar;
