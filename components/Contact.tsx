@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CONTACT_CONTENT, SOCIALS } from '../constants';
-import { Send, CheckCircle, Copy, Check, Mail } from 'lucide-react';
+import { Send, CheckCircle, Copy, Check, Mail, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { usePerformance } from '../PerformanceContext';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = React.memo(() => {
   const { language } = useLanguage();
@@ -15,8 +16,9 @@ const Contact: React.FC = React.memo(() => {
     email: '',
     message: ''
   });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [copied, setCopied] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -31,22 +33,63 @@ const Contact: React.FC = React.memo(() => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    
-    // Simulate network delay for effect
-    setTimeout(() => {
+    setErrorMessage('');
+
+    // Verificar se as variáveis de ambiente estão configuradas
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('❌ EmailJS não configurado! Leia o arquivo EMAILJS_SETUP.md');
+      // Fallback para mailto: se não configurado
       const subject = encodeURIComponent("Contato via Portfólio");
       const body = encodeURIComponent(`Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`);
       window.open(`mailto:arielaio@hotmail.com?subject=${subject}&body=${body}`, '_blank');
       
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
-      
-      // Reset status after a few seconds
       setTimeout(() => setStatus('idle'), 5000);
-    }, 1000);
+      return;
+    }
+
+    try {
+      // Enviar email via EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        reply_to: formData.email,
+      };
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      console.log('✅ Email enviado com sucesso!');
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Reset status after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+      
+    } catch (error) {
+      console.error('❌ Erro ao enviar email:', error);
+      setStatus('error');
+      setErrorMessage('Erro ao enviar mensagem. Tente novamente.');
+      
+      // Reset error status after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+    }
   };
 
   return (
@@ -196,17 +239,21 @@ const Contact: React.FC = React.memo(() => {
               
               <motion.button 
                 type="submit"
-                disabled={status !== 'idle'}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.95 }}
+                disabled={status === 'sending'}
+                whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
+                whileTap={{ scale: status === 'sending' ? 1 : 0.95 }}
                 className={`w-full font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg overflow-hidden relative ${
                   status === 'success' 
                     ? 'bg-green-500 text-white' 
+                    : status === 'error'
+                    ? 'bg-red-500 text-white'
+                    : status === 'sending'
+                    ? 'bg-gradient-to-r from-primary to-secondary text-white opacity-70 cursor-not-allowed'
                     : 'bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 hover:shadow-primary/20'
                 }`}
               >
                  {/* Shine effect on button - Conditional */}
-                 {!isLowPower && (
+                 {!isLowPower && status === 'idle' && (
                     <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
                  )}
                  
@@ -215,10 +262,13 @@ const Contact: React.FC = React.memo(() => {
                     <>{content.sendButton} <Send size={18} /></>
                     )}
                     {status === 'sending' && (
-                    <>{content.sending}</>
+                    <><div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div> {content.sending}</>
                     )}
                     {status === 'success' && (
                     <>{content.sent} <CheckCircle size={18} /></>
+                    )}
+                    {status === 'error' && (
+                    <><AlertCircle size={18} /> {errorMessage}</>
                     )}
                  </span>
               </motion.button>
