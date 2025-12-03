@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { PROJECTS } from '../constants';
@@ -8,23 +9,17 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   // Motion values for mouse position relative to card center (0 to 1)
-  // 0.5 is the center
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
 
   // Spring physics configuration for smooth 'weighty' feel
   const springConfig = { damping: 20, stiffness: 200, mass: 0.5 };
   
-  // Create sprung values for rotation to avoid jitter
-  // Mouse X (0 to 1) -> Rotate Y (-10deg to 10deg)
-  // If mouse is on left (0), rotateY is negative (left side goes back)
+  // Create sprung values for rotation
   const rotateY = useSpring(useTransform(x, [0, 1], [-10, 10]), springConfig);
-  
-  // Mouse Y (0 to 1) -> Rotate X (10deg to -10deg)
-  // If mouse is on top (0), rotateX is positive (top side goes back)
   const rotateX = useSpring(useTransform(y, [0, 1], [10, -10]), springConfig);
 
-  // Glare effect movement (moves opposite to rotation for realism)
+  // Glare effect movement
   const glareX = useTransform(x, [0, 1], [0, 100]);
   const glareY = useTransform(y, [0, 1], [0, 100]);
 
@@ -65,10 +60,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     >
       <div 
         style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }}
-        className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
+        className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl bg-dark"
       >
-        {/* Image Layer */}
-        <div className="absolute inset-0">
+        {/* Image Layer - Pushed back slightly relative to content */}
+        <div className="absolute inset-0" style={{ transform: "translateZ(0px)" }}>
            <img
             src={project.image}
             alt={project.title}
@@ -81,11 +76,14 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         {/* Overlay - Mobile: Always Visible (opacity-90) | Desktop: Hidden -> Hover (opacity-90) */}
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/90 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
 
-        {/* Content Container */}
-        <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+        {/* Content Container - True 3D Floating Effect (Z-Index increased) */}
+        <div 
+            className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none transform-style-3d"
+            style={{ transform: "translateZ(60px)" }} 
+        >
             {/* Title & Tags - Shift up on hover for desktop */}
             <div className="pointer-events-auto transform transition-transform duration-300 md:translate-y-8 md:group-hover:translate-y-0">
-                <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg" style={{ textShadow: "0 4px 10px rgba(0,0,0,0.5)" }}>
                     {project.title}
                 </h3>
                 
@@ -100,7 +98,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 
             {/* Description & Buttons - Mobile: Visible | Desktop: Hidden -> Fade In + Slide Up */}
             <div className="pointer-events-auto overflow-hidden transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 md:max-h-0 md:group-hover:max-h-[200px]">
-                <p className="text-gray-300 text-sm mb-6 line-clamp-3 md:line-clamp-none">
+                <p className="text-gray-300 text-sm mb-6 line-clamp-3 md:line-clamp-none drop-shadow-md">
                     {project.description}
                 </p>
                 

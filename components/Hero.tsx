@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
@@ -54,15 +55,25 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       
-      {/* 3D Floating Cube (Background Decoration) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-20 pointer-events-none cube-container scale-75 md:scale-100">
-        <div className="cube">
-            <div className="face face-front"></div>
-            <div className="face face-back"></div>
-            <div className="face face-right"></div>
-            <div className="face face-left"></div>
-            <div className="face face-top"></div>
-            <div className="face face-bottom"></div>
+      {/* 3D Hyper-Tesseract (Double Cube) Background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-30 pointer-events-none cube-container scale-75 md:scale-100">
+        <div className="cube-outer">
+            <div className="face-outer face-outer-front"></div>
+            <div className="face-outer face-outer-back"></div>
+            <div className="face-outer face-outer-right"></div>
+            <div className="face-outer face-outer-left"></div>
+            <div className="face-outer face-outer-top"></div>
+            <div className="face-outer face-outer-bottom"></div>
+            
+            {/* Inner Cube - Nested for compound rotation */}
+            <div className="cube-inner">
+                <div className="face-inner face-inner-front"></div>
+                <div className="face-inner face-inner-back"></div>
+                <div className="face-inner face-inner-right"></div>
+                <div className="face-inner face-inner-left"></div>
+                <div className="face-inner face-inner-top"></div>
+                <div className="face-inner face-inner-bottom"></div>
+            </div>
         </div>
       </div>
       
