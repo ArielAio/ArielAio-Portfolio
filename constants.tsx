@@ -72,7 +72,7 @@ export const EXPERIENCE_CONTENT = {
         description: "Co-fundador da holding Skyiit, responsável pelo produto digital Memoryiit, consolidado no mercado de presentes digitais em menos de 1 ano.",
         projectLink: "https://memoryiit.com",
         details: [
-          "Coordenação de operações internas: organização de demandas, gestão de fluxo de trabalho e acompanhamento do time técnico (3 devs) utilizando metodologias ágeis (Scrum/Kanban) e Linear.",
+          "Coordenação de operações internas: organização de demandas, gestão de fluxo de trabalho e acompanhamento do time técnico utilizando metodologias ágeis e Linear.",
           "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo qualidade no atendimento e produção consistente de materiais.",
           "Criação e edição de vídeos para campanhas de marketing em redes sociais, resultando em aumento de engajamento e alcance orgânico.",
           "Estruturação de processos de marketing, operações e produto visando crescimento escalável."
