@@ -159,40 +159,84 @@ export const EXPERIENCE_CONTENT = {
   }
 };
 
-export const FEATURED_PROJECT = {
+export const FEATURED_PROJECTS = {
   pt: {
-    sectionTitle: "Projeto em Destaque",
-    title: "Memoryiit — Plataforma de Presentes Digitais",
-    subtitle: "COO & Co-Fundador | Skyiit",
-    description: "Como COO e Co-fundador da Skyiit, coordenei o lançamento e operação do Memoryiit, produto consolidado no mercado de presentes digitais em menos de 1 ano.",
-    responsibilities: [
-      "Gestão de fluxo de trabalho e organização do time técnico com metodologias ágeis",
-      "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo atendimento de qualidade e produção consistente",
-      "Criação e edição de vídeos para campanhas de marketing em redes sociais, aumentando engajamento e alcance orgânico",
-      "Estruturação de processos operacionais e acompanhamento de entregas via Linear"
-    ],
-    tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
-    image: "/memoryiit.png",
-    link: "https://memoryiit.com",
-    badge: "🚀 Em Produção",
-    cta: "Visitar Projeto"
+    sectionTitle: "Projetos em Destaque",
+    heading: "Produtos que eu liderei",
+    projects: [
+      {
+        title: "Memoryiit — Plataforma de Presentes Digitais",
+        subtitle: "COO & Co-Fundador | Skyiit",
+        description: "Como COO e Co-fundador da Skyiit, coordenei o lançamento e operação do Memoryiit, produto consolidado no mercado de presentes digitais em menos de 1 ano.",
+        responsibilities: [
+          "Gestão de fluxo de trabalho e organização do time técnico com metodologias ágeis",
+          "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo atendimento de qualidade e produção consistente",
+          "Criação e edição de vídeos para campanhas de marketing em redes sociais, aumentando engajamento e alcance orgânico",
+          "Estruturação de processos operacionais e acompanhamento de entregas via Linear"
+        ],
+        tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
+        image: "/memoryiit.png",
+        link: "https://memoryiit.com",
+        badge: "🚀 Em Produção",
+        cta: "Visitar Projeto"
+      },
+      {
+        title: "ZapWrapp — Retrospectiva do WhatsApp",
+        subtitle: "Criador & Product Lead",
+        description: "Como criador do ZapWrapp, lidero o desenvolvimento e a evolução do produto ponta a ponta, transformando conversas exportadas do WhatsApp em uma retrospectiva visual do ano, com métricas, rankings e telas prontas para compartilhar.",
+        responsibilities: [
+          "Concepção e desenvolvimento full-stack do produto (UI/UX, back-end e infraestrutura)",
+          "Implementação do pipeline de processamento de arquivos exportados do WhatsApp, com foco em performance e consistência",
+          "Criação de visualizações e métricas de retrospectiva (horários, palavras, emojis, padrões de conversa e insights)",
+          "Estruturação de pagamentos, planos e automações de marketing/remarketing para conversão e retenção",
+          "Priorização e execução de melhorias contínuas com base em dados, feedbacks e testes"
+        ],
+        tags: ["Product Management", "Full-Stack", "UX/UI", "Growth", "Analytics"],
+        image: "/zapwrapp.png",
+        link: "https://zapwrapp.com",
+        badge: "🚀 Em Produção",
+        cta: "Visitar Projeto"
+      }
+    ]
   },
   en: {
-    sectionTitle: "Featured Project",
-    title: "Memoryiit — Digital Gifts Platform",
-    subtitle: "COO & Co-Founder | Skyiit",
-    description: "As COO and Co-founder of Skyiit, I coordinated the launch and operations of Memoryiit, a product consolidated in the digital gifts market in less than 1 year.",
-    responsibilities: [
-      "Workflow management and technical team coordination using Agile methodologies",
-      "Leadership of customer support and content editing teams, ensuring quality service and consistent production",
-      "Creation and editing of videos for social media marketing campaigns, increasing engagement and organic reach",
-      "Operational process structuring and delivery tracking via Linear"
-    ],
-    tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
-    image: "/memoryiit.png",
-    link: "https://memoryiit.com",
-    badge: "🚀 In Production",
-    cta: "Visit Project"
+    sectionTitle: "Featured Projects",
+    heading: "Products I led",
+    projects: [
+      {
+        title: "Memoryiit — Digital Gifts Platform",
+        subtitle: "COO & Co-Founder | Skyiit",
+        description: "As COO and Co-founder of Skyiit, I coordinated the launch and operations of Memoryiit, a product consolidated in the digital gifts market in less than 1 year.",
+        responsibilities: [
+          "Workflow management and technical team coordination using Agile methodologies",
+          "Leadership of customer support and content editing teams, ensuring quality service and consistent production",
+          "Creation and editing of videos for social media marketing campaigns, increasing engagement and organic reach",
+          "Operational process structuring and delivery tracking via Linear"
+        ],
+        tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
+        image: "/memoryiit.png",
+        link: "https://memoryiit.com",
+        badge: "🚀 In Production",
+        cta: "Visit Project"
+      },
+      {
+        title: "ZapWrapp — WhatsApp Retrospective",
+        subtitle: "Creator & Product Lead",
+        description: "As the creator of ZapWrapp, I lead end-to-end product development, turning exported WhatsApp conversations into a visual yearly retrospective with metrics, rankings, and share-ready screens.",
+        responsibilities: [
+          "Full-stack product design and development (UI/UX, back-end, and infrastructure)",
+          "Implementation of the WhatsApp export processing pipeline with a focus on performance and consistency",
+          "Creation of retrospective visualizations and metrics (timing, words, emojis, conversation patterns, and insights)",
+          "Payments, plans, and marketing/remarketing automation setup for conversion and retention",
+          "Prioritization and execution of continuous improvements based on data, feedback, and tests"
+        ],
+        tags: ["Product Management", "Full-Stack", "UX/UI", "Growth", "Analytics"],
+        image: "/zapwrapp.png",
+        link: "https://zapwrapp.com",
+        badge: "🚀 In Production",
+        cta: "Visit Project"
+      }
+    ]
   }
 };
 

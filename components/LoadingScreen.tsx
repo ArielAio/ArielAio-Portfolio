@@ -65,8 +65,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       className="fixed inset-0 z-[9999] bg-[#0a0a0a] flex items-center justify-center font-mono"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
+      style={{ contain: 'layout' }} // OPTIMIZATION: Prevent layout shifts
     >
-      <div className="w-full max-w-2xl px-6">
+      <div 
+        className="w-full max-w-2xl px-6"
+        style={{ maxWidth: '42rem' }} // OPTIMIZATION: Explicit max-width to prevent CLS
+      >
         
         {/* Terminal Header */}
         <div className="bg-[#1e1e1e] rounded-t-lg border border-gray-800 px-4 py-3 flex items-center gap-2">
