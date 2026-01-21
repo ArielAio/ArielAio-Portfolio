@@ -20,8 +20,8 @@ export const HERO_CONTENT = {
   pt: {
     greeting: "Olá, eu sou o",
     name: "Ariel André Aio",
-    role: "COO & Desenvolvedor em Crescimento",
-    description: "Co-fundador da Skyiit. Combino visão estratégica de negócios com habilidades técnicas em desenvolvimento web para transformar ideias em produtos digitais reais. Experiência profissional com React, Laravel e banco de dados + projetos pessoais com Next.js.",
+    role: "Desenvolvedor Full-Stack | COO | Especialista em Operações & Automação",
+    description: "Desenvolvedor Full-Stack e Cofundador com experiência na construção e escala de produtos SaaS B2C que somam mais de R$ 1.5 milhão em faturamento. Especialista em arquitetura de sistemas (Laravel, React, Next.js) e otimização de operações através de automações estratégicas.",
     ctaProjects: "Ver Projetos",
     ctaContact: "Entrar em Contato",
     ctaResume: "Baixar PDF",
@@ -30,8 +30,8 @@ export const HERO_CONTENT = {
   en: {
     greeting: "Hello, I am",
     name: "Ariel André Aio",
-    role: "COO & Growing Developer",
-    description: "Co-founder of Skyiit. I combine strategic business vision with technical skills in web development to transform ideas into real digital products. Professional experience with React, Laravel, and databases + personal projects with Next.js.",
+    role: "Full-Stack Developer | COO | Operations & Automation Specialist",
+    description: "Full-Stack Developer and Co-founder with experience in building and scaling B2C SaaS products that total over R$ 1.5 million in revenue. Specialist in systems architecture (Laravel, React, Next.js) and operations optimization through strategic automations.",
     ctaProjects: "View Projects",
     ctaContact: "Get in Touch",
     ctaResume: "Download PDF",
@@ -43,17 +43,17 @@ export const ABOUT_CONTENT = {
   pt: {
     title: "Sobre Mim",
     services: [
-      { title: "Desenvolvimento Web", icon: Code, description: "Experiência profissional com React, Laravel e TypeScript na EnterScience. Projetos pessoais com Next.js e Firebase." },
-      { title: "Gestão de Produtos", icon: Smartphone, description: "Coordenação operacional e visão estratégica como COO para transformar ideias em produtos viáveis." },
-      { title: "Banco de Dados", icon: Database, description: "Experiência em manutenção de PostgreSQL em ambiente de produção e projetos com Firebase." },
+      { title: "Desenvolvimento Full-Stack", icon: Code, description: "Experiência em React, Next.js, Laravel e Node.js. Arquitetura de sistemas serverless, APIs RESTful e integração de gateways de pagamento (Stripe, Mercado Pago)." },
+      { title: "Gestão de Produtos & Operações", icon: Smartphone, description: "COO com experiência em escalar produtos SaaS B2C. Gestão de operações, automações estratégicas e liderança de equipes para produtos com +195k usuários." },
+      { title: "Banco de Dados & Infraestrutura", icon: Database, description: "PostgreSQL, MySQL, Firebase e Redis. Otimização de queries, arquitetura serverless e jobs/filas para processamento assíncrono." },
     ]
   },
   en: {
     title: "About Me",
     services: [
-      { title: "Web Development", icon: Code, description: "Professional experience with React, Laravel, and TypeScript at EnterScience. Personal projects with Next.js and Firebase." },
-      { title: "Product Management", icon: Smartphone, description: "Operational coordination and strategic vision as COO to transform ideas into viable products." },
-      { title: "Database Management", icon: Database, description: "Experience in PostgreSQL maintenance in production environments and projects with Firebase." },
+      { title: "Full-Stack Development", icon: Code, description: "Experience with React, Next.js, Laravel, and Node.js. Serverless systems architecture, RESTful APIs, and payment gateway integration (Stripe, Mercado Pago)." },
+      { title: "Product Management & Operations", icon: Smartphone, description: "COO with experience scaling B2C SaaS products. Operations management, strategic automations, and team leadership for products with +195k users." },
+      { title: "Database & Infrastructure", icon: Database, description: "PostgreSQL, MySQL, Firebase, and Redis. Query optimization, serverless architecture, and job/queue processing." },
     ]
   }
 };
@@ -66,28 +66,43 @@ export const EXPERIENCE_CONTENT = {
     experience: [
       {
         id: 1,
-        role: "COO & Co-Fundador",
-        company: "Skyiit",
+        role: "Fundador & Desenvolvedor Full-Stack",
+        company: "ZapWrapp",
         period: "2025 - Atual",
-        description: "Co-fundador da holding Skyiit, responsável pelo produto digital Memoryiit, consolidado no mercado de presentes digitais em menos de 1 ano.",
-        projectLink: "https://memoryiit.com",
+        description: "SaaS B2C de retrospectivas visuais de dados do WhatsApp (45.412 usuários).",
+        projectLink: "https://zapwrapp.com",
         details: [
-          "Coordenação de operações internas: organização de demandas, gestão de fluxo de trabalho e acompanhamento do time técnico utilizando metodologias ágeis via Linear.",
-          "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo qualidade no atendimento e produção consistente de materiais.",
-          "Criação e edição de vídeos para campanhas de marketing em redes sociais, resultando em aumento de engajamento e alcance orgânico.",
-          "Estruturação de processos de marketing, operações e produto visando crescimento escalável."
+          "Faturamento superior a R$ 25.000,00 desde o lançamento, atingindo Break-even em 48 horas com operação 100% autofinanciada.",
+          "Arquitetei o pipeline completo de processamento algorítmico de arquivos, integração de gateways de pagamento e geração de mídia.",
+          "Implementei infraestrutura Serverless/Assíncrona, processando 4.732 transações com custos operacionais 70% menores que modelos tradicionais.",
+          "Redução do time-to-market em 75% através de fluxos de desenvolvimento otimizados com IA."
         ]
       },
       {
         id: 2,
+        role: "COO & Cofundador",
+        company: "Memoryiit (Skyiit)",
+        period: "2025 - Atual",
+        description: "Plataforma SaaS consolidada com 195.060 usuários e 63.000+ memórias criadas.",
+        projectLink: "https://memoryiit.com",
+        details: [
+          "Liderança operacional de plataforma com faturamento acumulado superior a R$ 1.500.000,00.",
+          "Implementei sistemas de triagem e atendimento assistidos por IA, gerenciando suporte para 195k usuários com alta padronização.",
+          "Estruturei fluxos automáticos que permitiram escalar a operação mantendo equipe enxuta, maximizando lucratividade.",
+          "Coordenação de operações internas via Linear, gestão de equipes de suporte e criação de conteúdo para marketing."
+        ]
+      },
+      {
+        id: 3,
         role: "Estagiário em Desenvolvimento",
         company: "EnterScience",
         period: "2024 - 2025",
-        description: "Atuação direta no desenvolvimento e manutenção de software.",
+        description: "Desenvolvimento Full-Stack em ambiente de tecnologia educacional.",
         details: [
-          "Implementação de novas funcionalidades no site institucional, utilizando Laravel e React.",
-          "Correção de bugs e otimização de código.",
-          "Manutenção de banco de dados PostgreSQL."
+          "Desenvolvimento de funcionalidades em Laravel, integrando APIs para geração automática de conteúdos pedagógicos e provas.",
+          "Implementação de camadas de validação (System Guardrails) e self-checking em LLMs para garantir integridade técnica.",
+          "Manutenção de bancos PostgreSQL, realizando refatorações e otimizações de queries para melhoria de performance.",
+          "Atuação em ciclos ágeis com React e PHP, realizando code reviews e documentação de sistemas."
         ]
       },
     ],
@@ -96,14 +111,14 @@ export const EXPERIENCE_CONTENT = {
         id: 1,
         degree: "Bacharelado em Sistemas de Informação",
         institution: "IFSP - Votuporanga",
-        period: "2027",
+        period: "Conclusão: 12/2027",
         description: "Ensino superior em andamento, período matutino."
       },
       {
         id: 2,
         degree: "Técnico em Informática",
         institution: "ETEC - Armando José Farinazzo",
-        period: "2023",
+        period: "Conclusão: 2023",
         description: "Formação técnica focada em desenvolvimento de sistemas."
       }
     ]
@@ -115,28 +130,43 @@ export const EXPERIENCE_CONTENT = {
     experience: [
       {
         id: 1,
-        role: "COO & Co-Founder",
-        company: "Skyiit",
+        role: "Founder & Full-Stack Developer",
+        company: "ZapWrapp",
         period: "2025 - Present",
-        description: "Co-founder of the Skyiit holding, responsible for the digital product Memoryiit, consolidated in the digital gifts market in less than 1 year.",
-        projectLink: "https://memoryiit.com",
+        description: "B2C SaaS for WhatsApp visual data retrospectives (45,412 users).",
+        projectLink: "https://zapwrapp.com",
         details: [
-          "Internal operations coordination: organizing demands, workflow management, and monitoring the technical team using Agile methodologies with Linear.",
-          "Leadership of customer support and content editing teams, ensuring quality service and consistent material production.",
-          "Creation and editing of videos for social media marketing campaigns, resulting in increased engagement and organic reach.",
-          "Structuring marketing, operations, and product processes aiming for scalable growth."
+          "Revenue exceeding R$ 25,000 since launch, reaching Break-even in 48 hours with 100% self-funded operation.",
+          "Architected complete pipeline for algorithmic file processing, payment gateway integration, and media generation.",
+          "Implemented Serverless/Asynchronous infrastructure, processing 4,732 transactions with 70% lower operational costs than traditional models.",
+          "Reduced time-to-market by 75% through AI-optimized development workflows."
         ]
       },
       {
         id: 2,
+        role: "COO & Co-Founder",
+        company: "Memoryiit (Skyiit)",
+        period: "2025 - Atual",
+        description: "Consolidated SaaS platform with 195,060 users and 63,000+ created memories.",
+        projectLink: "https://memoryiit.com",
+        details: [
+          "Operational leadership of platform with cumulative revenue exceeding R$ 1,500,000.",
+          "Implemented AI-assisted triage and support systems, managing support for 195k users with high standardization.",
+          "Structured automated workflows that enabled scaling operations with a lean team, maximizing profitability.",
+          "Internal operations coordination via Linear, support team management, and marketing content creation."
+        ]
+      },
+      {
+        id: 3,
         role: "Development Intern",
         company: "EnterScience",
         period: "2024 - 2025",
-        description: "Direct involvement in software development and maintenance.",
+        description: "Full-Stack development in educational technology environment.",
         details: [
-          "Implementation of new functionalities in the institutional website using Laravel and React.",
-          "Bug fixing and code optimization.",
-          "PostgreSQL database maintenance."
+          "Laravel feature development, integrating APIs for automatic generation of pedagogical content and exams.",
+          "Implementation of validation layers (System Guardrails) and self-checking in LLMs to ensure technical integrity.",
+          "PostgreSQL database maintenance, performing refactorings and query optimizations for performance improvement.",
+          "Agile cycles work with React and PHP, performing code reviews and system documentation."
         ]
       },
     ],
@@ -145,14 +175,14 @@ export const EXPERIENCE_CONTENT = {
         id: 1,
         degree: "Bachelor in Information Systems",
         institution: "IFSP - Votuporanga",
-        period: "2027",
+        period: "Completion: 12/2027",
         description: "Higher education in progress, morning period."
       },
       {
         id: 2,
         degree: "IT Technician",
         institution: "ETEC - Armando José Farinazzo",
-        period: "2023",
+        period: "Completion: 2023",
         description: "Technical education focused on systems development."
       }
     ]
@@ -165,35 +195,34 @@ export const FEATURED_PROJECTS = {
     heading: "Produtos que eu liderei",
     projects: [
       {
-        title: "Memoryiit — Plataforma de Presentes Digitais",
-        subtitle: "COO & Co-Fundador | Skyiit",
-        description: "Como COO e Co-fundador da Skyiit, coordenei o lançamento e operação do Memoryiit, produto consolidado no mercado de presentes digitais em menos de 1 ano.",
+        title: "ZapWrapp — Retrospectiva do WhatsApp",
+        subtitle: "Fundador & Desenvolvedor Full-Stack",
+        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais do ano, com métricas, rankings e telas prontas para compartilhar. Alcancei 45.412 usuários e faturamento superior a R$ 25.000,00.",
         responsibilities: [
-          "Gestão de fluxo de trabalho e organização do time técnico com metodologias ágeis",
-          "Liderança das equipes de suporte ao cliente e edição de conteúdo, garantindo atendimento de qualidade e produção consistente",
-          "Criação e edição de vídeos para campanhas de marketing em redes sociais, aumentando engajamento e alcance orgânico",
-          "Estruturação de processos operacionais e acompanhamento de entregas via Linear"
+          "Arquitetura full-stack: pipeline de processamento algorítmico de arquivos, geração de mídia e integração com gateways de pagamento",
+          "Infraestrutura Serverless/Assíncrona com custos operacionais 70% menores, processando 4.732 transações",
+          "Break-even em 48 horas com operação 100% autofinanciada",
+          "Redução de 75% no time-to-market através de desenvolvimento otimizado com IA"
         ],
-        tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
-        image: "/memoryiit.png",
-        link: "https://memoryiit.com",
+        tags: ["Next.js", "Serverless", "Payment Gateways", "Data Processing", "SaaS B2C"],
+        image: "/zapwrapp.png",
+        link: "https://zapwrapp.com",
         badge: "🚀 Em Produção",
         cta: "Visitar Projeto"
       },
       {
-        title: "ZapWrapp — Retrospectiva do WhatsApp",
-        subtitle: "Criador & Product Lead",
-        description: "Como criador do ZapWrapp, lidero o desenvolvimento e a evolução do produto ponta a ponta, transformando conversas exportadas do WhatsApp em uma retrospectiva visual do ano, com métricas, rankings e telas prontas para compartilhar.",
+        title: "Memoryiit — Plataforma de Presentes Digitais",
+        subtitle: "COO & Co-Fundador | Skyiit",
+        description: "Como COO e Co-fundador da Skyiit, coordenei o lançamento e operação do Memoryiit, plataforma consolidada com 195.060 usuários, 63.000+ memórias criadas e faturamento superior a R$ 1.500.000,00.",
         responsibilities: [
-          "Concepção e desenvolvimento full-stack do produto (UI/UX, back-end e infraestrutura)",
-          "Implementação do pipeline de processamento de arquivos exportados do WhatsApp, com foco em performance e consistência",
-          "Criação de visualizações e métricas de retrospectiva (horários, palavras, emojis, padrões de conversa e insights)",
-          "Estruturação de pagamentos, planos e automações de marketing/remarketing para conversão e retenção",
-          "Priorização e execução de melhorias contínuas com base em dados, feedbacks e testes"
+          "Liderança operacional de plataforma com alto volume de tráfego e transações",
+          "Implementação de sistemas de triagem e atendimento assistidos por IA para base de 195k usuários",
+          "Estruturação de fluxos automáticos que permitiram escalar mantendo equipe enxuta e maximizando lucratividade",
+          "Gestão de operações via Linear, liderança de equipes de suporte e criação de conteúdo para marketing"
         ],
-        tags: ["Product Management", "Full-Stack", "UX/UI", "Growth", "Analytics"],
-        image: "/zapwrapp.png",
-        link: "https://zapwrapp.com",
+        tags: ["Product Management", "Operations", "AI Automation", "Team Leadership", "SaaS B2C"],
+        image: "/memoryiit.png",
+        link: "https://memoryiit.com",
         badge: "🚀 Em Produção",
         cta: "Visitar Projeto"
       }
@@ -204,35 +233,34 @@ export const FEATURED_PROJECTS = {
     heading: "Products I led",
     projects: [
       {
-        title: "Memoryiit — Digital Gifts Platform",
-        subtitle: "COO & Co-Founder | Skyiit",
-        description: "As COO and Co-founder of Skyiit, I coordinated the launch and operations of Memoryiit, a product consolidated in the digital gifts market in less than 1 year.",
+        title: "ZapWrapp — WhatsApp Retrospective",
+        subtitle: "Founder & Full-Stack Developer",
+        description: "B2C SaaS that transforms exported WhatsApp conversations into visual yearly retrospectives with metrics, rankings, and share-ready screens. Reached 45,412 users and revenue exceeding R$ 25,000.",
         responsibilities: [
-          "Workflow management and technical team coordination using Agile methodologies",
-          "Leadership of customer support and content editing teams, ensuring quality service and consistent production",
-          "Creation and editing of videos for social media marketing campaigns, increasing engagement and organic reach",
-          "Operational process structuring and delivery tracking via Linear"
+          "Full-stack architecture: algorithmic file processing pipeline, media generation, and payment gateway integration",
+          "Serverless/Asynchronous infrastructure with 70% lower operational costs, processing 4,732 transactions",
+          "Break-even in 48 hours with 100% self-funded operation",
+          "75% reduction in time-to-market through AI-optimized development"
         ],
-        tags: ["Product Management", "Operations", "Team Leadership", "Marketing"],
-        image: "/memoryiit.png",
-        link: "https://memoryiit.com",
+        tags: ["Next.js", "Serverless", "Payment Gateways", "Data Processing", "SaaS B2C"],
+        image: "/zapwrapp.png",
+        link: "https://zapwrapp.com",
         badge: "🚀 In Production",
         cta: "Visit Project"
       },
       {
-        title: "ZapWrapp — WhatsApp Retrospective",
-        subtitle: "Creator & Product Lead",
-        description: "As the creator of ZapWrapp, I lead end-to-end product development, turning exported WhatsApp conversations into a visual yearly retrospective with metrics, rankings, and share-ready screens.",
+        title: "Memoryiit — Digital Gifts Platform",
+        subtitle: "COO & Co-Founder | Skyiit",
+        description: "As COO and Co-founder of Skyiit, I coordinated the launch and operations of Memoryiit, a consolidated platform with 195,060 users, 63,000+ created memories, and revenue exceeding R$ 1,500,000.",
         responsibilities: [
-          "Full-stack product design and development (UI/UX, back-end, and infrastructure)",
-          "Implementation of the WhatsApp export processing pipeline with a focus on performance and consistency",
-          "Creation of retrospective visualizations and metrics (timing, words, emojis, conversation patterns, and insights)",
-          "Payments, plans, and marketing/remarketing automation setup for conversion and retention",
-          "Prioritization and execution of continuous improvements based on data, feedback, and tests"
+          "Operational leadership of high-traffic and high-transaction platform",
+          "Implementation of AI-assisted triage and support systems for 195k user base",
+          "Structured automated workflows enabling scaling with lean team while maximizing profitability",
+          "Operations management via Linear, support team leadership, and marketing content creation"
         ],
-        tags: ["Product Management", "Full-Stack", "UX/UI", "Growth", "Analytics"],
-        image: "/zapwrapp.png",
-        link: "https://zapwrapp.com",
+        tags: ["Product Management", "Operations", "AI Automation", "Team Leadership", "SaaS B2C"],
+        image: "/memoryiit.png",
+        link: "https://memoryiit.com",
         badge: "🚀 In Production",
         cta: "Visit Project"
       }
@@ -335,122 +363,134 @@ export const SKILLS_CONTENT = {
   pt: {
     title: "Stack ",
     titleHighlight: "Tecnológico",
-    description: "Tecnologias que venho desenvolvendo através de experiência profissional e projetos pessoais.",
+    description: "Tecnologias que venho desenvolvendo através de experiência profissional e projetos de produção.",
     skills: [
+      {
+        name: "React / Next.js",
+        time: "2 anos (prof. + produção)",
+        category: 'frontend',
+        description: "Desenvolvimento profissional (EnterScience) e produtos em produção (ZapWrapp, Memoryiit). Experiência com SSR, CSR, otimização de performance e SEO."
+      },
+      {
+        name: "TypeScript / JavaScript",
+        time: "2 anos (prof. + produção)",
+        category: 'frontend',
+        description: "Uso profissional e em produtos escaláveis. Tipagem avançada, interfaces, generics e arquitetura type-safe."
+      },
       {
         name: "Laravel / PHP",
         time: "1 ano (profissional)",
         category: 'backend',
-        description: "Experiência profissional: manutenção de sistemas em produção, correção de bugs e implementação de features no site institucional da EnterScience."
+        description: "Experiência profissional: desenvolvimento de APIs, integrações com LLMs, validação de dados e manutenção de sistemas em produção."
+      },
+      {
+        name: "Node.js / Serverless",
+        time: "2 anos (produção)",
+        category: 'backend',
+        description: "Arquitetura serverless para produtos em produção. APIs RESTful, processamento assíncrono e microserviços com redução de 70% em custos operacionais."
       },
       {
         name: "PostgreSQL / MySQL",
-        time: "1 ano (profissional)",
+        time: "2 anos (prof. + produção)",
         category: 'backend',
-        description: "Manutenção de banco de dados PostgreSQL em ambiente de produção durante estágio na EnterScience."
+        description: "Manutenção profissional (EnterScience) e uso em produção. Otimização de queries, índices e modelagem de dados para alto volume."
       },
       {
-        name: "React",
-        time: "1 ano (prof.) + 1 ano (pessoal)",
-        category: 'frontend',
-        description: "Implementação de features no site da EnterScience + projetos pessoais (sistemas de agendamento, dashboards)."
-      },
-      {
-        name: "TypeScript",
-        time: "1 ano (prof.) + 1 ano (pessoal)",
-        category: 'frontend',
-        description: "Uso profissional na EnterScience e em projetos pessoais. Conhecimento intermediário de tipagem e interfaces."
-      },
-      {
-        name: "Next.js",
-        time: "1 ano (pessoal)",
-        category: 'frontend',
-        description: "Projetos pessoais: plataformas EAD e dashboards com SSR/CSR. Desenvolvimento com auxílio de IA e documentação."
-      },
-      {
-        name: "Firebase",
-        time: "1 ano (pessoal)",
+        name: "Firebase / Redis",
+        time: "2 anos (produção)",
         category: 'backend',
-        description: "Implementação em projetos pessoais: autenticação, banco de dados em tempo real e hosting."
+        description: "Firebase em produtos reais (autenticação, Firestore, Storage) e Redis para jobs/filas em processamento assíncrono."
       },
       {
-        name: "Node.js",
-        time: "1 ano (pessoal)",
+        name: "Stripe / Mercado Pago / Woovi",
+        time: "1 ano (produção)",
         category: 'backend',
-        description: "Projetos pessoais com criação de APIs básicas e integrações simples."
+        description: "Integração de gateways de pagamento em produtos com +4.700 transações reais. Webhooks, assinaturas e checkouts otimizados."
       },
       {
-        name: "Git / GitHub",
+        name: "Git / GitHub / CI/CD",
         time: "2 anos",
         category: 'tools',
-        description: "Controle de versão individual e em equipe. Experiência com commits, branches e pull requests."
+        description: "Controle de versão profissional e em equipe. Workflows automatizados, deploys contínuos e code reviews."
       },
       {
-        name: "Metodologias Ágeis",
+        name: "IA & Automação",
         time: "2 anos",
         category: 'tools',
-        description: "Aplicação em estágio (EnterScience), projetos pessoais e como COO (Skyiit). Experiência com Scrum, sprints e gestão de fluxo via Linear."
+        description: "Engenharia assistida por IA (Cursor/Claude), Prompt Engineering, integração de LLMs em produção e automação de fluxos operacionais."
+      },
+      {
+        name: "Metodologias Ágeis / Linear",
+        time: "2 anos",
+        category: 'tools',
+        description: "Scrum, sprints e gestão de operações em produtos reais. Experiência como COO coordenando times via Linear."
       },
     ]
   },
   en: {
     title: "Tech ",
     titleHighlight: "Stack",
-    description: "Technologies I've been developing through professional experience and personal projects.",
+    description: "Technologies developed through professional experience and production projects.",
     skills: [
+      {
+        name: "React / Next.js",
+        time: "2 years (prof. + production)",
+        category: 'frontend',
+        description: "Professional development (EnterScience) and production products (ZapWrapp, Memoryiit). Experience with SSR, CSR, performance optimization, and SEO."
+      },
+      {
+        name: "TypeScript / JavaScript",
+        time: "2 years (prof. + production)",
+        category: 'frontend',
+        description: "Professional and scalable product use. Advanced typing, interfaces, generics, and type-safe architecture."
+      },
       {
         name: "Laravel / PHP",
         time: "1 year (professional)",
         category: 'backend',
-        description: "Professional experience: maintenance of production systems, bug fixes, and feature implementation on EnterScience's institutional website."
+        description: "Professional experience: API development, LLM integrations, data validation, and production system maintenance."
+      },
+      {
+        name: "Node.js / Serverless",
+        time: "2 years (production)",
+        category: 'backend',
+        description: "Serverless architecture for production products. RESTful APIs, asynchronous processing, and microservices with 70% reduction in operational costs."
       },
       {
         name: "PostgreSQL / MySQL",
-        time: "1 year (professional)",
+        time: "2 years (prof. + production)",
         category: 'backend',
-        description: "PostgreSQL database maintenance in production environment during internship at EnterScience."
+        description: "Professional maintenance (EnterScience) and production use. Query optimization, indexes, and data modeling for high volume."
       },
       {
-        name: "React",
-        time: "1 year (prof.) + 1 year (personal)",
-        category: 'frontend',
-        description: "Feature implementation at EnterScience + personal projects (scheduling systems, dashboards)."
-      },
-      {
-        name: "TypeScript",
-        time: "1 year (prof.) + 1 year (personal)",
-        category: 'frontend',
-        description: "Professional use at EnterScience and in personal projects. Intermediate knowledge of typing and interfaces."
-      },
-      {
-        name: "Next.js",
-        time: "1 year (personal)",
-        category: 'frontend',
-        description: "Personal projects: e-learning platforms and dashboards with SSR/CSR. Development with AI assistance and documentation."
-      },
-      {
-        name: "Firebase",
-        time: "1 year (personal)",
+        name: "Firebase / Redis",
+        time: "2 years (production)",
         category: 'backend',
-        description: "Implementation in personal projects: authentication, real-time database, and hosting."
+        description: "Firebase in real products (authentication, Firestore, Storage) and Redis for job/queue processing."
       },
       {
-        name: "Node.js",
-        time: "1 year (personal)",
+        name: "Stripe / Mercado Pago / Woovi",
+        time: "1 year (production)",
         category: 'backend',
-        description: "Personal projects with basic API creation and simple integrations."
+        description: "Payment gateway integration in products with +4,700 real transactions. Webhooks, subscriptions, and optimized checkouts."
       },
       {
-        name: "Git / GitHub",
+        name: "Git / GitHub / CI/CD",
         time: "2 years",
         category: 'tools',
-        description: "Individual and team version control. Experience with commits, branches, and pull requests."
+        description: "Professional and team version control. Automated workflows, continuous deployments, and code reviews."
       },
       {
-        name: "Agile Methodologies",
+        name: "AI & Automation",
         time: "2 years",
         category: 'tools',
-        description: "Applied in internship (EnterScience), personal projects, and as COO (Skyiit). Experience with Scrum, sprints, and workflow management via Linear."
+        description: "AI-assisted engineering (Cursor/Claude), Prompt Engineering, LLM integration in production, and operational workflow automation."
+      },
+      {
+        name: "Agile Methodologies / Linear",
+        time: "2 years",
+        category: 'tools',
+        description: "Scrum, sprints, and operations management in real products. Experience as COO coordinating teams via Linear."
       },
     ]
   }
