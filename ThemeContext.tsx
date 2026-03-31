@@ -38,8 +38,20 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setThemeState(newTheme);
   };
 
+  const shouldAnimateTransition = () => {
+    if (typeof window === 'undefined' || !window.matchMedia) return true;
+    return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+    if (!shouldAnimateTransition()) {
+      setTheme(nextTheme);
+      setIsTransitioning(false);
+      setTargetTheme(null);
+      return;
+    }
     
     // Set target theme FIRST (for display in transition)
     setTargetTheme(nextTheme);
@@ -58,6 +70,13 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const startTransition = (callback: () => void) => {
+    if (!shouldAnimateTransition()) {
+      callback();
+      setIsTransitioning(false);
+      setTargetTheme(null);
+      return;
+    }
+
     setIsTransitioning(true);
     
     // Wait for expand animation (600ms)

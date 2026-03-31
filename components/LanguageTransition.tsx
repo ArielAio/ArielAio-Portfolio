@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../LanguageContext';
+import { usePerformance } from '../PerformanceContext';
 
 /**
  * LanguageTransition Component
@@ -16,6 +17,15 @@ import { useLanguage } from '../LanguageContext';
 
 const LanguageTransition = () => {
   const { isTransitioning, targetLanguage } = useLanguage();
+  const { reduceMotion, tier } = usePerformance();
+
+  if (reduceMotion) {
+    return null;
+  }
+
+  const particleCount = tier === 'high' ? 8 : tier === 'medium' ? 5 : 3;
+  const finalScale = tier === 'high' ? 50 : tier === 'medium' ? 44 : 38;
+  const duration = tier === 'high' ? 1.6 : 1.35;
 
   // Translation text based on TARGET language (where we're going)
   const transitionText = {
@@ -48,11 +58,11 @@ const LanguageTransition = () => {
               height: '100px',
             }}
             animate={{ 
-              scale: [0, 50, 50, 0],
+              scale: [0, finalScale, finalScale, 0],
               rotate: [0, 180, 180, 360],
             }}
             transition={{
-              duration: 1.6,
+              duration,
               times: [0, 0.375, 0.625, 1], // 600ms expand, 400ms hold, 600ms contract
               ease: [0.43, 0.13, 0.23, 0.96], // Custom cubic-bezier for smooth motion
             }}
@@ -67,7 +77,7 @@ const LanguageTransition = () => {
               scale: [0.8, 1, 1, 0.8],
             }}
             transition={{
-              duration: 1.6,
+              duration,
               times: [0, 0.25, 0.75, 1],
             }}
           >
@@ -85,7 +95,7 @@ const LanguageTransition = () => {
                 strokeLinejoin="round"
                 animate={{ rotate: 360 }}
                 transition={{
-                  duration: 1.6,
+                  duration,
                   ease: "linear",
                 }}
               >
@@ -102,7 +112,7 @@ const LanguageTransition = () => {
                   opacity: [0.5, 0, 0, 0.5],
                 }}
                 transition={{
-                  duration: 1.6,
+                  duration,
                   times: [0, 0.4, 0.6, 1],
                 }}
               />
@@ -115,7 +125,7 @@ const LanguageTransition = () => {
                 opacity: [0, 1, 1, 0],
               }}
               transition={{
-                duration: 1.6,
+                duration,
                 times: [0, 0.25, 0.75, 1],
               }}
             >
@@ -124,7 +134,7 @@ const LanguageTransition = () => {
           </motion.div>
 
           {/* Particle Effects */}
-          {[...Array(8)].map((_, i) => (
+          {[...Array(particleCount)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-2 h-2 rounded-full bg-white"
@@ -133,13 +143,13 @@ const LanguageTransition = () => {
                 left: '50%',
               }}
               animate={{
-                x: [0, Math.cos((i * Math.PI * 2) / 8) * 200],
-                y: [0, Math.sin((i * Math.PI * 2) / 8) * 200],
+                x: [0, Math.cos((i * Math.PI * 2) / particleCount) * 200],
+                y: [0, Math.sin((i * Math.PI * 2) / particleCount) * 200],
                 opacity: [0, 1, 0],
                 scale: [0, 1, 0],
               }}
               transition={{
-                duration: 1.6,
+                duration,
                 times: [0, 0.4, 1],
                 ease: "easeOut",
               }}

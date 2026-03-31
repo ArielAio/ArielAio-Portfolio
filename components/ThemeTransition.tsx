@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
+import { usePerformance } from '../PerformanceContext';
 
 /**
  * ThemeTransition Component
@@ -17,6 +18,17 @@ import { useTheme } from '../ThemeContext';
 
 const ThemeTransition = () => {
   const { isTransitioning, targetTheme } = useTheme();
+  const { reduceMotion, tier } = usePerformance();
+
+  if (reduceMotion) {
+    return null;
+  }
+
+  const orbitCount = tier === 'high' ? 6 : tier === 'medium' ? 4 : 2;
+  const radialCount = tier === 'high' ? 12 : tier === 'medium' ? 8 : 4;
+  const ringCount = tier === 'high' ? 3 : tier === 'medium' ? 2 : 1;
+  const finalScale = tier === 'high' ? 50 : tier === 'medium' ? 44 : 38;
+  const duration = tier === 'high' ? 1.6 : 1.35;
 
   // Determine what theme we're transitioning TO
   const isGoingToDark = targetTheme === 'dark';
@@ -61,11 +73,11 @@ const ThemeTransition = () => {
               height: '100px',
             }}
             animate={{ 
-              scale: [0, 50, 50, 0],
+              scale: [0, finalScale, finalScale, 0],
               rotate: isGoingToDark ? [0, -180, -180, -360] : [0, 180, 180, 360],
             }}
             transition={{
-              duration: 1.6,
+              duration,
               times: [0, 0.375, 0.625, 1], // 600ms expand, 400ms hold, 600ms contract
               ease: [0.43, 0.13, 0.23, 0.96], // Custom cubic-bezier for smooth motion
             }}
@@ -80,7 +92,7 @@ const ThemeTransition = () => {
               scale: [0.8, 1, 1, 0.8],
             }}
             transition={{
-              duration: 1.6,
+              duration,
               times: [0, 0.25, 0.75, 1],
             }}
           >
@@ -94,7 +106,7 @@ const ThemeTransition = () => {
                   scale: [1, 1.2, 1]
                 }}
                 transition={{
-                  duration: 1.6,
+                  duration,
                   ease: "easeInOut",
                 }}
               >
@@ -113,13 +125,13 @@ const ThemeTransition = () => {
                   opacity: [0.5, 0, 0, 0.5],
                 }}
                 transition={{
-                  duration: 1.6,
+                  duration,
                   times: [0, 0.4, 0.6, 1],
                 }}
               />
 
               {/* Orbiting Particles */}
-              {[...Array(6)].map((_, i) => (
+              {[...Array(orbitCount)].map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-2 h-2 rounded-full bg-white"
@@ -129,13 +141,13 @@ const ThemeTransition = () => {
                   }}
                   animate={{
                     rotate: [0, 360],
-                    x: [0, Math.cos((i * Math.PI * 2) / 6) * 50, Math.cos((i * Math.PI * 2) / 6) * 50, 0],
-                    y: [0, Math.sin((i * Math.PI * 2) / 6) * 50, Math.sin((i * Math.PI * 2) / 6) * 50, 0],
+                    x: [0, Math.cos((i * Math.PI * 2) / orbitCount) * 50, Math.cos((i * Math.PI * 2) / orbitCount) * 50, 0],
+                    y: [0, Math.sin((i * Math.PI * 2) / orbitCount) * 50, Math.sin((i * Math.PI * 2) / orbitCount) * 50, 0],
                     opacity: [0, 1, 1, 0],
                     scale: [0, 1, 1, 0],
                   }}
                   transition={{
-                    duration: 1.6,
+                    duration,
                     times: [0, 0.3, 0.7, 1],
                     ease: "easeInOut",
                   }}
@@ -150,7 +162,7 @@ const ThemeTransition = () => {
                 opacity: [0, 1, 1, 0],
               }}
               transition={{
-                duration: 1.6,
+                duration,
                 times: [0, 0.25, 0.75, 1],
               }}
             >
@@ -159,7 +171,7 @@ const ThemeTransition = () => {
           </motion.div>
 
           {/* Radial Particles */}
-          {[...Array(12)].map((_, i) => (
+          {[...Array(radialCount)].map((_, i) => (
             <motion.div
               key={`radial-${i}`}
               className="absolute rounded-full bg-white"
@@ -170,13 +182,13 @@ const ThemeTransition = () => {
                 left: '50%',
               }}
               animate={{
-                x: [0, Math.cos((i * Math.PI * 2) / 12) * 250],
-                y: [0, Math.sin((i * Math.PI * 2) / 12) * 250],
+                x: [0, Math.cos((i * Math.PI * 2) / radialCount) * 250],
+                y: [0, Math.sin((i * Math.PI * 2) / radialCount) * 250],
                 opacity: [0, 1, 0],
                 scale: [0, isGoingToDark ? 1 : 1.5, 0],
               }}
               transition={{
-                duration: 1.6,
+                duration,
                 times: [0, 0.4, 1],
                 ease: "easeOut",
                 delay: i * 0.03, // Stagger effect
@@ -185,7 +197,7 @@ const ThemeTransition = () => {
           ))}
 
           {/* Expanding Rings */}
-          {[...Array(3)].map((_, i) => (
+          {[...Array(ringCount)].map((_, i) => (
             <motion.div
               key={`ring-${i}`}
               className="absolute rounded-full border-2 border-white/30"
@@ -201,7 +213,7 @@ const ThemeTransition = () => {
                 opacity: [0.5, 0],
               }}
               transition={{
-                duration: 1.6,
+                duration,
                 times: [0, 1],
                 ease: "easeOut",
                 delay: i * 0.15,

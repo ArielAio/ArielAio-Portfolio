@@ -84,7 +84,6 @@ export const EXPERIENCE_CONTENT = {
         company: "Memoryiit (Skyiit)",
         period: "2025 - Atual",
         description: "Plataforma SaaS consolidada com 195.060 usuários e 63.000+ memórias criadas.",
-        projectLink: "https://memoryiit.com",
         details: [
           "Liderança operacional de plataforma com faturamento acumulado superior a R$ 1.500.000,00.",
           "Implementei sistemas de triagem e atendimento assistidos por IA, gerenciando suporte para 195k usuários com alta padronização.",
@@ -148,7 +147,6 @@ export const EXPERIENCE_CONTENT = {
         company: "Memoryiit (Skyiit)",
         period: "2025 - Atual",
         description: "Consolidated SaaS platform with 195,060 users and 63,000+ created memories.",
-        projectLink: "https://memoryiit.com",
         details: [
           "Operational leadership of platform with cumulative revenue exceeding R$ 1,500,000.",
           "Implemented AI-assisted triage and support systems, managing support for 195k users with high standardization.",
@@ -222,8 +220,6 @@ export const FEATURED_PROJECTS = {
         ],
         tags: ["Product Management", "Operations", "AI Automation", "Team Leadership", "SaaS B2C"],
         image: "/memoryiit.png",
-        link: "https://memoryiit.com",
-        badge: "🚀 Em Produção",
         cta: "Visitar Projeto"
       }
     ]
@@ -260,8 +256,6 @@ export const FEATURED_PROJECTS = {
         ],
         tags: ["Product Management", "Operations", "AI Automation", "Team Leadership", "SaaS B2C"],
         image: "/memoryiit.png",
-        link: "https://memoryiit.com",
-        badge: "🚀 In Production",
         cta: "Visit Project"
       }
     ]

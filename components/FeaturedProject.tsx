@@ -85,11 +85,13 @@ const FeaturedProject: React.FC = React.memo(() => {
                   <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gradient-to-t from-dark/80 via-dark/20 to-transparent' : 'bg-gradient-to-t from-gray-900/75 via-gray-900/10 to-transparent'}`} />
                   
                   {/* Badge Overlay */}
-                  <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-2 px-4 py-2 bg-green-500/90 backdrop-blur-md rounded-full ${classes.text.inverse} text-sm font-bold ${classes.shadow.lg}`}>
-                      {project.badge}
-                    </span>
-                  </div>
+                  {project.badge && (
+                    <div className="absolute top-4 left-4">
+                      <span className={`inline-flex items-center gap-2 px-4 py-2 bg-green-500/90 backdrop-blur-md rounded-full ${classes.text.inverse} text-sm font-bold ${classes.shadow.lg}`}>
+                        {project.badge}
+                      </span>
+                    </div>
+                  )}
                 </motion.div>
 
                 {/* Right: Content */}

@@ -18,8 +18,20 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [targetLanguage, setTargetLanguage] = useState<Language | null>(null);
 
+  const shouldAnimateTransition = () => {
+    if (typeof window === 'undefined' || !window.matchMedia) return true;
+    return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
   const toggleLanguage = () => {
     const nextLang = language === 'pt' ? 'en' : 'pt';
+
+    if (!shouldAnimateTransition()) {
+      setLanguage(nextLang);
+      setIsTransitioning(false);
+      setTargetLanguage(null);
+      return;
+    }
     
     // Set target language FIRST (for display in transition)
     setTargetLanguage(nextLang);
@@ -38,6 +50,13 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   const startTransition = (callback: () => void) => {
+    if (!shouldAnimateTransition()) {
+      callback();
+      setIsTransitioning(false);
+      setTargetLanguage(null);
+      return;
+    }
+
     setIsTransitioning(true);
     
     // Wait for expand animation (600ms)

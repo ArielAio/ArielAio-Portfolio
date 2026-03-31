@@ -161,12 +161,12 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
                         rel="noopener noreferrer"
                         whileHover={{ 
                             scale: 1.05, 
-                            backgroundColor: "#4f46e5", 
+                        backgroundColor: "#4338ca", 
                             boxShadow: "0 0 20px rgba(99, 102, 241, 0.6)" 
                         }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                        className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-primary ${classes.text.inverse} rounded-lg text-sm font-bold ${classes.shadow.lg} transition-colors cursor-pointer`}
+                      className="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg transition-colors cursor-pointer border border-indigo-400 bg-indigo-600 text-white"
                     >
                         <ExternalLink size={16} /> {textDemo}
                     </motion.a>
@@ -177,16 +177,16 @@ const ProjectCard: React.FC<{ project: Project; textDemo: string; textCode: stri
                             rel="noopener noreferrer"
                             whileHover={{ 
                                 scale: 1.05, 
-                                backgroundColor: theme === 'dark' ? "rgba(168, 85, 247, 0.2)" : "rgba(168, 85, 247, 0.15)",
-                                borderColor: theme === 'dark' ? "rgba(168, 85, 247, 0.6)" : "rgba(168, 85, 247, 0.5)",
-                                boxShadow: theme === 'dark' ? "0 0 20px rgba(168, 85, 247, 0.4)" : "0 0 20px rgba(168, 85, 247, 0.3)"
+                              backgroundColor: theme === 'dark' ? "#111827" : "#e2e8f0",
+                              borderColor: theme === 'dark' ? "#4b5563" : "#94a3b8",
+                              boxShadow: theme === 'dark' ? "0 0 16px rgba(17, 24, 39, 0.45)" : "0 0 14px rgba(148, 163, 184, 0.35)"
                             }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                            className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold backdrop-blur-md transition-all duration-300 cursor-pointer border-2 ${
+                            className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 cursor-pointer border ${
                                 theme === 'dark'
-                                    ? 'bg-white/10 text-white border-white/30 shadow-lg hover:text-white'
-                                    : 'bg-gray-800/90 text-white border-gray-700 shadow-lg hover:text-white'
+                                ? 'bg-gray-900 text-white border-gray-700 shadow-lg hover:text-white'
+                                : 'bg-slate-100 text-slate-900 border-slate-300 shadow-lg hover:text-slate-900'
                             }`}
                         >
                             <Github size={16} /> {textCode}
