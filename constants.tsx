@@ -69,13 +69,13 @@ export const EXPERIENCE_CONTENT = {
         role: "Fundador & Desenvolvedor Full-Stack",
         company: "ZapWrapp",
         period: "2025 - Atual",
-        description: "SaaS B2C de retrospectivas visuais de dados do WhatsApp (45.412 usuários).",
+        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais, com 45.412 usuários alcançados.",
         projectLink: "https://zapwrapp.com",
         details: [
           "Faturamento superior a R$ 25.000,00 desde o lançamento, atingindo Break-even em 48 horas com operação 100% autofinanciada.",
-          "Arquitetei o pipeline completo de processamento algorítmico de arquivos, integração de gateways de pagamento e geração de mídia.",
+          "Arquitetei o pipeline completo de processamento algorítmico de arquivos, integração de gateways de pagamento e geração de mídia para o usuário final.",
           "Implementei infraestrutura Serverless/Assíncrona, processando 4.732 transações com custos operacionais 70% menores que modelos tradicionais.",
-          "Redução do time-to-market em 75% através de fluxos de desenvolvimento otimizados com IA."
+          "Redução do time-to-market em 75% por meio de fluxos de desenvolvimento otimizados com apoio de IA."
         ]
       },
       {
@@ -83,12 +83,12 @@ export const EXPERIENCE_CONTENT = {
         role: "COO & Cofundador",
         company: "Memoryiit (Skyiit)",
         period: "2025 - Atual",
-        description: "Plataforma SaaS consolidada com 195.060 usuários e 63.000+ memórias criadas.",
+        description: "Plataforma SaaS consolidada com 195.060 usuários, 63.000+ memórias criadas e operação de alto volume.",
         details: [
           "Liderança operacional de plataforma com faturamento acumulado superior a R$ 1.500.000,00.",
           "Implementei sistemas de triagem e atendimento assistidos por IA, gerenciando suporte para 195k usuários com alta padronização.",
           "Estruturei fluxos automáticos que permitiram escalar a operação mantendo equipe enxuta, maximizando lucratividade.",
-          "Coordenação de operações internas via Linear, gestão de equipes de suporte e criação de conteúdo para marketing."
+          "Coordenação de operações internas via Linear, gestão de equipes de suporte e organização de conteúdo para marketing."
         ]
       },
       {
@@ -96,12 +96,12 @@ export const EXPERIENCE_CONTENT = {
         role: "Estagiário em Desenvolvimento",
         company: "EnterScience",
         period: "2024 - 2025",
-        description: "Desenvolvimento Full-Stack em ambiente de tecnologia educacional.",
+        description: "Desenvolvimento Full-Stack em ambiente de tecnologia educacional, com atuação em Laravel, React, PHP e PostgreSQL.",
         details: [
           "Desenvolvimento de funcionalidades em Laravel, integrando APIs para geração automática de conteúdos pedagógicos e provas.",
           "Implementação de camadas de validação (System Guardrails) e self-checking em LLMs para garantir integridade técnica.",
           "Manutenção de bancos PostgreSQL, realizando refatorações e otimizações de queries para melhoria de performance.",
-          "Atuação em ciclos ágeis com React e PHP, realizando code reviews e documentação de sistemas."
+          "Atuação em ciclos ágeis com React e PHP, contribuindo com code reviews e documentação de sistemas."
         ]
       },
     ],
@@ -132,26 +132,26 @@ export const EXPERIENCE_CONTENT = {
         role: "Founder & Full-Stack Developer",
         company: "ZapWrapp",
         period: "2025 - Present",
-        description: "B2C SaaS for WhatsApp visual data retrospectives (45,412 users).",
+        description: "B2C SaaS that turns exported WhatsApp conversations into visual retrospectives, reaching 45,412 users.",
         projectLink: "https://zapwrapp.com",
         details: [
           "Revenue exceeding R$ 25,000 since launch, reaching Break-even in 48 hours with 100% self-funded operation.",
-          "Architected complete pipeline for algorithmic file processing, payment gateway integration, and media generation.",
+          "Architected the full pipeline for algorithmic file processing, payment gateway integration, and final media generation.",
           "Implemented Serverless/Asynchronous infrastructure, processing 4,732 transactions with 70% lower operational costs than traditional models.",
-          "Reduced time-to-market by 75% through AI-optimized development workflows."
+          "Reduced time-to-market by 75% through development workflows optimized with AI support."
         ]
       },
       {
         id: 2,
         role: "COO & Co-Founder",
         company: "Memoryiit (Skyiit)",
-        period: "2025 - Atual",
-        description: "Consolidated SaaS platform with 195,060 users and 63,000+ created memories.",
+        period: "2025 - Present",
+        description: "Consolidated SaaS platform with 195,060 users, 63,000+ created memories, and high-volume operations.",
         details: [
           "Operational leadership of platform with cumulative revenue exceeding R$ 1,500,000.",
           "Implemented AI-assisted triage and support systems, managing support for 195k users with high standardization.",
           "Structured automated workflows that enabled scaling operations with a lean team, maximizing profitability.",
-          "Internal operations coordination via Linear, support team management, and marketing content creation."
+          "Internal operations coordination via Linear, support team management, and marketing content organization."
         ]
       },
       {
@@ -159,12 +159,12 @@ export const EXPERIENCE_CONTENT = {
         role: "Development Intern",
         company: "EnterScience",
         period: "2024 - 2025",
-        description: "Full-Stack development in educational technology environment.",
+        description: "Full-Stack development in an educational technology environment, working with Laravel, React, PHP, and PostgreSQL.",
         details: [
           "Laravel feature development, integrating APIs for automatic generation of pedagogical content and exams.",
           "Implementation of validation layers (System Guardrails) and self-checking in LLMs to ensure technical integrity.",
           "PostgreSQL database maintenance, performing refactorings and query optimizations for performance improvement.",
-          "Agile cycles work with React and PHP, performing code reviews and system documentation."
+          "Worked in agile cycles with React and PHP, contributing to code reviews and system documentation."
         ]
       },
     ],
@@ -190,12 +190,12 @@ export const EXPERIENCE_CONTENT = {
 export const FEATURED_PROJECTS = {
   pt: {
     sectionTitle: "Projetos em Destaque",
-    heading: "Produtos que eu liderei",
+    heading: "Produtos que construí, liderei ou ajudei a escalar",
     projects: [
       {
         title: "ZapWrapp — Retrospectiva do WhatsApp",
         subtitle: "Fundador & Desenvolvedor Full-Stack",
-        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais do ano, com métricas, rankings e telas prontas para compartilhar. Alcancei 45.412 usuários e faturamento superior a R$ 25.000,00.",
+        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais do ano, com métricas, rankings e telas prontas para compartilhar. Atuei da concepção à entrega, incluindo arquitetura, processamento de arquivos, pagamentos e experiência final. O produto alcançou 45.412 usuários e faturamento superior a R$ 25.000,00.",
         responsibilities: [
           "Arquitetura full-stack: pipeline de processamento algorítmico de arquivos, geração de mídia e integração com gateways de pagamento",
           "Infraestrutura Serverless/Assíncrona com custos operacionais 70% menores, processando 4.732 transações",
@@ -211,7 +211,7 @@ export const FEATURED_PROJECTS = {
       {
         title: "Memoryiit — Plataforma de Presentes Digitais",
         subtitle: "COO & Co-Fundador | Skyiit",
-        description: "Como COO e Co-fundador da Skyiit, coordenei o lançamento e operação do Memoryiit, plataforma consolidada com 195.060 usuários, 63.000+ memórias criadas e faturamento superior a R$ 1.500.000,00.",
+        description: "Como COO e cofundador da Skyiit, coordenei operação, suporte, automações e rotinas internas do Memoryiit, plataforma consolidada com 195.060 usuários, 63.000+ memórias criadas e faturamento superior a R$ 1.500.000,00. O foco foi escalar com processos claros, equipe enxuta e acompanhamento constante da experiência do usuário.",
         responsibilities: [
           "Liderança operacional de plataforma com alto volume de tráfego e transações",
           "Implementação de sistemas de triagem e atendimento assistidos por IA para base de 195k usuários",
@@ -226,12 +226,12 @@ export const FEATURED_PROJECTS = {
   },
   en: {
     sectionTitle: "Featured Projects",
-    heading: "Products I led",
+    heading: "Products I built, led, or helped scale",
     projects: [
       {
         title: "ZapWrapp — WhatsApp Retrospective",
         subtitle: "Founder & Full-Stack Developer",
-        description: "B2C SaaS that transforms exported WhatsApp conversations into visual yearly retrospectives with metrics, rankings, and share-ready screens. Reached 45,412 users and revenue exceeding R$ 25,000.",
+        description: "B2C SaaS that transforms exported WhatsApp conversations into visual yearly retrospectives with metrics, rankings, and share-ready screens. I worked from concept to delivery, including architecture, file processing, payments, and the final user experience. The product reached 45,412 users and revenue exceeding R$ 25,000.",
         responsibilities: [
           "Full-stack architecture: algorithmic file processing pipeline, media generation, and payment gateway integration",
           "Serverless/Asynchronous infrastructure with 70% lower operational costs, processing 4,732 transactions",
@@ -247,7 +247,7 @@ export const FEATURED_PROJECTS = {
       {
         title: "Memoryiit — Digital Gifts Platform",
         subtitle: "COO & Co-Founder | Skyiit",
-        description: "As COO and Co-founder of Skyiit, I coordinated the launch and operations of Memoryiit, a consolidated platform with 195,060 users, 63,000+ created memories, and revenue exceeding R$ 1,500,000.",
+        description: "As COO and co-founder of Skyiit, I coordinated operations, support, automations, and internal routines for Memoryiit, a consolidated platform with 195,060 users, 63,000+ created memories, and revenue exceeding R$ 1,500,000. The focus was scaling with clear processes, a lean team, and constant attention to user experience.",
         responsibilities: [
           "Operational leadership of high-traffic and high-transaction platform",
           "Implementation of AI-assisted triage and support systems for 195k user base",
@@ -272,7 +272,7 @@ export const PROJECTS_CONTENT = {
       {
         id: 1,
         title: "Sistema para Barbearias",
-        description: "Plataforma completa para barbearias, com agendamentos em tempo real, gestão de clientes e painel administrativo intuitivo. Utilizado diariamente em produção por estabelecimentos reais.",
+        description: "Plataforma de gestão para barbearias com agendamentos em tempo real, cadastro de clientes e painel administrativo. O projeto foi pensado para simplificar a rotina de estabelecimentos reais, centralizando horários, informações de clientes e acompanhamento operacional em uma interface direta para uso diário.",
         tags: ["Next.js", "Firebase", "SaaS", "Agendamentos"],
         image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800",
         link: "https://barber-agenda.vercel.app",
@@ -281,7 +281,7 @@ export const PROJECTS_CONTENT = {
       {
         id: 2,
         title: "Strike System — Gestão para Academias",
-        description: "Sistema completo para academias, incluindo controle de acesso, gestão de alunos, treinos, planos e dashboard administrativo. Desenvolvido com foco em escalabilidade e alta performance.",
+        description: "Sistema de gestão para academias com controle de acesso, gestão de alunos, treinos, planos e dashboard administrativo. A proposta foi criar uma base organizada para acompanhar a operação da academia, reduzir controles manuais e manter uma estrutura preparada para evolução gradual.",
         tags: ["Next.js", "Gestão de Academia", "Dashboard Administrativo", "SaaS"],
         image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800",
         link: "https://strike-system.vercel.app/signIn",
@@ -290,7 +290,7 @@ export const PROJECTS_CONTENT = {
       {
         id: 3,
         title: "Assistente de IA",
-        description: "Chatbot inteligente integrado à API Sabiá 3, com processamento de linguagem natural, respostas contextuais e fluxo otimizado para interações rápidas e naturais.",
+        description: "Chatbot integrado à API Sabiá 3, com processamento de linguagem natural, respostas contextuais e fluxo otimizado para interações rápidas. O projeto demonstra integração prática com modelo de linguagem, organização do estado da conversa e interface simples para validação de uso.",
         tags: ["IA", "Chatbot", "NLP", "API Sabiá 3", "Integração de API"],
         image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
         link: "https://chat-bot-gules-chi.vercel.app",
@@ -299,7 +299,7 @@ export const PROJECTS_CONTENT = {
       {
         id: 4,
         title: "CodeWise — Plataforma EAD",
-        description: "Plataforma de cursos online desenvolvida em Next.js, com foco em usabilidade, fluxo intuitivo de aprendizado e experiência otimizada para estudantes e criadores.",
+        description: "Plataforma de cursos online desenvolvida em Next.js, com foco em usabilidade, organização de conteúdo e fluxo intuitivo de aprendizado. A interface foi pensada para simular um produto educacional real, com navegação clara para estudantes e base visual preparada para expansão.",
         tags: ["Next.js", "LMS", "Educação Online"],
         image: "/CodeWise.png",
         link: "http://codewise-liart.vercel.app/",
@@ -316,38 +316,38 @@ export const PROJECTS_CONTENT = {
       {
         id: 1,
         title: "Barbershop System",
-        description: "Complete platform for barbershops featuring real-time scheduling, client management, and an intuitive administrative panel. Used daily in production by real establishments.",
+        description: "Management platform for barbershops with real-time scheduling, client records, and an administrative panel. The project was designed to simplify the routine of real establishments by centralizing appointments, client information, and operational tracking in a direct daily-use interface.",
         tags: ["Next.js", "Firebase", "SaaS", "Scheduling"],
         image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800",
         link: "https://barber-agenda.vercel.app",
-        githubRepo: "https://github.com/ArielAio?tab=repositories",
+        githubRepo: "https://github.com/ArielAio/Barber.git",
       },
       {
         id: 2,
         title: "Strike System — Gym Management",
-        description: "Complete system for gyms including access control, student management, workouts, plans, and administrative dashboard. Developed with a focus on scalability and high performance.",
+        description: "Gym management system with access control, student management, workouts, plans, and an administrative dashboard. The goal was to create an organized base for tracking gym operations, reducing manual controls, and keeping the structure ready for gradual evolution.",
         tags: ["Next.js", "Gym Management", "Admin Dashboard", "SaaS"],
         image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800",
         link: "https://strike-system.vercel.app/signIn",
-        githubRepo: "https://github.com/ArielAio?tab=repositories",
+        githubRepo: "https://github.com/ArielAio/strike.git",
       },
       {
         id: 3,
         title: "AI Assistant",
-        description: "Intelligent chatbot integrated with Sabiá 3 API, featuring natural language processing, contextual responses, and an optimized flow for fast and natural interactions.",
+        description: "Chatbot integrated with the Sabiá 3 API, featuring natural language processing, contextual responses, and an optimized flow for fast interactions. The project demonstrates practical language model integration, conversation state organization, and a simple interface for usage validation.",
         tags: ["AI", "Chatbot", "NLP", "Sabiá 3 API", "API Integration"],
         image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
         link: "https://chat-bot-gules-chi.vercel.app",
-        githubRepo: "https://github.com/ArielAio?tab=repositories",
+        githubRepo: "https://github.com/ArielAio/ChatBot.git",
       },
       {
         id: 4,
         title: "CodeWise — E-Learning Platform",
-        description: "Online course platform developed in Next.js, focusing on usability, intuitive learning flow, and optimized experience for students and creators.",
+        description: "Online course platform developed in Next.js, focused on usability, content organization, and an intuitive learning flow. The interface was designed to simulate a real education product, with clear navigation for students and a visual base prepared for future expansion.",
         tags: ["Next.js", "LMS", "Online Education"],
         image: "/CodeWise.png",
         link: "http://codewise-liart.vercel.app/",
-        githubRepo: "https://github.com/ArielAio?tab=repositories",
+        githubRepo: "https://github.com/ArielAio/codewise.git",
       },
     ]
   }
