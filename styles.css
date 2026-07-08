@@ -767,13 +767,6 @@ p {
   margin-top: 2.05rem;
 }
 
-.resume-featured-experience {
-  margin-left: -.85rem;
-  padding: .95rem .95rem 1rem;
-  border-left: 4px solid var(--lime);
-  background: rgba(204, 243, 129, .16);
-}
-
 .resume-list header {
   display: flex;
   justify-content: space-between;

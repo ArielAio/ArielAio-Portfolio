@@ -580,7 +580,7 @@ function ResumePage({
           <p>{t.experienceIntro}</p>
           <ul className="resume-list">
             {experience.experience.map((item) => (
-              <li key={item.id} className={item.company.includes('Prefeitura') ? 'resume-featured-experience' : undefined}>
+              <li key={item.id}>
                 <header>
                   <h4>{item.company} <span>{item.role}</span></h4>
                   <span>{item.period}</span>
