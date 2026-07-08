@@ -20,8 +20,8 @@ export const HERO_CONTENT = {
   pt: {
     greeting: "Olá, eu sou o",
     name: "Ariel André Aio",
-    role: "Desenvolvedor Full-Stack | COO | Especialista em Operações & Automação",
-    description: "Desenvolvedor Full-Stack e Cofundador com experiência na construção e escala de produtos SaaS B2C que somam mais de R$ 1.5 milhão em faturamento. Especialista em arquitetura de sistemas (Laravel, React, Next.js) e otimização de operações através de automações estratégicas.",
+    role: "Desenvolvedor Full-Stack | Produto | Operações & Automação",
+    description: "Desenvolvedor Full-Stack com experiência prática em sistemas em produção, APIs REST, bancos relacionais, suporte a usuários, automação operacional e produtos digitais.",
     ctaProjects: "Ver Projetos",
     ctaContact: "Entrar em Contato",
     ctaResume: "Baixar PDF",
@@ -30,8 +30,8 @@ export const HERO_CONTENT = {
   en: {
     greeting: "Hello, I am",
     name: "Ariel André Aio",
-    role: "Full-Stack Developer | COO | Operations & Automation Specialist",
-    description: "Full-Stack Developer and Co-founder with experience in building and scaling B2C SaaS products that total over R$ 1.5 million in revenue. Specialist in systems architecture (Laravel, React, Next.js) and operations optimization through strategic automations.",
+    role: "Full-Stack Developer | Product | Operations & Automation",
+    description: "Full-Stack Developer with hands-on experience in production systems, REST APIs, relational databases, user support, operational automation, and digital products.",
     ctaProjects: "View Projects",
     ctaContact: "Get in Touch",
     ctaResume: "Download PDF",
@@ -44,7 +44,7 @@ export const ABOUT_CONTENT = {
     title: "Sobre Mim",
     services: [
       { title: "Desenvolvimento Full-Stack", icon: Code, description: "Experiência em React, Next.js, Laravel e Node.js. Arquitetura de sistemas serverless, APIs RESTful e integração de gateways de pagamento (Stripe, Mercado Pago)." },
-      { title: "Gestão de Produtos & Operações", icon: Smartphone, description: "COO com experiência em escalar produtos SaaS B2C. Gestão de operações, automações estratégicas e liderança de equipes para produtos com +195k usuários." },
+      { title: "Produto & Operações", icon: Smartphone, description: "Experiência em sustentação de produto, suporte a usuários, organização de demandas e automação de rotinas operacionais." },
       { title: "Banco de Dados & Infraestrutura", icon: Database, description: "PostgreSQL, MySQL, Firebase e Redis. Otimização de queries, arquitetura serverless e jobs/filas para processamento assíncrono." },
     ]
   },
@@ -52,7 +52,7 @@ export const ABOUT_CONTENT = {
     title: "About Me",
     services: [
       { title: "Full-Stack Development", icon: Code, description: "Experience with React, Next.js, Laravel, and Node.js. Serverless systems architecture, RESTful APIs, and payment gateway integration (Stripe, Mercado Pago)." },
-      { title: "Product Management & Operations", icon: Smartphone, description: "COO with experience scaling B2C SaaS products. Operations management, strategic automations, and team leadership for products with +195k users." },
+      { title: "Product & Operations", icon: Smartphone, description: "Experience with product support, user support, demand organization, and operational workflow automation." },
       { title: "Database & Infrastructure", icon: Database, description: "PostgreSQL, MySQL, Firebase, and Redis. Query optimization, serverless architecture, and job/queue processing." },
     ]
   }
@@ -66,7 +66,19 @@ export const EXPERIENCE_CONTENT = {
     experience: [
       {
         id: 1,
-        role: "Fundador & Desenvolvedor Full-Stack",
+        role: "Estagiário",
+        company: "Prefeitura Municipal de São João das Duas Pontes",
+        period: "2026 - Atual",
+        description: "Atuação em ambiente público municipal, apoiando rotinas administrativas e uso de sistemas em produção.",
+        details: [
+          "Uso diário dos sistemas de gestão pública da Fiorilli, com familiaridade prática em soluções voltadas a prefeituras.",
+          "Apoio a processos internos da prefeitura, organização de informações e documentos em sistemas administrativos.",
+          "Vivência com demandas reais do setor público e operação de sistemas utilizados em rotina municipal."
+        ]
+      },
+      {
+        id: 2,
+        role: "Desenvolvedor Full-Stack",
         company: "ZapWrapp",
         period: "2025 - Atual",
         description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais, com 45.412 usuários alcançados.",
@@ -79,20 +91,19 @@ export const EXPERIENCE_CONTENT = {
         ]
       },
       {
-        id: 2,
-        role: "COO & Cofundador",
-        company: "Memoryiit (Skyiit)",
-        period: "2025 - Atual",
-        description: "Plataforma SaaS consolidada com 195.060 usuários, 63.000+ memórias criadas e operação de alto volume.",
+        id: 3,
+        role: "Desenvolvedor Full-Stack & Sustentação de Produto",
+        company: "Memoryiit",
+        period: "2025 - 2026",
+        description: "Apoio à operação e evolução de plataforma digital em produção, com atuação em sustentação de produto.",
         details: [
-          "Liderança operacional de plataforma com faturamento acumulado superior a R$ 1.500.000,00.",
-          "Implementei sistemas de triagem e atendimento assistidos por IA, gerenciando suporte para 195k usuários com alta padronização.",
-          "Estruturei fluxos automáticos que permitiram escalar a operação mantendo equipe enxuta, maximizando lucratividade.",
-          "Coordenação de operações internas via Linear, gestão de equipes de suporte e organização de conteúdo para marketing."
+          "Triagem de dúvidas, problemas operacionais e necessidades de melhoria em produto digital em produção.",
+          "Organização de fluxos de atendimento e priorização de demandas recorrentes.",
+          "Tradução de problemas operacionais em melhorias para o sistema e para a experiência do usuário."
         ]
       },
       {
-        id: 3,
+        id: 4,
         role: "Estagiário em Desenvolvimento",
         company: "EnterScience",
         period: "2024 - 2025",
@@ -129,7 +140,19 @@ export const EXPERIENCE_CONTENT = {
     experience: [
       {
         id: 1,
-        role: "Founder & Full-Stack Developer",
+        role: "Intern",
+        company: "Prefeitura Municipal de São João das Duas Pontes",
+        period: "2026 - Present",
+        description: "Work in a municipal public-sector environment, supporting administrative routines and production systems.",
+        details: [
+          "Daily use of Fiorilli public management systems, gaining practical familiarity with software used by city administrations.",
+          "Support for internal city hall processes, organizing information and documents in administrative systems.",
+          "Exposure to real public-sector demands and production systems used in municipal operations."
+        ]
+      },
+      {
+        id: 2,
+        role: "Full-Stack Developer",
         company: "ZapWrapp",
         period: "2025 - Present",
         description: "B2C SaaS that turns exported WhatsApp conversations into visual retrospectives, reaching 45,412 users.",
@@ -142,20 +165,19 @@ export const EXPERIENCE_CONTENT = {
         ]
       },
       {
-        id: 2,
-        role: "COO & Co-Founder",
-        company: "Memoryiit (Skyiit)",
-        period: "2025 - Present",
-        description: "Consolidated SaaS platform with 195,060 users, 63,000+ created memories, and high-volume operations.",
+        id: 3,
+        role: "Full-Stack Developer & Product Support",
+        company: "Memoryiit",
+        period: "2025 - 2026",
+        description: "Support for the operation and evolution of a production digital platform, working on product support.",
         details: [
-          "Operational leadership of platform with cumulative revenue exceeding R$ 1,500,000.",
-          "Implemented AI-assisted triage and support systems, managing support for 195k users with high standardization.",
-          "Structured automated workflows that enabled scaling operations with a lean team, maximizing profitability.",
-          "Internal operations coordination via Linear, support team management, and marketing content organization."
+          "Triaged user questions, operational issues, and product improvement needs in a production digital product.",
+          "Organized support flows and helped prioritize recurring demands.",
+          "Translated operational problems into improvements for the system and user experience."
         ]
       },
       {
-        id: 3,
+        id: 4,
         role: "Development Intern",
         company: "EnterScience",
         period: "2024 - 2025",
@@ -194,7 +216,7 @@ export const FEATURED_PROJECTS = {
     projects: [
       {
         title: "ZapWrapp — Retrospectiva do WhatsApp",
-        subtitle: "Fundador & Desenvolvedor Full-Stack",
+        subtitle: "Desenvolvedor Full-Stack",
         description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais do ano, com métricas, rankings e telas prontas para compartilhar. Atuei da concepção à entrega, incluindo arquitetura, processamento de arquivos, pagamentos e experiência final. O produto alcançou 45.412 usuários e faturamento superior a R$ 25.000,00.",
         responsibilities: [
           "Arquitetura full-stack: pipeline de processamento algorítmico de arquivos, geração de mídia e integração com gateways de pagamento",
@@ -210,15 +232,15 @@ export const FEATURED_PROJECTS = {
       },
       {
         title: "Memoryiit — Plataforma de Presentes Digitais",
-        subtitle: "COO & Co-Fundador | Skyiit",
-        description: "Como COO e cofundador da Skyiit, coordenei operação, suporte, automações e rotinas internas do Memoryiit, plataforma consolidada com 195.060 usuários, 63.000+ memórias criadas e faturamento superior a R$ 1.500.000,00. O foco foi escalar com processos claros, equipe enxuta e acompanhamento constante da experiência do usuário.",
+        subtitle: "Desenvolvedor Full-Stack & Sustentação de Produto",
+        description: "Atuei na sustentação e evolução do Memoryiit, plataforma digital em produção, apoiando triagem de dúvidas, problemas operacionais e necessidades de melhoria. O trabalho envolveu organizar fluxos de atendimento, priorizar demandas recorrentes e transformar problemas observados na operação em melhorias para o sistema.",
         responsibilities: [
-          "Liderança operacional de plataforma com alto volume de tráfego e transações",
-          "Implementação de sistemas de triagem e atendimento assistidos por IA para base de 195k usuários",
-          "Estruturação de fluxos automáticos que permitiram escalar mantendo equipe enxuta e maximizando lucratividade",
-          "Gestão de operações via Linear, liderança de equipes de suporte e criação de conteúdo para marketing"
+          "Sustentação de produto digital em produção",
+          "Triagem de dúvidas, problemas operacionais e necessidades de melhoria",
+          "Organização de fluxos de atendimento e priorização de demandas",
+          "Comunicação entre operação e evolução do sistema"
         ],
-        tags: ["Product Management", "Operations", "AI Automation", "Team Leadership", "SaaS B2C"],
+        tags: ["Product Support", "Operations", "Full-Stack", "SaaS"],
         image: "/memoryiit.png",
         cta: "Visitar Projeto"
       }
@@ -230,7 +252,7 @@ export const FEATURED_PROJECTS = {
     projects: [
       {
         title: "ZapWrapp — WhatsApp Retrospective",
-        subtitle: "Founder & Full-Stack Developer",
+        subtitle: "Full-Stack Developer",
         description: "B2C SaaS that transforms exported WhatsApp conversations into visual yearly retrospectives with metrics, rankings, and share-ready screens. I worked from concept to delivery, including architecture, file processing, payments, and the final user experience. The product reached 45,412 users and revenue exceeding R$ 25,000.",
         responsibilities: [
           "Full-stack architecture: algorithmic file processing pipeline, media generation, and payment gateway integration",
@@ -246,15 +268,15 @@ export const FEATURED_PROJECTS = {
       },
       {
         title: "Memoryiit — Digital Gifts Platform",
-        subtitle: "COO & Co-Founder | Skyiit",
-        description: "As COO and co-founder of Skyiit, I coordinated operations, support, automations, and internal routines for Memoryiit, a consolidated platform with 195,060 users, 63,000+ created memories, and revenue exceeding R$ 1,500,000. The focus was scaling with clear processes, a lean team, and constant attention to user experience.",
+        subtitle: "Full-Stack Developer & Product Support",
+        description: "I worked on support and product evolution for Memoryiit, a production digital platform, helping triage questions, operational issues, and improvement needs. The work involved organizing support flows, prioritizing recurring demands, and translating operational problems into system improvements.",
         responsibilities: [
-          "Operational leadership of high-traffic and high-transaction platform",
-          "Implementation of AI-assisted triage and support systems for 195k user base",
-          "Structured automated workflows enabling scaling with lean team while maximizing profitability",
-          "Operations management via Linear, support team leadership, and marketing content creation"
+          "Support for a production digital product",
+          "Triage of user questions, operational issues, and improvement needs",
+          "Organization of support flows and demand prioritization",
+          "Communication between operations and product evolution"
         ],
-        tags: ["Product Management", "Operations", "AI Automation", "Team Leadership", "SaaS B2C"],
+        tags: ["Product Support", "Operations", "Full-Stack", "SaaS"],
         image: "/memoryiit.png",
         cta: "Visit Project"
       }
@@ -363,7 +385,7 @@ export const SKILLS_CONTENT = {
         name: "React / Next.js",
         time: "2 anos (prof. + produção)",
         category: 'frontend',
-        description: "Desenvolvimento profissional (EnterScience) e produtos em produção (ZapWrapp, Memoryiit). Experiência com SSR, CSR, otimização de performance e SEO."
+        description: "Desenvolvimento profissional e experiência em produtos digitais como EnterScience, ZapWrapp e Memoryiit. Experiência com SSR, CSR, otimização de performance e SEO."
       },
       {
         name: "TypeScript / JavaScript",
@@ -417,7 +439,7 @@ export const SKILLS_CONTENT = {
         name: "Metodologias Ágeis / Linear",
         time: "2 anos",
         category: 'tools',
-        description: "Scrum, sprints e gestão de operações em produtos reais. Experiência como COO coordenando times via Linear."
+        description: "Scrum, sprints, organização de demandas e gestão de rotinas operacionais em produtos reais."
       },
     ]
   },
@@ -430,7 +452,7 @@ export const SKILLS_CONTENT = {
         name: "React / Next.js",
         time: "2 years (prof. + production)",
         category: 'frontend',
-        description: "Professional development (EnterScience) and production products (ZapWrapp, Memoryiit). Experience with SSR, CSR, performance optimization, and SEO."
+        description: "Professional development and digital product experience with EnterScience, ZapWrapp, and Memoryiit. Experience with SSR, CSR, performance optimization, and SEO."
       },
       {
         name: "TypeScript / JavaScript",
@@ -484,7 +506,7 @@ export const SKILLS_CONTENT = {
         name: "Agile Methodologies / Linear",
         time: "2 years",
         category: 'tools',
-        description: "Scrum, sprints, and operations management in real products. Experience as COO coordinating teams via Linear."
+        description: "Scrum, sprints, demand organization, and operational routine management in real products."
       },
     ]
   }

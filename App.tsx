@@ -25,7 +25,7 @@ const copy = {
     homeTitle: 'Ariel André Aio',
     homeParagraphs: [
       'Sou desenvolvedor full-stack com atuação direta em produto, operação e automação. Tenho experiência construindo sistemas web, integrando pagamentos, estruturando fluxos assíncronos e colocando produtos digitais em produção com foco em clareza, performance e manutenção simples.',
-      'No ZapWrapp, fundei e desenvolvi um SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais, passando por arquitetura, processamento de arquivos, checkout e entrega final ao usuário. Na Skyiit, atuo como COO e cofundador, ajudando a operar e escalar o Memoryiit, plataforma com mais de 195 mil usuários.',
+      'No ZapWrapp, desenvolvi um SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais, passando por arquitetura, processamento de arquivos, checkout e entrega final ao usuário. No Memoryiit, atuei em desenvolvimento full-stack e sustentação de produto, apoiando operação, atendimento e melhoria contínua do sistema.',
       'Minha stack principal passa por React, Next.js, TypeScript, Laravel, Node.js, bancos relacionais, Firebase, Redis, integrações de pagamento e automações com IA. Gosto de trabalhar onde engenharia encontra resultado: reduzir trabalho manual, melhorar atendimento, organizar dados e criar produtos que resolvem problemas reais.',
       'Também curso Sistemas de Informação no IFSP e tenho formação técnica em informática pela ETEC. Essa base combina prática de produto em produção, rotina operacional e fundamento acadêmico para tomar decisões técnicas com responsabilidade.',
       'Se você está avaliando meu perfil para uma vaga, projeto ou oportunidade de colaboração, pode me chamar para conversarmos.',
@@ -44,7 +44,7 @@ const copy = {
     resumeTitle: 'Ariel André Aio',
     resumeRole: 'Desenvolvedor Full-Stack com atuação em Produto, Operações e Automação.',
     resumeSummary:
-      'Experiência em produtos SaaS B2C, integrações, automações com IA, sistemas web e operação de plataformas digitais com base de usuários real.',
+      'Experiência em sistemas em produção, incluindo ambiente público municipal com sistemas Fiorilli, produtos SaaS B2C, integrações, automações com IA e operação de plataformas digitais.',
     experienceTitle: 'Experiência',
     experienceIntro: 'Experiências profissionais, produtos em produção e responsabilidades mais relevantes.',
     techTitle: 'Tecnologias principais:',
@@ -71,7 +71,7 @@ const copy = {
     homeTitle: 'Ariel André Aio',
     homeParagraphs: [
       'I am a full-stack developer working across product, operations, and automation. I have hands-on experience building web systems, integrating payments, structuring asynchronous flows, and shipping digital products with a focus on clarity, performance, and maintainability.',
-      'At ZapWrapp, I founded and built a B2C SaaS that turns exported WhatsApp conversations into visual retrospectives, covering architecture, file processing, checkout, and final user delivery. At Skyiit, I work as COO and co-founder, helping operate and scale Memoryiit, a platform with more than 195k users.',
+      'At ZapWrapp, I developed a B2C SaaS that turns exported WhatsApp conversations into visual retrospectives, covering architecture, file processing, checkout, and final user delivery. At Memoryiit, I worked on full-stack development and product support, helping with operations, support, and continuous system improvement.',
       'My core stack includes React, Next.js, TypeScript, Laravel, Node.js, relational databases, Firebase, Redis, payment integrations, and AI automations. I like working where engineering connects to outcomes: reducing manual work, improving support, organizing data, and building products that solve real problems.',
       'I am also studying Information Systems at IFSP and have a technical background in IT from ETEC. This gives me a practical mix of production product work, daily operations, and academic fundamentals for responsible technical decisions.',
       'If you are evaluating my profile for a role, project, or collaboration opportunity, feel free to reach out.',
@@ -90,7 +90,7 @@ const copy = {
     resumeTitle: 'Ariel André Aio',
     resumeRole: 'Full-Stack Developer working across Product, Operations, and Automation.',
     resumeSummary:
-      'Experience with B2C SaaS products, integrations, AI automations, web systems, and digital platform operations with real user bases.',
+      'Experience with production systems, including municipal public-sector work with Fiorilli systems, B2C SaaS products, integrations, AI automations, and digital platform operations.',
     experienceTitle: 'Experience',
     experienceIntro: 'Most relevant professional experiences, production products, and responsibilities.',
     techTitle: 'Core technologies:',
@@ -120,7 +120,7 @@ const projectDetails = {
     zapwrapp: {
       paragraphs: [
         'ZapWrapp é um SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais prontas para compartilhar. O produto exigiu uma experiência simples para o usuário final, mas com uma base técnica capaz de receber arquivos, processar conversas, extrair métricas relevantes e entregar uma visualização final consistente.',
-        'Atuei como fundador e desenvolvedor full-stack, cuidando da arquitetura do produto, do pipeline de processamento, da integração de pagamento e da entrega das telas finais. O projeto chegou ao break-even em 48 horas, passou de R$ 25 mil em faturamento desde o lançamento e processou milhares de transações em uma operação autofinanciada.',
+        'Atuei no desenvolvimento full-stack, cuidando da arquitetura do produto, do pipeline de processamento, da integração de pagamento e da entrega das telas finais. O projeto chegou ao break-even em 48 horas, passou de R$ 25 mil em faturamento desde o lançamento e processou milhares de transações em uma operação autofinanciada.',
       ],
       highlights: [
         'Desenho do fluxo completo do produto, da importação do arquivo até a entrega da retrospectiva visual.',
@@ -131,14 +131,14 @@ const projectDetails = {
     },
     memoryiit: {
       paragraphs: [
-        'Memoryiit é uma plataforma de presentes digitais da Skyiit, consolidada com mais de 195 mil usuários e 63 mil memórias criadas. O desafio central foi sustentar crescimento, suporte, conteúdo e rotina operacional sem aumentar desnecessariamente a complexidade da equipe.',
-        'Como COO e cofundador, trabalhei na estruturação de fluxos internos, atendimento, triagem, automações e coordenação operacional. O produto acumulou faturamento superior a R$ 1,5 milhão, exigindo padronização de processos, acompanhamento constante da experiência do usuário e organização clara das prioridades.',
+        'Memoryiit é uma plataforma digital em produção na qual atuei com desenvolvimento full-stack e sustentação de produto entre 2025 e 2026. O trabalho envolveu apoiar a operação, acompanhar dúvidas de usuários, entender problemas recorrentes e contribuir para melhorias no sistema.',
+        'Minha atuação ficou concentrada na ponte entre operação e produto: triagem de demandas, organização de fluxos de atendimento, priorização de problemas e tradução de necessidades observadas na rotina em ajustes mais claros para a experiência do usuário.',
       ],
       highlights: [
-        'Estruturação de rotinas de operação e suporte para uma base de usuários de alto volume.',
-        'Implementação de triagem e atendimento assistidos por IA para padronizar respostas e reduzir esforço manual.',
-        'Coordenação de tarefas, conteúdo, suporte e rotinas internas com apoio do Linear.',
-        'Automação de fluxos operacionais para escalar mantendo uma equipe enxuta.',
+        'Sustentação de produto digital em produção.',
+        'Triagem de dúvidas, problemas operacionais e necessidades de melhoria.',
+        'Organização de fluxos de atendimento e priorização de demandas recorrentes.',
+        'Comunicação entre operação e evolução do sistema.',
       ],
     },
     barbearias: {
@@ -194,7 +194,7 @@ const projectDetails = {
     zapwrapp: {
       paragraphs: [
         'ZapWrapp is a B2C SaaS that turns exported WhatsApp conversations into share-ready visual retrospectives. The product needed to feel simple for end users while relying on a technical foundation capable of receiving files, processing conversations, extracting meaningful metrics, and delivering a consistent final experience.',
-        'I worked as founder and full-stack developer, owning product architecture, the processing pipeline, payment integration, and final screen delivery. The project reached break-even in 48 hours, passed R$ 25k in revenue since launch, and processed thousands of transactions in a self-funded operation.',
+        'I worked on full-stack development, covering product architecture, the processing pipeline, payment integration, and final screen delivery. The project reached break-even in 48 hours, passed R$ 25k in revenue since launch, and processed thousands of transactions in a self-funded operation.',
       ],
       highlights: [
         'Designed the full product flow, from file import to final visual retrospective delivery.',
@@ -205,14 +205,14 @@ const projectDetails = {
     },
     memoryiit: {
       paragraphs: [
-        'Memoryiit is a digital gift platform by Skyiit, with more than 195k users and 63k memories created. The main challenge was sustaining growth, support, content, and operational routines without unnecessarily increasing team complexity.',
-        'As COO and co-founder, I worked on internal flows, support, triage, automations, and operational coordination. The product exceeded R$ 1.5M in revenue, requiring process standardization, constant attention to user experience, and clear priority management.',
+        'Memoryiit is a production digital platform where I worked on full-stack development and product support between 2025 and 2026. The work involved supporting operations, following user questions, understanding recurring issues, and contributing to system improvements.',
+        'My contribution focused on the connection between operations and product: demand triage, support flow organization, issue prioritization, and translating day-to-day needs into clearer improvements for the user experience.',
       ],
       highlights: [
-        'Structured operations and support routines for a high-volume user base.',
-        'Implemented AI-assisted triage and support workflows to standardize responses and reduce manual effort.',
-        'Coordinated tasks, content, support, and internal routines with Linear.',
-        'Automated operational flows to scale while keeping the team lean.',
+        'Support for a production digital product.',
+        'Triage of user questions, operational issues, and improvement needs.',
+        'Organization of support flows and recurring demand prioritization.',
+        'Communication between operations and product evolution.',
       ],
     },
     barbearias: {
@@ -580,7 +580,7 @@ function ResumePage({
           <p>{t.experienceIntro}</p>
           <ul className="resume-list">
             {experience.experience.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className={item.company.includes('Prefeitura') ? 'resume-featured-experience' : undefined}>
                 <header>
                   <h4>{item.company} <span>{item.role}</span></h4>
                   <span>{item.period}</span>
