@@ -11,7 +11,7 @@ type Language = 'pt' | 'en';
 type Route = string;
 
 const routes = ['/', '/projects', '/resume', '/contact'];
-const projectSlugs = ['zapwrapp', 'memoryiit', 'barbearias', 'strike-system', 'assistente-ia', 'codewise'];
+const projectSlugs = ['zapwrapp', 'memoryiit', 'barbearias', 'prefeitura-editor', 'assistente-ia', 'codewise'];
 
 const copy = {
   pt: {
@@ -153,16 +153,24 @@ const projectDetails = {
         'Interface responsiva para acesso em desktop e celular durante a rotina de atendimento.',
       ],
     },
-    'strike-system': {
+    'prefeitura-editor': {
       paragraphs: [
-        'Strike System é um sistema de gestão para academias, cobrindo cadastro de alunos, planos, treinos, controle de acesso, dashboard administrativo e visão geral da operação.',
-        'O projeto explora uma área em que consistência de dados, clareza de painel e rapidez de consulta são essenciais. A ideia foi montar uma base organizada para acompanhar alunos e rotinas administrativas sem depender de planilhas soltas ou controles manuais espalhados.',
+        'Gerador de Documentos para Prefeitura é um sistema web para automação de documentos de contratação pública, criado para a Prefeitura Municipal de São João das Duas Pontes. A aplicação centraliza o preenchimento de DFDs, capas de processo, certidões de cotação e declarações de dotação, substituindo o trabalho manual repetitivo em modelos Word por um fluxo guiado, visual e mais seguro.',
+        'O projeto foi pensado para acelerar a rotina administrativa de processos de dispensa de licitação, mantendo os documentos alinhados aos modelos oficiais da prefeitura e à Lei nº 14.133/2021. A interface permite preencher dados do órgão demandante, justificativa, objeto, itens, responsáveis e informações do processo com prévia em formato A4, mostrando como o documento ficará antes da exportação.',
+        'Um dos diferenciais é a importação assistida por IA: o usuário pode enviar fotos ou imagens de orçamentos, pedidos ou ordens de serviço, e o sistema extrai automaticamente informações como objeto, contratado, valor, itens, quantidades e previsão de execução. A análise pode ser feita via Gemini API ou localmente com Ollama, permitindo uso em cenários com restrição de internet.',
+        'Além do preenchimento manual e assistido, o sistema gera arquivos .docx reais a partir de templates oficiais, preservando formatação, cabeçalhos, rodapés, tabelas e estrutura visual dos documentos. Também permite gerar os documentos individualmente ou em pacote .zip, com organização automática em pastas locais por data e índice do processo.',
       ],
       highlights: [
-        'Dashboard administrativo para apoiar a leitura da operação da academia.',
-        'Modelagem de entidades como alunos, planos, treinos e registros administrativos.',
-        'Fluxos de gestão pensados para rotina de cadastro, acompanhamento e consulta.',
-        'Estrutura preparada para evolução gradual de funcionalidades sem comprometer a base do sistema.',
+        'Criação de fluxo guiado para preenchimento de processos de contratação pública.',
+        'Geração automática de DFD, ofício, capa do processo, certidão de cotação e declaração de dotação.',
+        'Integração com templates .docx oficiais, mantendo a formatação original dos documentos.',
+        'Prévia visual em formato A4 para revisão antes da exportação.',
+        'Sincronização automática de campos repetidos, como nomes, cargos, secretaria, objeto e assinatura.',
+        'Importação de dados por imagem usando IA, com suporte a Gemini API e Ollama local.',
+        'Validação de campos obrigatórios antes da geração dos documentos.',
+        'Salvamento de rascunho no navegador e organização automática dos arquivos gerados em pasta local.',
+        'Suporte a diferentes modelos de documentos, incluindo modelo atual e modelo 2025.',
+        'Testes para regras de geração, normalização de dados extraídos por IA, validação e manipulação de arquivos.',
       ],
     },
     'assistente-ia': {
@@ -227,16 +235,24 @@ const projectDetails = {
         'Responsive interface for desktop and mobile access during daily operations.',
       ],
     },
-    'strike-system': {
+    'prefeitura-editor': {
       paragraphs: [
-        'Strike System is a gym management system covering student records, plans, workouts, access control, administrative dashboard, and operational overview.',
-        'The project explores a domain where data consistency, dashboard clarity, and fast lookup matter. The idea was to build an organized base to track students and administrative routines without relying on scattered spreadsheets or manual controls.',
+        'City Hall Document Generator is a web system for automating public procurement documents, created for the Prefeitura Municipal de São João das Duas Pontes. The application centralizes the completion of DFDs, process covers, quotation certificates, and budget allocation declarations, replacing repetitive manual work in Word templates with a guided, visual, and safer flow.',
+        'The project was designed to speed up the administrative routine for direct contracting processes, keeping documents aligned with the city hall official templates and Brazilian Law nº 14.133/2021. The interface lets users fill in requesting department data, justification, object, items, responsible people, and process information with an A4 preview before export.',
+        'One differentiator is AI-assisted import: users can upload photos or images of quotations, requests, or service orders, and the system automatically extracts information such as object, contractor, amount, items, quantities, and expected execution. The analysis can run through Gemini API or locally with Ollama, supporting scenarios with restricted internet access.',
+        'Beyond manual and assisted filling, the system generates real .docx files from official templates, preserving formatting, headers, footers, tables, and the visual structure of the documents. It can also generate documents individually or as a .zip package, with automatic organization in local folders by date and process index.',
       ],
       highlights: [
-        'Admin dashboard to support operational visibility for the gym.',
-        'Data modeling for students, plans, workouts, and administrative records.',
-        'Management flows designed for registration, tracking, and lookup routines.',
-        'Structure prepared for gradual feature growth without compromising the system base.',
+        'Created a guided flow for filling public procurement processes.',
+        'Automatic generation of DFD, cover letter, process cover, quotation certificate, and budget allocation declaration.',
+        'Integration with official .docx templates while preserving the original document formatting.',
+        'A4 visual preview for review before export.',
+        'Automatic synchronization of repeated fields such as names, roles, department, object, and signature.',
+        'Image-based data import using AI, with support for Gemini API and local Ollama.',
+        'Required-field validation before document generation.',
+        'Browser draft saving and automatic organization of generated files in a local folder.',
+        'Support for different document models, including the current model and 2025 model.',
+        'Tests for generation rules, normalization of AI-extracted data, validation, and file handling.',
       ],
     },
     'assistente-ia': {
