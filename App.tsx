@@ -10,14 +10,14 @@ import {
 type Language = 'pt' | 'en';
 type Route = string;
 
-const routes = ['/', '/work', '/resume', '/contact'];
-const workSlugs = ['zapwrapp', 'memoryiit', 'barbearias', 'strike-system', 'assistente-ia', 'codewise'];
+const routes = ['/', '/projects', '/resume', '/contact'];
+const projectSlugs = ['zapwrapp', 'memoryiit', 'barbearias', 'strike-system', 'assistente-ia', 'codewise'];
 
 const copy = {
   pt: {
     nav: [
       { label: 'Início', path: '/' as Route },
-      { label: 'Trabalhos', path: '/work' as Route },
+      { label: 'Projetos', path: '/projects' as Route },
       { label: 'Currículo', path: '/resume' as Route },
       { label: 'Contato', path: '/contact' as Route },
     ],
@@ -31,9 +31,9 @@ const copy = {
       'Se você está avaliando meu perfil para uma vaga, projeto ou oportunidade de colaboração, pode me chamar para conversarmos.',
     ],
     contactLink: 'falar comigo',
-    workTitle: '/trabalhos.',
+    workTitle: '/projetos.',
     workDescription: 'Produtos e projetos selecionados que mostram minha atuação entre desenvolvimento full-stack, produto, operação e automação.',
-    backToWork: 'Voltar para trabalhos',
+    backToWork: 'Voltar para projetos',
     projectRole: 'Papel',
     projectStack: 'Stack',
     projectLinks: 'Links',
@@ -63,7 +63,7 @@ const copy = {
   en: {
     nav: [
       { label: 'Home', path: '/' as Route },
-      { label: 'Work', path: '/work' as Route },
+      { label: 'Projects', path: '/projects' as Route },
       { label: 'Resume', path: '/resume' as Route },
       { label: 'Contact', path: '/contact' as Route },
     ],
@@ -77,9 +77,9 @@ const copy = {
       'If you are evaluating my profile for a role, project, or collaboration opportunity, feel free to reach out.',
     ],
     contactLink: 'contact me',
-    workTitle: '/work.',
+    workTitle: '/projects.',
     workDescription: 'Selected products and projects that show my work across full-stack development, product operations, and automation.',
-    backToWork: 'Back to work',
+    backToWork: 'Back to projects',
     projectRole: 'Role',
     projectStack: 'Stack',
     projectLinks: 'Links',
@@ -268,7 +268,8 @@ const projectDetails = {
 
 function normalizePath(pathname: string): Route {
   const cleanPath = pathname.replace(/\/+$/, '') || '/';
-  if (routes.includes(cleanPath) || cleanPath.startsWith('/work/')) return cleanPath;
+  const canonicalPath = cleanPath.replace(/^\/work(?=\/|$)/, '/projects');
+  if (routes.includes(canonicalPath) || canonicalPath.startsWith('/projects/')) return canonicalPath;
   return '/';
 }
 
@@ -283,6 +284,12 @@ export default function App() {
   useEffect(() => {
     document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
   }, [language]);
+
+  useEffect(() => {
+    const normalizedPath = normalizePath(window.location.pathname);
+    const cleanPath = window.location.pathname.replace(/\/+$/, '') || '/';
+    if (normalizedPath !== cleanPath) window.history.replaceState({}, '', normalizedPath);
+  }, []);
 
   useEffect(() => {
     const onPopState = () => setRoute(normalizePath(window.location.pathname));
@@ -300,8 +307,8 @@ export default function App() {
   };
 
   const page = useMemo(() => {
-    if (route === '/work') return <WorkPage language={language} t={t} />;
-    if (route.startsWith('/work/')) {
+    if (route === '/projects') return <WorkPage language={language} t={t} />;
+    if (route.startsWith('/projects/')) {
       return <ProjectDetailPage language={language} navigate={navigate} slug={route.split('/').pop() || ''} t={t} />;
     }
     if (route === '/resume') return <ResumePage language={language} t={t} toggleLanguage={toggleLanguage} />;
@@ -376,7 +383,7 @@ function Header({
           {t.nav.map((item) => (
             <li key={item.path}>
               <button
-                className={(item.path === '/work' ? route.startsWith('/work') : route === item.path) ? 'active' : ''}
+                className={(item.path === '/projects' ? route.startsWith('/projects') : route === item.path) ? 'active' : ''}
                 type="button"
                 onClick={() => navigate(item.path)}
               >
@@ -419,7 +426,7 @@ function WorkPage({ language, t }: { language: Language; t: typeof copy.pt }) {
   const projects = PROJECTS_CONTENT[language].projects;
   const workItems = [...featured, ...projects].map((project, index) => ({
     ...project,
-    slug: workSlugs[index],
+    slug: projectSlugs[index],
   }));
 
   return (
@@ -428,7 +435,7 @@ function WorkPage({ language, t }: { language: Language; t: typeof copy.pt }) {
       <section className="work-grid" aria-label={t.workDescription}>
         {workItems.map((project) => (
           <article className="project-card" key={project.title}>
-            <a className="project-card-link" href={`/work/${project.slug}`}>
+            <a className="project-card-link" href={`/projects/${project.slug}`}>
               <span>{project.title}</span>
             </a>
             <figure>
@@ -464,15 +471,17 @@ function ProjectDetailPage({
   t: typeof copy.pt;
 }) {
   const projects = [...FEATURED_PROJECTS[language].projects, ...PROJECTS_CONTENT[language].projects];
-  const index = workSlugs.indexOf(slug);
+  const index = projectSlugs.indexOf(slug);
   const project = projects[index];
   const details = projectDetails[language][slug as keyof typeof projectDetails.pt];
 
   if (!project || !details) return <WorkPage language={language} t={t} />;
+  const projectGithub = 'githubRepo' in project ? project.githubRepo : undefined;
+  const hasProjectLinks = Boolean(project.link || projectGithub);
 
   return (
     <article className="project-detail">
-      <button className="back-link" type="button" onClick={() => navigate('/work')}>
+      <button className="back-link" type="button" onClick={() => navigate('/projects')}>
         {t.backToWork}
       </button>
 
@@ -499,14 +508,18 @@ function ProjectDetailPage({
             {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
           </ul>
 
-          <h2>{t.projectLinks}</h2>
-          {project.link ? (
-            <a href={project.link} target="_blank" rel="noreferrer noopener">
-              {project.link.replace(/^https?:\/\//, '').replace(/\/$/, '')}
-            </a>
-          ) : null}
-          {'githubRepo' in project && project.githubRepo ? (
-            <a href={project.githubRepo} target="_blank" rel="noreferrer noopener">GitHub</a>
+          {hasProjectLinks ? (
+            <>
+              <h2>{t.projectLinks}</h2>
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noreferrer noopener">
+                  {project.link.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                </a>
+              ) : null}
+              {projectGithub ? (
+                <a href={projectGithub} target="_blank" rel="noreferrer noopener">GitHub</a>
+              ) : null}
+            </>
           ) : null}
         </aside>
       </div>
