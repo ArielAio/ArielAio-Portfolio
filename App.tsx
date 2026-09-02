@@ -51,11 +51,9 @@ const copy = {
     otherTitle: 'Outros:',
     educationTitle: 'Formação',
     contactTitle: 'Vamos conversar?',
-    contactDescription: 'Se meu perfil fizer sentido para uma vaga, projeto ou parceria, envie uma mensagem. Eu respondo por e-mail.',
-    name: 'Seu nome',
-    email: 'Seu e-mail',
-    message: 'Sua mensagem',
-    send: 'Abrir e-mail',
+    contactDescription: 'Se meu perfil fizer sentido para uma vaga, projeto ou parceria, fale comigo pelo LinkedIn. Eu respondo por lá.',
+    linkedinContact: 'Falar comigo no LinkedIn',
+    manualEmail: 'Se preferir, me envie um e-mail em:',
     footerRights: '© Ariel André Aio 2026',
     site: 'arielaio.dev',
     location: 'Brasil',
@@ -97,11 +95,9 @@ const copy = {
     otherTitle: 'Others:',
     educationTitle: 'Education',
     contactTitle: 'Let’s talk',
-    contactDescription: 'If my profile fits a role, project, or partnership, send me a message. I will reply by email.',
-    name: 'Your name',
-    email: 'Your email',
-    message: 'Your message',
-    send: 'Open email',
+    contactDescription: 'If my profile fits a role, project, or partnership, message me on LinkedIn. I reply there.',
+    linkedinContact: 'Message me on LinkedIn',
+    manualEmail: 'If you prefer, email me at:',
     footerRights: '© Ariel André Aio 2026',
     site: 'arielaio.dev',
     location: 'Brazil',
@@ -110,9 +106,9 @@ const copy = {
 
 const email = 'arielaio@hotmail.com';
 const socialLinks = [
-  { platform: 'GitHub', url: 'https://github.com/ArielAio', Icon: Github },
-  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/ariel-aio/', Icon: Linkedin },
-  { platform: 'Email', url: `mailto:${email}`, Icon: Mail },
+  { platform: 'GitHub', url: 'https://github.com/ArielAio', Icon: Github, external: true },
+  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/ariel-aio/', Icon: Linkedin, external: true },
+  { platform: 'Email', url: '/contact', Icon: Mail, external: false },
 ];
 
 const projectDetails = {
@@ -408,8 +404,8 @@ function Header({
             </li>
           ))}
         </ul>
-        <ContactLinks t={t} />
-        <SocialLinks compact />
+        <ContactLinks t={t} navigate={navigate} />
+        <SocialLinks compact navigate={navigate} />
       </nav>
     </header>
   );
@@ -591,7 +587,7 @@ function ResumePage({
         <section>
           <a href="/">{t.site}</a>
           <span>{t.location}</span>
-          <a href={`mailto:${email}`}>{email}</a>
+          <a href="/contact">{email}</a>
         </section>
         <SkillList title={t.techTitle} skills={core.map((skill) => skill.name)} />
         <SkillList title={t.otherTitle} skills={tools.map((skill) => skill.name)} />
@@ -645,47 +641,23 @@ function ResumePage({
 }
 
 function ContactPage({ t }: { t: typeof copy.pt }) {
-  const [name, setName] = useState('');
-  const [from, setFrom] = useState('');
-  const [message, setMessage] = useState('');
-
-  const openEmail = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const subject = encodeURIComponent(`Contato via portfolio - ${name || 'sem nome'}`);
-    const body = encodeURIComponent(`${message}\n\nNome: ${name}\nEmail: ${from}`);
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  };
-
   return (
     <section className="contact-page">
       <h1>{t.contactTitle}</h1>
       <p>{t.contactDescription}</p>
-      <form onSubmit={openEmail}>
-        <label>
-          {t.name}
-          <input value={name} onChange={(event) => setName(event.target.value)} placeholder={t.name} required />
-        </label>
-        <label>
-          {t.email}
-          <input
-            type="email"
-            value={from}
-            onChange={(event) => setFrom(event.target.value)}
-            placeholder={t.email}
-            required
-          />
-        </label>
-        <label className="full">
-          {t.message}
-          <textarea
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-            placeholder={t.message}
-            required
-          />
-        </label>
-        <button type="submit">{t.send}</button>
-      </form>
+      <a
+        className="linkedin-contact-button"
+        href="https://www.linkedin.com/in/ariel-aio/"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <Linkedin aria-hidden="true" />
+        {t.linkedinContact}
+      </a>
+      <p className="manual-email">
+        <span>{t.manualEmail}</span>
+        <strong>{email}</strong>
+      </p>
     </section>
   );
 }
@@ -710,11 +682,11 @@ function SkillList({ title, skills }: { title: string; skills: string[] }) {
   );
 }
 
-function ContactLinks({ t }: { t: typeof copy.pt }) {
+function ContactLinks({ t, navigate }: { t: typeof copy.pt; navigate: (path: Route) => void }) {
   return (
     <div className="contact-links">
       <span>{t.hello}</span>
-      <a href={`mailto:${email}`}>{email}</a>
+      <a href="/contact" onClick={(event) => { event.preventDefault(); navigate('/contact'); }}>{email}</a>
       <a href="https://www.linkedin.com/in/ariel-aio/" target="_blank" rel="noreferrer noopener">
         linkedin.com/in/ariel-aio
       </a>
@@ -722,12 +694,18 @@ function ContactLinks({ t }: { t: typeof copy.pt }) {
   );
 }
 
-function SocialLinks({ compact = false }: { compact?: boolean }) {
+function SocialLinks({ compact = false, navigate }: { compact?: boolean; navigate: (path: Route) => void }) {
   return (
     <ul className={`social-links ${compact ? 'compact' : ''}`}>
       {socialLinks.map((social) => (
         <li key={social.platform}>
-          <a href={social.url} target="_blank" rel="noreferrer noopener" aria-label={social.platform}>
+          <a
+            href={social.url}
+            target={social.external ? '_blank' : undefined}
+            rel={social.external ? 'noreferrer noopener' : undefined}
+            aria-label={social.platform}
+            onClick={social.external ? undefined : (event) => { event.preventDefault(); navigate(social.url); }}
+          >
             <social.Icon aria-hidden="true" />
           </a>
         </li>
@@ -740,7 +718,7 @@ function Footer({ t, navigate }: { t: typeof copy.pt; navigate: (path: Route) =>
   return (
     <footer className="site-footer">
       <div className="footer-main">
-        <ContactLinks t={t} />
+        <ContactLinks t={t} navigate={navigate} />
         <nav aria-label="Rodapé">
           {t.nav.map((item) => (
             <button key={item.path} type="button" onClick={() => navigate(item.path)}>
@@ -751,7 +729,7 @@ function Footer({ t, navigate }: { t: typeof copy.pt; navigate: (path: Route) =>
       </div>
       <div className="footer-bottom">
         <span>{t.footerRights}</span>
-        <SocialLinks />
+        <SocialLinks navigate={navigate} />
       </div>
     </footer>
   );

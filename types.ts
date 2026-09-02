@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface Project {
   id: number;
   title: string;
@@ -28,12 +26,6 @@ export interface Education {
   institution: string;
   period: string;
   description?: string;
-}
-
-export interface SocialLink {
-  platform: string;
-  url: string;
-  icon: React.ComponentType<any>;
 }
 
 export interface Skill {

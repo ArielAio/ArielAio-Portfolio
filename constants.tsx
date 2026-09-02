@@ -1,5 +1,5 @@
-import { Project, Experience, Skill, SocialLink, Education } from './types';
-import { Github, Linkedin, Mail, Code, Terminal, Database, Smartphone } from 'lucide-react';
+import { Project, Experience, Skill, Education } from './types';
+import { Code, Terminal, Database, Smartphone } from 'lucide-react';
 
 export const NAV_LINKS = {
   pt: [
@@ -511,46 +511,3 @@ export const SKILLS_CONTENT = {
     ]
   }
 };
-
-export const CONTACT_CONTENT = {
-  pt: {
-    title: "Vamos trabalhar ",
-    titleHighlight: "juntos?",
-    description: "Tem um projeto em mente ou quer apenas dar um oi? Sinta-se à vontade para me mandar uma mensagem.",
-    copyEmail: "Email",
-    copied: "Copiado!",
-    formName: "Nome",
-    formNamePlaceholder: "Seu nome",
-    formEmail: "Email",
-    formEmailPlaceholder: "seu@email.com",
-    formMessage: "Mensagem",
-    formMessagePlaceholder: "Fale sobre seu projeto...",
-    sendButton: "Enviar Mensagem",
-    sending: "Enviando...",
-    sent: "Mensagem Enviada!",
-    footerRights: "Todos os direitos reservados."
-  },
-  en: {
-    title: "Let's work ",
-    titleHighlight: "together?",
-    description: "Have a project in mind or just want to say hi? Feel free to send me a message.",
-    copyEmail: "Email",
-    copied: "Copied!",
-    formName: "Name",
-    formNamePlaceholder: "Your name",
-    formEmail: "Email",
-    formEmailPlaceholder: "your@email.com",
-    formMessage: "Message",
-    formMessagePlaceholder: "Tell me about your project...",
-    sendButton: "Send Message",
-    sending: "Sending...",
-    sent: "Message Sent!",
-    footerRights: "All rights reserved."
-  }
-};
-
-export const SOCIALS: SocialLink[] = [
-  { platform: "GitHub", url: "https://github.com/ArielAio", icon: Github },
-  { platform: "LinkedIn", url: "https://www.linkedin.com/in/ariel-aio/", icon: Linkedin },
-  { platform: "Email", url: "mailto:arielaio@hotmail.com", icon: Mail },
-];

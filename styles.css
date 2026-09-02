@@ -820,55 +820,43 @@ p {
   font-size: 1.25rem;
 }
 
-.contact-page form {
+.linkedin-contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  border-radius: 5px;
+  background: var(--linkedin);
+  color: #fff;
+  font-weight: 800;
+  padding: .7rem 1rem;
+  text-decoration: none;
+}
+
+.linkedin-contact-button:hover,
+.linkedin-contact-button:focus-visible {
+  filter: brightness(.9);
+}
+
+.linkedin-contact-button svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.manual-email {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.6rem 4rem;
+  gap: .25rem;
   margin-top: 2.3rem;
 }
 
-.contact-page label {
+.manual-email span {
   color: var(--muted);
-  display: grid;
-  gap: .65rem;
-  font-size: .78rem;
-  font-weight: 700;
+  font-size: .85rem;
 }
 
-.contact-page .full {
-  grid-column: 1 / -1;
-}
-
-.contact-page input,
-.contact-page textarea {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid var(--muted-soft);
-  background: transparent;
-  color: var(--text);
-  outline: 0;
-  padding: .45rem 0 .7rem;
-  resize: vertical;
-}
-
-.contact-page textarea {
-  min-height: 4rem;
-}
-
-.contact-page input:focus,
-.contact-page textarea:focus {
-  border-color: var(--blue);
-}
-
-.contact-page button[type="submit"] {
-  width: fit-content;
-  border: 0;
-  border-radius: 5px;
-  background: var(--blue);
-  color: var(--surface);
-  cursor: pointer;
-  font-weight: 800;
-  padding: .75rem 2rem;
+.manual-email strong {
+  color: var(--blue);
+  font-size: 1.05rem;
+  user-select: all;
 }
 
 .site-footer {
@@ -1022,7 +1010,6 @@ p {
   }
 
   .work-grid,
-  .contact-page form,
   .footer-main {
     grid-template-columns: 1fr;
   }
