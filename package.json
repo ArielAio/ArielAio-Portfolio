@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "resume:pdf": "python3 scripts/generate_resume_pdfs.py"
   },
   "dependencies": {
     "framer-motion": "^10.12.16",

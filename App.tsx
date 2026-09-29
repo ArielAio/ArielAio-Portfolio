@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Download, Github, Linkedin, Mail } from 'lucide-react';
+import { Check, Copy, Download, ExternalLink, Github, Linkedin, Mail, X } from 'lucide-react';
 import {
-  EXPERIENCE_CONTENT,
   FEATURED_PROJECTS,
   PROJECTS_CONTENT,
-  SKILLS_CONTENT,
 } from './constants';
+import resumeContent from './resume-content.json';
 
 type Language = 'pt' | 'en';
 type Route = string;
@@ -41,22 +40,14 @@ const copy = {
     projectCtaTitle: 'Vamos conversar sobre uma oportunidade?',
     projectCtaText: 'Estou aberto a oportunidades onde eu possa contribuir com desenvolvimento full-stack, operação de produto, automação e entrega de sistemas web bem estruturados.',
     projectCtaButton: 'Falar comigo',
-    resumeTitle: 'Ariel André Aio',
-    resumeRole: 'Desenvolvedor Full-Stack com atuação em Produto, Operações e Automação.',
-    resumeSummary:
-      'Experiência em sistemas em produção, incluindo ambiente público municipal com sistemas Fiorilli, produtos SaaS B2C, integrações, automações com IA e operação de plataformas digitais.',
-    experienceTitle: 'Experiência',
-    experienceIntro: 'Experiências profissionais, produtos em produção e responsabilidades mais relevantes.',
-    techTitle: 'Tecnologias principais:',
-    otherTitle: 'Outros:',
-    educationTitle: 'Formação',
     contactTitle: 'Vamos conversar?',
     contactDescription: 'Se meu perfil fizer sentido para uma vaga, projeto ou parceria, fale comigo pelo LinkedIn. Eu respondo por lá.',
     linkedinContact: 'Falar comigo no LinkedIn',
     manualEmail: 'Se preferir, me envie um e-mail em:',
+    copyEmail: 'Copiar e-mail',
+    emailCopied: 'Copiado!',
+    emailCopyFailed: 'Não foi possível copiar',
     footerRights: '© Ariel André Aio 2026',
-    site: 'arielaio.dev',
-    location: 'Brasil',
   },
   en: {
     nav: [
@@ -85,29 +76,21 @@ const copy = {
     projectCtaTitle: 'Let’s discuss an opportunity',
     projectCtaText: 'I am open to opportunities where I can contribute with full-stack development, product operations, automation, and well-structured web systems.',
     projectCtaButton: 'Contact me',
-    resumeTitle: 'Ariel André Aio',
-    resumeRole: 'Full-Stack Developer working across Product, Operations, and Automation.',
-    resumeSummary:
-      'Experience with production systems, including municipal public-sector work with Fiorilli systems, B2C SaaS products, integrations, AI automations, and digital platform operations.',
-    experienceTitle: 'Experience',
-    experienceIntro: 'Most relevant professional experiences, production products, and responsibilities.',
-    techTitle: 'Core technologies:',
-    otherTitle: 'Others:',
-    educationTitle: 'Education',
     contactTitle: 'Let’s talk',
     contactDescription: 'If my profile fits a role, project, or partnership, message me on LinkedIn. I reply there.',
     linkedinContact: 'Message me on LinkedIn',
     manualEmail: 'If you prefer, email me at:',
+    copyEmail: 'Copy email',
+    emailCopied: 'Copied!',
+    emailCopyFailed: 'Unable to copy',
     footerRights: '© Ariel André Aio 2026',
-    site: 'arielaio.dev',
-    location: 'Brazil',
   },
 };
 
-const email = 'arielaio@hotmail.com';
+const email = resumeContent.profile.email;
 const socialLinks = [
-  { platform: 'GitHub', url: 'https://github.com/ArielAio', Icon: Github, external: true },
-  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/ariel-aio/', Icon: Linkedin, external: true },
+  { platform: 'GitHub', url: resumeContent.profile.github, Icon: Github, external: true },
+  { platform: 'LinkedIn', url: resumeContent.profile.linkedin, Icon: Linkedin, external: true },
   { platform: 'Email', url: '/contact', Icon: Mail, external: false },
 ];
 
@@ -323,14 +306,14 @@ export default function App() {
     if (route.startsWith('/projects/')) {
       return <ProjectDetailPage language={language} navigate={navigate} slug={route.split('/').pop() || ''} t={t} />;
     }
-    if (route === '/resume') return <ResumePage language={language} t={t} toggleLanguage={toggleLanguage} />;
+    if (route === '/resume') return <ResumePage language={language} toggleLanguage={toggleLanguage} />;
     if (route === '/contact') return <ContactPage t={t} />;
     return <HomePage t={t} navigate={navigate} />;
   }, [language, route, t]);
 
   return (
     <div className={`site-shell ${isResumeRoute ? 'resume-shell' : ''}`}>
-      <a className="skip-link" href="#main">Skip to content</a>
+      <a className="skip-link" href="#main">{language === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}</a>
       {!isResumeRoute && (
         <Header
           language={language}
@@ -556,76 +539,80 @@ function ProjectDetailPage({
 
 function ResumePage({
   language,
-  t,
   toggleLanguage,
 }: {
   language: Language;
-  t: typeof copy.pt;
   toggleLanguage: () => void;
 }) {
-  const experience = EXPERIENCE_CONTENT[language];
-  const skills = SKILLS_CONTENT[language].skills;
-  const core = skills.filter((skill) => skill.category !== 'tools');
-  const tools = skills.filter((skill) => skill.category === 'tools');
+  const resume = resumeContent[language];
+  const profile = resumeContent.profile;
+  const pdfPath = language === 'pt' ? '/Curriculo_Ariel_Aio.pdf' : '/Curriculo_Ariel_Aio_EN.pdf';
+  const pdfName = language === 'pt' ? 'Curriculo_Ariel_Aio.pdf' : 'Ariel_Aio_Resume_EN.pdf';
 
   return (
     <article className="resume-page">
-      <nav className="resume-actions" aria-label="Ações do currículo">
-        <a className="resume-linkedin" href="https://www.linkedin.com/in/ariel-aio/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+      <nav className="resume-actions" aria-label={resume.labels.actions}>
+        <a className="resume-linkedin" href={profile.linkedin} target="_blank" rel="noreferrer noopener" aria-label={resume.labels.linkedin}>
           <Linkedin aria-hidden="true" />
         </a>
-        <button className="resume-language" type="button" onClick={toggleLanguage} aria-label="Mudar idioma">
+        <a className="resume-github" href={profile.github} target="_blank" rel="noreferrer noopener" aria-label={resume.labels.github}>
+          <Github aria-hidden="true" />
+        </a>
+        <button className="resume-language" type="button" onClick={toggleLanguage} aria-label={resume.labels.changeLanguage}>
           {language === 'pt' ? 'EN' : 'PT'}
         </button>
-        <a className="resume-download" href="/Curriculo_Ariel_Aio.pdf" target="_blank" rel="noreferrer noopener">
+        <a className="resume-download" href={pdfPath} download={pdfName} aria-label={resume.labels.download}>
           <Download aria-hidden="true" />
-          <span>{language === 'pt' ? 'Baixar' : 'Download'}</span>
+          <span>{language === 'pt' ? 'Baixar PDF' : 'Download PDF'}</span>
         </a>
       </nav>
 
       <aside className="resume-sidebar">
         <section>
-          <a href="/">{t.site}</a>
-          <span>{t.location}</span>
-          <a href="/contact">{email}</a>
+          <a href="/">{profile.portfolioLabel}</a>
+          <span>{language === 'pt' ? 'Brasil' : 'Brazil'}</span>
+          <a href={'mailto:' + profile.email}>{profile.email}</a>
+          <a href={'tel:' + profile.phoneUri}>{profile.phone}</a>
         </section>
-        <SkillList title={t.techTitle} skills={core.map((skill) => skill.name)} />
-        <SkillList title={t.otherTitle} skills={tools.map((skill) => skill.name)} />
+        <SkillList title={resume.labels.coreSkills} skills={resume.skills.core} />
       </aside>
 
       <div className="resume-main">
         <header className="resume-hero">
-          <h1>{t.resumeTitle}</h1>
-          <h2>{t.resumeRole}</h2>
-          <p>{t.resumeSummary}</p>
+          <h1>{resume.name}</h1>
+          <h2>{resume.headline}</h2>
+          <p>{resume.summary}</p>
         </header>
 
         <section className="resume-section">
-          <h3>{t.experienceTitle}</h3>
-          <p>{t.experienceIntro}</p>
+          <h3>{resume.labels.experience}</h3>
+          <p>{resume.experienceIntro}</p>
           <ul className="resume-list">
-            {experience.experience.map((item) => (
-              <li key={item.id}>
+            {resume.experiences.map((item) => (
+              <li key={item.company}>
                 <header>
-                  <h4>{item.company} <span>{item.role}</span></h4>
+                  <h4>
+                    {'projectLink' in item && item.projectLink ? (
+                      <a className="resume-project-link" href={item.projectLink} target="_blank" rel="noreferrer noopener" aria-label={resume.labels.visitProject + ': ' + item.company}>
+                        {item.company}<ExternalLink aria-hidden="true" />
+                      </a>
+                    ) : item.company}
+                    {' '}<span>{item.role}</span>
+                  </h4>
                   <span>{item.period}</span>
                 </header>
                 <p>{item.description}</p>
-                {item.details && (
-                  <ul>
-                    {item.details.map((detail) => <li key={detail}>{detail}</li>)}
-                  </ul>
-                )}
+                <ul>{item.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
               </li>
             ))}
           </ul>
         </section>
 
         <section className="resume-section">
-          <h3>{t.educationTitle}</h3>
+          <h3>{resume.labels.education}</h3>
           <ul className="resume-list">
-            {experience.education.map((item) => (
-              <li key={item.id}>
+            {resume.education.map((item) => (
+              <li key={item.institution}>
                 <header>
                   <h4>{item.institution} <span>{item.degree}</span></h4>
                   <span>{item.period}</span>
@@ -635,19 +622,48 @@ function ResumePage({
             ))}
           </ul>
         </section>
+
+        <section className="resume-section resume-skill-section">
+          <h3>{resume.labels.toolsAndPractices}</h3>
+          <ul>
+            {resume.skills.toolsAndPractices.map((skill) => <li key={skill}>{skill}</li>)}
+          </ul>
+        </section>
+
+        <section className="resume-section">
+          <h3>{resume.labels.languages}</h3>
+          <p>{resume.languages}</p>
+        </section>
       </div>
     </article>
   );
 }
 
 function ContactPage({ t }: { t: typeof copy.pt }) {
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'error'>('idle');
+
+  useEffect(() => {
+    if (copyStatus === 'idle') return;
+    const timeout = window.setTimeout(() => setCopyStatus('idle'), 2200);
+    return () => window.clearTimeout(timeout);
+  }, [copyStatus]);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopyStatus('copied');
+    } catch {
+      setCopyStatus('error');
+    }
+  };
+
   return (
     <section className="contact-page">
       <h1>{t.contactTitle}</h1>
       <p>{t.contactDescription}</p>
       <a
         className="linkedin-contact-button"
-        href="https://www.linkedin.com/in/ariel-aio/"
+        href={resumeContent.profile.linkedin}
         target="_blank"
         rel="noreferrer noopener"
       >
@@ -656,7 +672,26 @@ function ContactPage({ t }: { t: typeof copy.pt }) {
       </a>
       <p className="manual-email">
         <span>{t.manualEmail}</span>
-        <strong>{email}</strong>
+        <span className="manual-email-row">
+          <strong>{email}</strong>
+          <button
+            className={`copy-email-button ${copyStatus !== 'idle' ? `is-${copyStatus}` : ''}`}
+            type="button"
+            aria-label={t.copyEmail}
+            onClick={() => void copyEmail()}
+          >
+            <span
+              className="copy-email-icon"
+              key={copyStatus === 'copied' ? 'copied' : copyStatus === 'error' ? 'error' : 'copy'}
+              aria-hidden="true"
+            >
+              {copyStatus === 'copied' ? <Check /> : copyStatus === 'error' ? <X /> : <Copy />}
+            </span>
+          </button>
+          <span className="visually-hidden" aria-live="polite" aria-atomic="true">
+            {copyStatus === 'copied' ? t.emailCopied : copyStatus === 'error' ? t.emailCopyFailed : ''}
+          </span>
+        </span>
       </p>
     </section>
   );
@@ -687,7 +722,7 @@ function ContactLinks({ t, navigate }: { t: typeof copy.pt; navigate: (path: Rou
     <div className="contact-links">
       <span>{t.hello}</span>
       <a href="/contact" onClick={(event) => { event.preventDefault(); navigate('/contact'); }}>{email}</a>
-      <a href="https://www.linkedin.com/in/ariel-aio/" target="_blank" rel="noreferrer noopener">
+      <a href={resumeContent.profile.linkedin} target="_blank" rel="noreferrer noopener">
         linkedin.com/in/ariel-aio
       </a>
     </div>

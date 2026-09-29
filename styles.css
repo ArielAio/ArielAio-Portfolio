@@ -65,7 +65,7 @@ a,
   width: 100%;
   min-height: auto;
   margin: 0;
-  padding: 4.8rem 0;
+  padding: 1rem 0;
   background: var(--surface);
 }
 
@@ -453,6 +453,14 @@ p {
     transition: none;
   }
 
+  .copy-email-button {
+    transition: none;
+  }
+
+  .copy-email-button.is-copied .copy-email-icon {
+    animation: none;
+  }
+
   .project-card {
     transition: box-shadow .18s ease;
   }
@@ -615,10 +623,10 @@ p {
   position: relative;
   display: grid;
   grid-template-columns: 13.25rem minmax(0, 1fr);
-  gap: 5rem;
+  gap: 4rem;
   width: min(86vw, 1768px);
   margin: 0 auto;
-  padding: 7.2rem 4.6rem 6rem;
+  padding: 4.8rem 4.6rem 4.5rem;
   background: var(--bg);
   color: var(--text);
   font-size: 17px;
@@ -627,7 +635,7 @@ p {
 
 .resume-actions {
   position: absolute;
-  top: 2rem;
+  top: 1.5rem;
   right: 2.6rem;
   display: flex;
   gap: .85rem;
@@ -658,6 +666,28 @@ p {
   width: .9rem;
   height: .9rem;
   stroke-width: 2.15;
+}
+
+.resume-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: .15em;
+}
+
+.resume-project-link:hover,
+.resume-project-link:focus-visible {
+  color: var(--blue);
+  text-decoration-color: currentColor;
+}
+
+.resume-project-link svg {
+  width: .78em;
+  height: .78em;
+  flex: 0 0 auto;
 }
 
 .resume-actions .resume-language,
@@ -723,21 +753,22 @@ p {
 
 .resume-hero {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 3.05rem;
-  margin-bottom: 2.45rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .resume-hero h1 {
   color: var(--blue);
-  font-size: clamp(4.8rem, 5.8vw, 6.2rem);
+  font-size: clamp(3rem, 5.2vw, 4.8rem);
   line-height: .92;
-  letter-spacing: 0;
+  letter-spacing: -.055em;
   margin-bottom: 1.3rem;
-  max-width: 7.9ch;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .resume-hero h2 {
-  font-size: 1.45rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--text);
 }
@@ -755,7 +786,7 @@ p {
 }
 
 .resume-section {
-  margin-top: 2.2rem;
+  margin-top: 1.6rem;
 }
 
 .resume-section h3 {
@@ -805,6 +836,18 @@ p {
   padding-left: .12rem;
 }
 
+.resume-skill-section ul {
+  margin: .5rem 0 0;
+  padding-left: .95rem;
+  color: var(--muted);
+  list-style: square;
+}
+
+.resume-skill-section li {
+  margin-bottom: .16rem;
+  line-height: 1.45;
+}
+
 .contact-page {
   max-width: 800px;
   margin: 0 auto 6rem;
@@ -848,15 +891,101 @@ p {
   margin-top: 2.3rem;
 }
 
-.manual-email span {
+.manual-email > span:first-child {
   color: var(--muted);
   font-size: .85rem;
+}
+
+.manual-email-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .7rem;
 }
 
 .manual-email strong {
   color: var(--blue);
   font-size: 1.05rem;
   user-select: all;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.copy-email-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--blue);
+  cursor: pointer;
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.copy-email-button:hover,
+.copy-email-button:focus-visible,
+.copy-email-button.is-copied {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--footer);
+}
+
+.copy-email-button.is-error {
+  border-color: #e4b9b7;
+  background: #fff8f7;
+  color: #a33a35;
+}
+
+.copy-email-button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.copy-email-icon {
+  display: grid;
+  place-items: center;
+}
+
+.copy-email-icon svg {
+  width: .95rem;
+  height: .95rem;
+  stroke-width: 2;
+}
+
+.copy-email-button.is-copied .copy-email-icon {
+  animation: copy-confirm .3s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes copy-confirm {
+  0% {
+    opacity: .35;
+    transform: scale(.78) rotate(-6deg);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(1.08) rotate(1deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
 }
 
 .site-footer {
@@ -924,6 +1053,20 @@ p {
     width: calc(100vw - 4rem);
   }
 
+  .project-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-detail-meta {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 1100px) {
   .resume-page {
     grid-template-columns: 1fr;
     gap: 2.4rem;
@@ -938,33 +1081,21 @@ p {
     margin-bottom: -.6rem;
   }
 
-  .resume-main {
-    order: 1;
-  }
-
   .resume-sidebar {
-    order: 2;
+    order: 1;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.6rem;
     padding-top: 0;
+  }
+
+  .resume-main {
+    order: 2;
   }
 
   .resume-sidebar section,
   .resume-sidebar ul {
     margin-bottom: 0;
-  }
-
-  .project-detail-layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .project-detail-meta {
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    padding-left: 0;
-    padding-top: 1.5rem;
   }
 }
 
@@ -1061,8 +1192,7 @@ p {
   }
 
   .resume-hero h1 {
-    font-size: 3rem;
-    max-width: 9ch;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
   }
 
   .resume-hero h2 {

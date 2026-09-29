@@ -81,13 +81,13 @@ export const EXPERIENCE_CONTENT = {
         role: "Desenvolvedor Full-Stack",
         company: "ZapWrapp",
         period: "2025 - Atual",
-        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais, com 45.412 usuários alcançados.",
+        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais.",
         projectLink: "https://zapwrapp.com",
         details: [
           "Faturamento superior a R$ 25.000,00 desde o lançamento, atingindo Break-even em 48 horas com operação 100% autofinanciada.",
           "Arquitetei o pipeline completo de processamento algorítmico de arquivos, integração de gateways de pagamento e geração de mídia para o usuário final.",
-          "Implementei infraestrutura Serverless/Assíncrona, processando 4.732 transações com custos operacionais 70% menores que modelos tradicionais.",
-          "Redução do time-to-market em 75% por meio de fluxos de desenvolvimento otimizados com apoio de IA."
+          "Implementei infraestrutura Serverless/Assíncrona que processou 4.732 transações.",
+          "Otimizei fluxos de desenvolvimento com apoio de IA."
         ]
       },
       {
@@ -155,13 +155,13 @@ export const EXPERIENCE_CONTENT = {
         role: "Full-Stack Developer",
         company: "ZapWrapp",
         period: "2025 - Present",
-        description: "B2C SaaS that turns exported WhatsApp conversations into visual retrospectives, reaching 45,412 users.",
+        description: "B2C SaaS that turns exported WhatsApp conversations into visual retrospectives.",
         projectLink: "https://zapwrapp.com",
         details: [
           "Revenue exceeding R$ 25,000 since launch, reaching Break-even in 48 hours with 100% self-funded operation.",
           "Architected the full pipeline for algorithmic file processing, payment gateway integration, and final media generation.",
-          "Implemented Serverless/Asynchronous infrastructure, processing 4,732 transactions with 70% lower operational costs than traditional models.",
-          "Reduced time-to-market by 75% through development workflows optimized with AI support."
+          "Implemented serverless, asynchronous infrastructure that processed 4,732 transactions.",
+          "Optimized development workflows with AI support."
         ]
       },
       {
@@ -217,12 +217,12 @@ export const FEATURED_PROJECTS = {
       {
         title: "ZapWrapp — Retrospectiva do WhatsApp",
         subtitle: "Desenvolvedor Full-Stack",
-        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais do ano, com métricas, rankings e telas prontas para compartilhar. Atuei da concepção à entrega, incluindo arquitetura, processamento de arquivos, pagamentos e experiência final. O produto alcançou 45.412 usuários e faturamento superior a R$ 25.000,00.",
+        description: "SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais do ano, com métricas, rankings e telas prontas para compartilhar. Atuei da concepção à entrega, incluindo arquitetura, processamento de arquivos, pagamentos e experiência final. O produto superou R$ 25.000,00 em faturamento.",
         responsibilities: [
           "Arquitetura full-stack: pipeline de processamento algorítmico de arquivos, geração de mídia e integração com gateways de pagamento",
-          "Infraestrutura Serverless/Assíncrona com custos operacionais 70% menores, processando 4.732 transações",
+          "Infraestrutura serverless e assíncrona que processou 4.732 transações",
           "Break-even em 48 horas com operação 100% autofinanciada",
-          "Redução de 75% no time-to-market através de desenvolvimento otimizado com IA"
+          "Fluxos de desenvolvimento otimizados com apoio de IA"
         ],
         tags: ["Next.js", "Serverless", "Payment Gateways", "Data Processing", "SaaS B2C"],
         image: "/zapwrapp.png",
@@ -253,12 +253,12 @@ export const FEATURED_PROJECTS = {
       {
         title: "ZapWrapp — WhatsApp Retrospective",
         subtitle: "Full-Stack Developer",
-        description: "B2C SaaS that transforms exported WhatsApp conversations into visual yearly retrospectives with metrics, rankings, and share-ready screens. I worked from concept to delivery, including architecture, file processing, payments, and the final user experience. The product reached 45,412 users and revenue exceeding R$ 25,000.",
+        description: "B2C SaaS that transforms exported WhatsApp conversations into visual yearly retrospectives with metrics, rankings, and share-ready screens. I worked from concept to delivery, including architecture, file processing, payments, and the final user experience. The product generated over R$ 25,000 in revenue.",
         responsibilities: [
           "Full-stack architecture: algorithmic file processing pipeline, media generation, and payment gateway integration",
-          "Serverless/Asynchronous infrastructure with 70% lower operational costs, processing 4,732 transactions",
+          "Serverless and asynchronous infrastructure that processed 4,732 transactions",
           "Break-even in 48 hours with 100% self-funded operation",
-          "75% reduction in time-to-market through AI-optimized development"
+          "Development workflows optimized with AI support"
         ],
         tags: ["Next.js", "Serverless", "Payment Gateways", "Data Processing", "SaaS B2C"],
         image: "/zapwrapp.png",
@@ -403,7 +403,7 @@ export const SKILLS_CONTENT = {
         name: "Node.js / Serverless",
         time: "2 anos (produção)",
         category: 'backend',
-        description: "Arquitetura serverless para produtos em produção. APIs RESTful, processamento assíncrono e microserviços com redução de 70% em custos operacionais."
+        description: "Arquitetura serverless para produtos em produção, APIs RESTful e processamento assíncrono."
       },
       {
         name: "PostgreSQL / MySQL",
@@ -470,7 +470,7 @@ export const SKILLS_CONTENT = {
         name: "Node.js / Serverless",
         time: "2 years (production)",
         category: 'backend',
-        description: "Serverless architecture for production products. RESTful APIs, asynchronous processing, and microservices with 70% reduction in operational costs."
+        description: "Serverless architecture for production products, RESTful APIs, and asynchronous processing."
       },
       {
         name: "PostgreSQL / MySQL",

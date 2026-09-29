@@ -1,0 +1,217 @@
+{
+  "profile": {
+    "email": "ariel.aio@outlook.com",
+    "phone": "(17) 99665-8986",
+    "phoneUri": "+5517996658986",
+    "portfolioLabel": "arielaio.dev",
+    "portfolioUrl": "https://ariel-aio.vercel.app/",
+    "linkedin": "https://www.linkedin.com/in/ariel-aio/",
+    "github": "https://github.com/ArielAio"
+  },
+  "pt": {
+    "name": "Ariel André Aio",
+    "headline": "Desenvolvedor Full-Stack | React, TypeScript e Node.js | SaaS e sistemas em produção",
+    "summary": "Desenvolvedor Full-Stack com experiência em SaaS e sistemas em produção. Trabalho com processamento de dados, pagamentos, APIs e sustentação de produto.",
+    "experienceIntro": "Experiência em desenvolvimento, operação e sustentação de produtos digitais.",
+    "labels": {
+      "actions": "Ações do currículo",
+      "linkedin": "Perfil de Ariel no LinkedIn",
+      "github": "Perfil de Ariel no GitHub",
+      "changeLanguage": "Mudar idioma do currículo para inglês",
+      "download": "Baixar currículo em português (PDF)",
+      "experience": "Experiência profissional",
+      "education": "Formação acadêmica",
+      "coreSkills": "Competências principais",
+      "toolsAndPractices": "Ferramentas e práticas",
+      "languages": "Idiomas",
+      "visitProject": "Visitar projeto"
+    },
+    "experiences": [
+      {
+        "company": "Prefeitura Municipal de São João das Duas Pontes",
+        "role": "Estagiário",
+        "period": "2026 - Atual",
+        "description": "Apoio a rotinas administrativas e ao uso de sistemas de gestão pública em ambiente municipal.",
+        "details": [
+          "Utilizo sistemas da Fiorilli e organizo informações e documentos em processos administrativos internos."
+        ]
+      },
+      {
+        "company": "ZapWrapp",
+        "role": "Desenvolvedor Full-Stack",
+        "period": "2025 - Atual",
+        "description": "Desenvolvimento de SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais.",
+        "projectLink": "https://zapwrapp.com",
+        "details": [
+          "O produto superou R$ 25 mil em faturamento e atingiu o ponto de equilíbrio em 48 horas, com operação autofinanciada.",
+          "Desenvolvi o pipeline de processamento de arquivos, integrações de pagamento e geração de mídia.",
+          "Implementei infraestrutura serverless e assíncrona que processou 4.732 transações."
+        ]
+      },
+      {
+        "company": "Memoryiit",
+        "role": "Desenvolvedor Full-Stack e Sustentação de Produto",
+        "period": "2025 - 2026",
+        "description": "Atuação em desenvolvimento full-stack e sustentação de plataforma digital em produção.",
+        "details": [
+          "Fiz triagem de dúvidas e problemas operacionais e organizei fluxos de atendimento.",
+          "Ajudei a priorizar demandas recorrentes e convertê-las em melhorias para o produto."
+        ]
+      },
+      {
+        "company": "EnterScience",
+        "role": "Estagiário em Desenvolvimento",
+        "period": "2024 - 2025",
+        "description": "Desenvolvimento full-stack em tecnologia educacional, com Laravel, React, PHP e PostgreSQL.",
+        "details": [
+          "Desenvolvi funcionalidades Laravel e integrei APIs para gerar conteúdos pedagógicos e avaliações.",
+          "Implementei validações e controles para fluxos de geração com apoio de LLMs.",
+          "Mantive bancos PostgreSQL, otimizei consultas e contribuí com revisões de código e documentação."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "IFSP - Campus Votuporanga",
+        "degree": "Bacharelado em Sistemas de Informação",
+        "period": "Previsão: dez. 2027",
+        "description": "Cursando no período matutino."
+      },
+      {
+        "institution": "ETEC - Armando José Farinazzo",
+        "degree": "Técnico em Informática",
+        "period": "Concluído em 2023",
+        "description": "Formação técnica em desenvolvimento de sistemas."
+      }
+    ],
+    "skills": {
+      "core": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "Laravel",
+        "PHP",
+        "PostgreSQL",
+        "MySQL",
+        "Firebase",
+        "Redis",
+        "APIs REST"
+      ],
+      "toolsAndPractices": [
+        "Git e GitHub",
+        "Stripe, Mercado Pago e Woovi",
+        "Sistemas serverless",
+        "Processamento assíncrono",
+        "Integrações com LLMs",
+        "Automação",
+        "Métodos ágeis"
+      ]
+    },
+    "languages": "Português; inglês: leitura técnica e comunicação básica."
+  },
+  "en": {
+    "name": "Ariel André Aio",
+    "headline": "Full-Stack Developer | React, TypeScript & Node.js | Production SaaS",
+    "summary": "Full-Stack Developer with hands-on experience shipping SaaS and production systems. My work spans data processing, payment integrations, APIs, and product support.",
+    "experienceIntro": "Experience across software development, operations, and support for digital products.",
+    "labels": {
+      "actions": "Resume actions",
+      "linkedin": "Ariel's LinkedIn profile",
+      "github": "Ariel's GitHub profile",
+      "changeLanguage": "Change resume language to Portuguese",
+      "download": "Download English resume (PDF)",
+      "experience": "Professional experience",
+      "education": "Education",
+      "coreSkills": "Core technologies",
+      "toolsAndPractices": "Tools & practices",
+      "languages": "Languages",
+      "visitProject": "Visit project"
+    },
+    "experiences": [
+      {
+        "company": "Prefeitura Municipal de São João das Duas Pontes",
+        "role": "Intern",
+        "period": "2026 - Present",
+        "description": "Support administrative routines and production systems in a municipal public-sector environment.",
+        "details": [
+          "Use Fiorilli public-management systems and organize information and documents for internal administrative processes."
+        ]
+      },
+      {
+        "company": "ZapWrapp",
+        "role": "Full-Stack Developer",
+        "period": "2025 - Present",
+        "description": "Develop a B2C SaaS that turns exported WhatsApp conversations into visual retrospectives.",
+        "projectLink": "https://zapwrapp.com",
+        "details": [
+          "The product generated over R$ 25,000 in revenue and reached break-even within 48 hours with a self-funded operation.",
+          "Built the file-processing pipeline, payment integrations, and media generation flow.",
+          "Implemented serverless, asynchronous infrastructure that processed 4,732 transactions."
+        ]
+      },
+      {
+        "company": "Memoryiit",
+        "role": "Full-Stack Developer & Product Support",
+        "period": "2025 - 2026",
+        "description": "Worked on full-stack development and product support for a production digital platform.",
+        "details": [
+          "Triaged user questions and operational issues, and organized support workflows.",
+          "Helped prioritize recurring needs and turn them into product improvements."
+        ]
+      },
+      {
+        "company": "EnterScience",
+        "role": "Development Intern",
+        "period": "2024 - 2025",
+        "description": "Full-stack development in educational technology using Laravel, React, PHP, and PostgreSQL.",
+        "details": [
+          "Built Laravel features and integrated APIs to generate educational content and assessments.",
+          "Implemented validation and guardrails for LLM-assisted generation workflows.",
+          "Maintained PostgreSQL databases, optimized queries, and contributed to code reviews and documentation."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "IFSP - Votuporanga Campus",
+        "degree": "Bachelor's degree in Information Systems",
+        "period": "Expected graduation: Dec 2027",
+        "description": "Currently enrolled; morning classes."
+      },
+      {
+        "institution": "ETEC - Armando José Farinazzo",
+        "degree": "IT Technician",
+        "period": "Completed in 2023",
+        "description": "Technical education focused on systems development."
+      }
+    ],
+    "skills": {
+      "core": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "Laravel",
+        "PHP",
+        "PostgreSQL",
+        "MySQL",
+        "Firebase",
+        "Redis",
+        "REST APIs"
+      ],
+      "toolsAndPractices": [
+        "Git & GitHub",
+        "Stripe, Mercado Pago & Woovi",
+        "Serverless systems",
+        "Asynchronous processing",
+        "LLM integrations",
+        "Automation",
+        "Agile methods"
+      ]
+    },
+    "languages": "Portuguese; English: technical reading and basic communication."
+  }
+}
