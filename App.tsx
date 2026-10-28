@@ -10,7 +10,7 @@ type Language = 'pt' | 'en';
 type Route = string;
 
 const routes = ['/', '/projects', '/resume', '/contact'];
-const projectSlugs = ['zapwrapp', 'memoryiit', 'barbearias', 'prefeitura-editor', 'assistente-ia', 'codewise'];
+const projectSlugs = ['zapwrapp', 'memoryiit', 'cadastro-notas', 'barbearias', 'prefeitura-editor', 'assistente-ia', 'codewise'];
 
 const copy = {
   pt: {
@@ -25,6 +25,7 @@ const copy = {
     homeParagraphs: [
       'Sou desenvolvedor full-stack com atuação direta em produto, operação e automação. Tenho experiência construindo sistemas web, integrando pagamentos, estruturando fluxos assíncronos e colocando produtos digitais em produção com foco em clareza, performance e manutenção simples.',
       'No ZapWrapp, desenvolvi um SaaS B2C que transforma conversas exportadas do WhatsApp em retrospectivas visuais, passando por arquitetura, processamento de arquivos, checkout e entrega final ao usuário. No Memoryiit, atuei em desenvolvimento full-stack e sustentação de produto, apoiando operação, atendimento e melhoria contínua do sistema.',
+      'Na rotina administrativa, desenvolvi um gerador de documentos com IA que economizou horas de preenchimento manual. Também criei uma extensão de navegador que utiliza fotos de notas para automatizar o processo de cadastro no sistema, reduzindo a digitação repetitiva.',
       'Minha stack principal passa por React, Next.js, TypeScript, Laravel, Node.js, bancos relacionais, Firebase, Redis, integrações de pagamento e automações com IA. Gosto de trabalhar onde engenharia encontra resultado: reduzir trabalho manual, melhorar atendimento, organizar dados e criar produtos que resolvem problemas reais.',
       'Também curso Sistemas de Informação no IFSP e tenho formação técnica em informática pela ETEC. Essa base combina prática de produto em produção, rotina operacional e fundamento acadêmico para tomar decisões técnicas com responsabilidade.',
       'Se você está avaliando meu perfil para uma vaga, projeto ou oportunidade de colaboração, pode me chamar para conversarmos.',
@@ -61,6 +62,7 @@ const copy = {
     homeParagraphs: [
       'I am a full-stack developer working across product, operations, and automation. I have hands-on experience building web systems, integrating payments, structuring asynchronous flows, and shipping digital products with a focus on clarity, performance, and maintainability.',
       'At ZapWrapp, I developed a B2C SaaS that turns exported WhatsApp conversations into visual retrospectives, covering architecture, file processing, checkout, and final user delivery. At Memoryiit, I worked on full-stack development and product support, helping with operations, support, and continuous system improvement.',
+      'For administrative workflows, I built an AI document generator that saved hours of manual form filling. I also created a browser extension that uses photos of invoices to automate their entry into an existing system, reducing repetitive typing.',
       'My core stack includes React, Next.js, TypeScript, Laravel, Node.js, relational databases, Firebase, Redis, payment integrations, and AI automations. I like working where engineering connects to outcomes: reducing manual work, improving support, organizing data, and building products that solve real problems.',
       'I am also studying Information Systems at IFSP and have a technical background in IT from ETEC. This gives me a practical mix of production product work, daily operations, and academic fundamentals for responsible technical decisions.',
       'If you are evaluating my profile for a role, project, or collaboration opportunity, feel free to reach out.',
@@ -120,6 +122,19 @@ const projectDetails = {
         'Comunicação entre operação e evolução do sistema.',
       ],
     },
+    'cadastro-notas': {
+      paragraphs: [
+        'Desenvolvi uma extensão de navegador para automatizar o cadastro de notas em um sistema utilizado na rotina administrativa. O trabalho começava com fotografias das notas e terminava com os registros cadastrados no sistema.',
+        'A extensão utiliza as informações das imagens para executar as etapas de cadastro, substituindo a transcrição e o preenchimento repetitivo de formulários. O objetivo foi aproveitar o sistema já utilizado na rotina e automatizar o trabalho manual dentro dele.',
+        'Minha contribuição foi construir o fluxo completo, das fotos das notas até o cadastro. O projeto demonstra aplicação prática de extração de dados de imagens e automação de processos para resolver uma necessidade operacional.',
+      ],
+      highlights: [
+        'Desenvolvimento de extensão de navegador para automatizar o cadastro de notas.',
+        'Uso de fotografias como origem dos dados necessários ao cadastro.',
+        'Automação das etapas de preenchimento e registro no sistema existente.',
+        'Redução de transcrição e digitação repetitiva na rotina administrativa.',
+      ],
+    },
     barbearias: {
       paragraphs: [
         'Sistema para Barbearias é uma plataforma de agendamentos e gestão para estabelecimentos reais. A proposta foi concentrar agenda, clientes e painel administrativo em uma experiência objetiva, adequada para uso recorrente por quem precisa consultar horários e organizar atendimentos diariamente.',
@@ -140,6 +155,7 @@ const projectDetails = {
         'Além do preenchimento manual e assistido, o sistema gera arquivos .docx reais a partir de templates oficiais, preservando formatação, cabeçalhos, rodapés, tabelas e estrutura visual dos documentos. Também permite gerar os documentos individualmente ou em pacote .zip, com organização automática em pastas locais por data e índice do processo.',
       ],
       highlights: [
+        'Economia de horas de trabalho na rotina administrativa, antes gastas no preenchimento manual de documentos.',
         'Criação de fluxo guiado para preenchimento de processos de contratação pública.',
         'Geração automática de DFD, ofício, capa do processo, certidão de cotação e declaração de dotação.',
         'Integração com templates .docx oficiais, mantendo a formatação original dos documentos.',
@@ -202,6 +218,19 @@ const projectDetails = {
         'Communication between operations and product evolution.',
       ],
     },
+    'cadastro-notas': {
+      paragraphs: [
+        'I built a browser extension to automate invoice entry in a system used for administrative work. The workflow started with photos of invoices and ended with their records entered into the system.',
+        'The extension uses information from the images to perform the entry steps, replacing repetitive transcription and form filling. The goal was to automate manual work within the system already used in daily operations.',
+        'My contribution covered the complete workflow, from invoice photos to completed records. The project demonstrates practical image data extraction and process automation applied to an operational need.',
+      ],
+      highlights: [
+        'Built a browser extension to automate invoice entry.',
+        'Used photographs as the source of the data required for each record.',
+        'Automated form filling and record entry in the existing system.',
+        'Reduced repetitive transcription and typing in administrative workflows.',
+      ],
+    },
     barbearias: {
       paragraphs: [
         'Barbershop System is a scheduling and management platform for real establishments. The goal was to bring appointments, clients, and admin workflows into a focused experience suitable for daily use by people who need to check time slots and organize appointments quickly.',
@@ -222,6 +251,7 @@ const projectDetails = {
         'Beyond manual and assisted filling, the system generates real .docx files from official templates, preserving formatting, headers, footers, tables, and the visual structure of the documents. It can also generate documents individually or as a .zip package, with automatic organization in local folders by date and process index.',
       ],
       highlights: [
+        'Saved hours of administrative work previously spent filling documents manually.',
         'Created a guided flow for filling public procurement processes.',
         'Automatic generation of DFD, cover letter, process cover, quotation certificate, and budget allocation declaration.',
         'Integration with official .docx templates while preserving the original document formatting.',
@@ -438,13 +468,13 @@ function WorkPage({ language, t }: { language: Language; t: typeof copy.pt }) {
             </figure>
             <div className="project-info">
               <h2>{project.title}</h2>
-              <p>{project.description || project.subtitle}</p>
+              <p>{project.description}</p>
               {project.link ? (
                 <a className="project-url" href={project.link} target="_blank" rel="noreferrer noopener">
                   {project.link.replace(/^https?:\/\//, '').replace(/\/$/, '')}
                 </a>
               ) : (
-                <span>{project.cta}</span>
+                'cta' in project && project.cta ? <span>{project.cta}</span> : null
               )}
             </div>
           </article>
@@ -482,7 +512,7 @@ function ProjectDetailPage({
 
       <header className="project-detail-header">
         <h1>{project.title}</h1>
-        <p>{project.description || project.subtitle}</p>
+        <p>{project.description}</p>
       </header>
 
       <figure className="project-detail-hero">
@@ -496,7 +526,7 @@ function ProjectDetailPage({
 
         <aside className="project-detail-meta">
           <h2>{t.projectRole}</h2>
-          <p>{project.subtitle || project.title}</p>
+          <p>{'subtitle' in project && project.subtitle ? project.subtitle : project.title}</p>
 
           <h2>{t.projectStack}</h2>
           <ul>

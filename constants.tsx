@@ -292,6 +292,15 @@ export const PROJECTS_CONTENT = {
     code: "Código",
     projects: [
       {
+        id: 5,
+        title: "Extensão de Cadastro de Notas",
+        subtitle: "Desenvolvedor da extensão",
+        description: "Extensão de navegador que automatiza o cadastro de notas a partir de fotografias. Desenvolvi o fluxo das imagens até o registro no sistema utilizado na rotina administrativa, reduzindo transcrição e preenchimento manual de formulários.",
+        tags: ["Extensão de navegador", "Automação de processos", "Extração de dados de imagens", "Formulários"],
+        image: "/cadastro-notas.svg",
+        cta: "Projeto interno",
+      },
+      {
         id: 1,
         title: "Sistema para Barbearias",
         description: "Plataforma de gestão para barbearias com agendamentos em tempo real, cadastro de clientes e painel administrativo. O projeto foi pensado para simplificar a rotina de estabelecimentos reais, centralizando horários, informações de clientes e acompanhamento operacional em uma interface direta para uso diário.",
@@ -303,11 +312,11 @@ export const PROJECTS_CONTENT = {
       {
         id: 2,
         title: "Gerador de Documentos para Prefeitura",
-        description: "Sistema web para automatizar documentos de contratação pública da Prefeitura Municipal de São João das Duas Pontes. A aplicação gera DFDs, capas de processo, certidões e declarações em .docx, com prévia A4, validação de campos, organização automática de arquivos e importação de dados por IA a partir de fotos de orçamentos e pedidos.",
+        description: "Sistema web que economizou horas de trabalho na geração de documentos de contratação pública da Prefeitura Municipal de São João das Duas Pontes. Automatiza DFDs, capas de processo, certidões e declarações em .docx, com validação de campos, prévia A4 e importação de dados por IA a partir de fotos de orçamentos e pedidos.",
+        subtitle: "Desenvolvedor Full-Stack",
         tags: ["React", "Vite", "JavaScript", "CSS", "Docxtemplater", "PizZip / JSZip", "Gemini API", "Ollama", "Node.js / middleware local no Vite", "localStorage", "Templates DOCX"],
         image: "/prefeitura-editor.png",
         link: "https://prefeitura-editor.vercel.app/",
-        githubRepo: "https://github.com/ArielAio/Prefeitura-Editor",
       },
       {
         id: 3,
@@ -336,6 +345,15 @@ export const PROJECTS_CONTENT = {
     code: "Code",
     projects: [
       {
+        id: 5,
+        title: "Invoice Entry Extension",
+        subtitle: "Extension Developer",
+        description: "Browser extension that automates invoice entry from photographs. I built the workflow from images to completed records in the system used for administrative work, reducing transcription and manual form filling.",
+        tags: ["Browser Extension", "Process Automation", "Image Data Extraction", "Forms"],
+        image: "/cadastro-notas.svg",
+        cta: "Internal project",
+      },
+      {
         id: 1,
         title: "Barbershop System",
         description: "Management platform for barbershops with real-time scheduling, client records, and an administrative panel. The project was designed to simplify the routine of real establishments by centralizing appointments, client information, and operational tracking in a direct daily-use interface.",
@@ -347,11 +365,11 @@ export const PROJECTS_CONTENT = {
       {
         id: 2,
         title: "City Hall Document Generator",
-        description: "Web system for automating public procurement documents for the Prefeitura Municipal de São João das Duas Pontes. The app generates DFDs, process covers, certificates, and declarations as .docx files, with A4 preview, field validation, automatic file organization, and AI data import from photos of quotations and requests.",
+        description: "Web system that saved hours of work generating public procurement documents for the Prefeitura Municipal de São João das Duas Pontes. It automates request documents, process covers, certificates, and declarations as .docx files, with field validation, A4 preview, and AI data import from photos of quotations and requests.",
+        subtitle: "Full-Stack Developer",
         tags: ["React", "Vite", "JavaScript", "CSS", "Docxtemplater", "PizZip / JSZip", "Gemini API", "Ollama", "Node.js / local Vite middleware", "localStorage", "DOCX Templates"],
         image: "/prefeitura-editor.png",
         link: "https://prefeitura-editor.vercel.app/",
-        githubRepo: "https://github.com/ArielAio/Prefeitura-Editor",
       },
       {
         id: 3,
